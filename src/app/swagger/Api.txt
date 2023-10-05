@@ -1,0 +1,17 @@
+ApiResponse Importar  --> rb.body(params.body, 'application/json');
+
+ApiResponse ObtenerModelo --> responseType: 'blob',
+
+ },
+  "servers": [
+    {
+      "url": "https://localhost:44350"
+    }
+  ],
+
+  
+
+  rootUrl: string = 'https://localhost:44350';
+  
+
+

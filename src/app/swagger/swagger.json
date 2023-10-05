@@ -1,0 +1,22 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Team Up",
+      "version": "v1"
+    },
+    "paths": {
+      "/api/Event": {
+        "get": {
+          "tags": [
+            "Event"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": { }
+  }
