@@ -7,7 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ModuloPrincipalRoutingModule } from './modulo-principal/modulo-principal-routing.module';
 import { ApiConfiguration } from './api/api-configuration';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     NoopAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     ModuloPrincipalRoutingModule
   ],
   providers: [
