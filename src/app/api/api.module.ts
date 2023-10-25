@@ -3,8 +3,10 @@
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
+
 import { EventService } from './services/event.service';
 import { UserService } from './services/user.service';
+
 /**
  * Module that provides all services and configuration.
  */
