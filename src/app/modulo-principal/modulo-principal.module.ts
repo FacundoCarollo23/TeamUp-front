@@ -4,6 +4,8 @@ import { NavBarComponent } from "../shared/nav-bar/nav-bar.component";
 import { MaterialModule } from "../material.module";
 import { TitleComponent } from "../shared/title/title.component";
 import { CardEventsComponent } from "../shared/cards/card-events/card-events.component";
+import { HeroComponent } from "../shared/hero/hero.component";
+
 
 
 @NgModule({
@@ -12,6 +14,7 @@ import { CardEventsComponent } from "../shared/cards/card-events/card-events.com
     NavBarComponent,
     TitleComponent,
     CardEventsComponent,
+    HeroComponent,
 
   ],
     imports: [
