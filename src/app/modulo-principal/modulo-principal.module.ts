@@ -5,6 +5,7 @@ import { MaterialModule } from "../material.module";
 import { TitleComponent } from "../shared/title/title.component";
 import { CardEventsComponent } from "../shared/cards/card-events/card-events.component";
 import { HeroComponent } from "../shared/hero/hero.component";
+import { EventsComponent } from './events/events.component';
 
 
 
@@ -15,6 +16,7 @@ import { HeroComponent } from "../shared/hero/hero.component";
     TitleComponent,
     CardEventsComponent,
     HeroComponent,
+    EventsComponent,
 
   ],
     imports: [
