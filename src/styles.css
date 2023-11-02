@@ -1,19 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 *{
-    margin: 0;
-	padding: 0;
+    margin: 0px;
+	padding: 0px;
 	list-style: none;
 	text-decoration: none;
 	border: none;
 	outline: none;
+    font-family: "Open Sans", sans-serif;
 }
 html, body { height: 100%; }
-body { margin: 0; padding:0 ; font-family: "Open Sans", sans-serif; background-color: #111111;}
-
+body { margin: 0px; padding: 0px ; background-color: #111111 }
 
 .mat-card1{
     margin: 10px;
-    
     width: 100%;
     height: 350px;
     box-shadow: none;
@@ -29,20 +28,21 @@ body { margin: 0; padding:0 ; font-family: "Open Sans", sans-serif; background-c
 } 
 
 .hero {
-    padding: 0;
     width: 100%;
     height: 550px;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(src/assets/images/hero.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(src/assets/images/hero.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
+    padding: 0px;
+    margin-left: 140px;
 }
 
+h4{
+    padding: 0px !important;
+}
