@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Event": {
+    "/api/Event/List": {
       "get": {
         "tags": [
           "Event"
