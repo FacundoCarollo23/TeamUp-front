@@ -1,0 +1,27 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
+.custom-navbar {
+    background-color: #111111;
+}
+
+.logo-image {
+    width: auto;
+    height: 55px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.custom-button-text.custom-button-text-inicio,
+.custom-button-text.custom-button-text-eventos,
+.custom-button-text.custom-button-text-nosotros {
+    color: #FF990F;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+}
+
+.custom-button {
+    background-color: #FF990F; 
+    font-weight: bold;
+}
