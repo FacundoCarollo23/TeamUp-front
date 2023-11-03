@@ -1,10 +1,54 @@
+
+<div class="container-fluid" style="padding: 0;">
+
 <div class="container-fluid text-center" style="padding: 0;">
+
     <div class="row">
         <app-nav-bar></app-nav-bar>
     </div>
     <div class="row">
         <app-hero></app-hero>
     </div>
+
+    <div class="row" style="margin-left: 140px; margin-top: 100px;">
+        <div class="col-1 mt-5">
+            <app-title [title]="'EVENTOS'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 140px; margin-top: 100px;">
+        <div class="col-4">
+            <div>
+                <app-title [title]="'Filtros'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
+                <hr>
+            </div>
+            <div class="mt-5 mb-5">
+                <div class="d-flex justify-content-between">
+                    <app-title [title]="'Tipo de Actividad'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <mat-icon >add</mat-icon>
+                </div>
+                <hr>
+            </div>
+            <div class="mt-4 mb-4">
+                <div class="d-flex justify-content-between">
+                    <app-title [title]="'Nivel Dificultad'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <mat-icon >add</mat-icon>
+                </div>
+                <hr>
+            </div>
+            <div class="mt-5 mb-5">
+                <div class="d-flex justify-content-between">
+                    <app-title [title]="'Ubicación'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <mat-icon >add</mat-icon>
+                </div>
+                <hr>
+            </div>
+            <a href="" style="font-size: 16px; color: #FF990F;">Resetear Filtros</a>
+        </div>
+        <div class="col-8">
+            <div class="col-md-3 ms-5">
+                <app-card-events></app-card-events>
+            </div>
+
     <div class="row">
         <div class="col">
             1 
@@ -17,6 +61,7 @@
         </div>
         <div class="col">
             4
+
         </div>
     </div>
 </div>
