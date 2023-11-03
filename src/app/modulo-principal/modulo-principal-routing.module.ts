@@ -14,11 +14,10 @@ const routes : Routes = [
     {
 
         path: "events", component: EventsComponent
-    }
-
-        path: "events", component: EventsComponent  
     },
-
+    {
+        path: "events", component: EventsComponent  
+    }
 ]
 
 @NgModule({
