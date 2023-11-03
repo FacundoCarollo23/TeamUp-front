@@ -14,7 +14,7 @@ import { ModuloPrincipalModule } from './modulo-principal/modulo-principal.modul
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
