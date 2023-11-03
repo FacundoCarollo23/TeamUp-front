@@ -7,11 +7,11 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface ApiEventGet$Params {
+export interface ApiEventListGet$Params {
 }
 
-export function apiEventGet(http: HttpClient, rootUrl: string, params?: ApiEventGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiEventGet.PATH, 'get');
+export function apiEventListGet(http: HttpClient, rootUrl: string, params?: ApiEventListGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiEventListGet.PATH, 'get');
   if (params) {
   }
 
@@ -25,4 +25,4 @@ export function apiEventGet(http: HttpClient, rootUrl: string, params?: ApiEvent
   );
 }
 
-apiEventGet.PATH = '/api/Event';
+apiEventListGet.PATH = '/api/Event/List';

@@ -9,8 +9,8 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { apiEventGet } from '../fn/event/api-event-get';
-import { ApiEventGet$Params } from '../fn/event/api-event-get';
+import { apiEventListGet } from '../fn/event/api-event-list-get';
+import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
 
 @Injectable({ providedIn: 'root' })
 export class EventService extends BaseService {
@@ -18,27 +18,27 @@ export class EventService extends BaseService {
     super(config, http);
   }
 
-  /** Path part for operation `apiEventGet()` */
-  static readonly ApiEventGetPath = '/api/Event';
+  /** Path part for operation `apiEventListGet()` */
+  static readonly ApiEventListGetPath = '/api/Event/List';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiEventGet()` instead.
+   * To access only the response body, use `apiEventListGet()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventGet$Response(params?: ApiEventGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-    return apiEventGet(this.http, this.rootUrl, params, context);
+  apiEventListGet$Response(params?: ApiEventListGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventListGet(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiEventGet$Response()` instead.
+   * To access the full response (for headers, for example), `apiEventListGet$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventGet(params?: ApiEventGet$Params, context?: HttpContext): Observable<void> {
-    return this.apiEventGet$Response(params, context).pipe(
+  apiEventListGet(params?: ApiEventListGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventListGet$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
