@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.userService.apiUserListGet().subscribe((res: any)=>{
-      console.log(res);
+      let json = JSON.parse(res)
+      console.log(json.value) 
     })
   }
 }
