@@ -1,0 +1,9 @@
+hr {
+    width: 100%;
+    height: 2px;
+    color: #ff9000;
+}
+
+.mat-icon {
+    color: #ff9000 !important; 
+}
