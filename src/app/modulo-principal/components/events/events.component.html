@@ -7,33 +7,57 @@
     </div>
     <div class="row" style="margin-left: 140px; margin-top: 100px;">
         <div class="col-1 mt-5">
-            <app-title [title]="'EVENTOS'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+            <app-title [title]="'EVENTOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
         </div>
     </div>
     <div class="row" style="margin-left: 140px; margin-top: 100px;">
         <div class="col-4">
             <div>
-                <app-title [title]="'Filtros'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
+                <app-title [title]="'Filtros'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
                 <hr>
             </div>
             <div class="mt-5 mb-5">
                 <div class="d-flex justify-content-between">
-                    <app-title [title]="'Tipo de Actividad'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
-                    <mat-icon >add</mat-icon>
+                    <app-title [title]="'Tipo de Actividad'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <span>
+                        <a (click)="showActivities()" *ngIf="!displayActivities"><mat-icon>add</mat-icon></a>
+                        <a (click)="notShowActivities()" *ngIf="displayActivities"><mat-icon>remove</mat-icon></a>
+                    </span>                
+                </div>
+                <div (click)="notShowActivities()" *ngIf="displayActivities">
+                    <ul>
+                        <li *ngFor="let activity of activities">{{activity}}</li>
+                    </ul>
                 </div>
                 <hr>
             </div>
             <div class="mt-4 mb-4">
                 <div class="d-flex justify-content-between">
-                    <app-title [title]="'Nivel Dificultad'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
-                    <mat-icon >add</mat-icon>
+                    <app-title [title]="'Nivel Dificultad'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <span>
+                        <a (click)="showDifficulty()" *ngIf="!displayDifficulty"><mat-icon>add</mat-icon></a>
+                        <a (click)="notShowDifficulty()" *ngIf="displayDifficulty"><mat-icon>remove</mat-icon></a>
+                    </span>
+                </div>
+                <div (click)="notShowDifficulty()" *ngIf="displayDifficulty">
+                    <ul>
+                        <li *ngFor="let dificulty of difficulties">{{dificulty}}</li>
+                    </ul>
                 </div>
                 <hr>
             </div>
             <div class="mt-5 mb-5">
                 <div class="d-flex justify-content-between">
-                    <app-title [title]="'Ubicación'" [colorTitle]="'#ff9000'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
-                    <mat-icon >add</mat-icon>
+                    <app-title [title]="'Ubicación'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
+                    <span>
+                        <a (click)="showLocation()" *ngIf="!displayLocation"><mat-icon>add</mat-icon></a>
+                        <a (click)="notShowLocation()" *ngIf="displayLocation"><mat-icon>remove</mat-icon></a>
+                    </span>
+                </div>
+                <div (click)="notShowLocation()" *ngIf="displayLocation">
+                    <ul>
+                        <li *ngFor="let location of locations">{{location}}</li>
+                    </ul>
                 </div>
                 <hr>
             </div>
