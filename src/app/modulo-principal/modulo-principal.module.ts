@@ -10,6 +10,7 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from "@angular/router";
+import { FooterComponent } from "../shared/footer/footer.component";
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponent},
@@ -31,7 +32,8 @@ const appRoutes:Routes=[
     EventsComponent,
     NosotrosComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent, 
+    FooterComponent
   ],
     imports: [
       MaterialModule,

@@ -1,14 +1,45 @@
 <div class="container-fluid" style="padding: 0;">
         <app-nav-bar></app-nav-bar>
         <app-hero></app-hero>
-        <br/><br/>
-        <div class="container-fluid d-flex justify-content-center">  
-                <div class="col-6">
-                        <div class="row" style="margin-left: 20px;">
+        <div class="row" style="margin-left: 140px; margin-top: 100px;">
+                <div class="mt-5">
+                        <app-title [title]="'DESTACADOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+                </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center m-5">  
+                <div class="col-9">
+                        <div class="row justify-content-center" style="margin-left: 20px;">
+                                <div class="col-md-3">
+                                        <app-card-events></app-card-events>
+                                </div>
+                                <div class="col-md-3">
+                                        <app-card-events></app-card-events>
+                                </div>
                                 <div class="col-md-3">
                                         <app-card-events></app-card-events>
                                 </div>
                         </div>
                 </div>
         </div>
+        <div class="row" style="margin-left: 140px; margin-top: 100px;">
+                <div class="mt-5">
+                        <app-title [title]="'LO ÚLTIMO'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+                </div>
+        </div>
+        <div class="container-fluid d-flex justify-content-center m-5">  
+                <div class="col-9">
+                        <div class="row justify-content-center" style="margin-left: 20px;">
+                                <div class="col-md-3">
+                                        <app-card-events></app-card-events>
+                                </div>
+                                <div class="col-md-3">
+                                        <app-card-events></app-card-events>
+                                </div>
+                                <div class="col-md-3">
+                                        <app-card-events></app-card-events>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <app-footer></app-footer>
 </div>
