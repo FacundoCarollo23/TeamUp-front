@@ -1,7 +1,58 @@
-
 <div class="container-fluid" style="padding: 0;">
     <app-nav-bar></app-nav-bar>
-    <app-hero></app-hero>
-    <p>registro works!</p>
-    
+    <div class="background-image">
+    <div class="registro-form">
+        
+        <form>
+            <br>
+
+            <h1 style="font-family: 'Open Sans'; color: #FF990F; font-size: 32px;">Creá tu cuenta</h1>
+        <div class="form-group">
+          <label for="nombre" class="text">Nombre</label>
+          <div style="display: flex; align-items: center;">
+            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required class="rounded-input">
+          </div>
+          <div class="error-message">* Debes completar este campo</div>
+        </div>
+  
+        <div class="form-group">
+          <label for="apellido" class="text">Apellido</label>
+          <div style="display: flex; align-items: center;">
+            <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required class="rounded-input">
+          </div>
+          <div class="error-message">* Debes completar este campo</div>
+        </div>
+  
+        <div class="form-group">
+          <label for="fechaNacimiento" class="text">Fecha de Nacimiento </label>
+          <div style="display: flex; align-items: center;">
+            <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="(DD/MM/AAAA)" required class="rounded-input">
+          </div>
+          <div class="error-message">* Debes completar este campo</div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email" class="text">Correo Electrónico</label>
+          <div style="display: flex; align-items: center;">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required class="rounded-input">
+          </div>
+          <div class="error-message">* Debes completar este campo</div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password" class="text">Contraseña</label>
+          <div style="display: flex; align-items: center;">
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required class="rounded-input">
+          </div>
+          <div class="error-message">* Debes completar este campo</div>
+        </div>
+  
+        <button class="btn" type="submit">REGISTRATE</button>
+  
+        <button class="btn-secondary" type="button">REGISTRATE CON GOOGLE</button>
+        <br><br>
+      </form>
+  
+    </div>
+  </div>
 </div>
