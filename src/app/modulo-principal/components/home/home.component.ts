@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/api/services';
-import { MatToolbarModule } from '@angular/material/toolbar';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

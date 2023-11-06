@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EventService } from 'src/app/api/services';
 
 @Component({
@@ -8,6 +8,8 @@ import { EventService } from 'src/app/api/services';
 })
 export class CardEventsComponent implements OnInit {
   events: any = []
+  @Input() event: any;
+
 constructor(public eventService: EventService){}
   ngOnInit(): void {
     this.eventService.apiEventListGet$Response().subscribe((res:any)=>{

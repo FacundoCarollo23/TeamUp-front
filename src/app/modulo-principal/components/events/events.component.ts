@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-events',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor(){
+  //Esto hay que ver si hacemos al Event un model o tiene que venir como DTO desde swagger?
+  eventsList : any[] = [];
+
+  constructor(private eventService: EventService){
+  }
+
+  ngOnInit(): void {
+    this.eventService.apiEventListGet().subscribe(
+      (res: any)=>{
+        let json = JSON.parse(res)
+        this.eventsList = json.value
+        console.log(this.eventsList);
+      }
+    )
   }
 
   // Variables para ocultar o mostrar las diferentes categorias
@@ -40,9 +54,6 @@ export class EventsComponent implements OnInit {
     'Chile'
   ]
 
-  ngOnInit(): void {
-
-  }
   // Mostar u ocultar Actividades
   showActivities():void{
     this.displayActivities = true

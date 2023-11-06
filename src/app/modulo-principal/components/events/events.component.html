@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row" style="margin-left: 140px; margin-top: 100px;">
-        <div class="col-4">
+        <div class="col-md-4">
             <div>
                 <app-title [title]="'Filtros'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
                 <hr>
@@ -63,9 +63,9 @@
             </div>
             <a style="font-size: 16px; color: #FF990F;">Resetear Filtros</a>
         </div>
-        <div class="col-8">
-            <div class="col-md-3 ms-5">
-                <app-card-events></app-card-events>
+        <div class="col-md-8 d-flex flex-wrap gap-2">
+            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsList">
+                <app-card-events [event]="event"></app-card-events>
             </div>
         </div>
     </div>
