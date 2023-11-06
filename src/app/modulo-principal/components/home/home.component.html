@@ -6,17 +6,11 @@
                         <app-title [title]="'DESTACADOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
         </div>
-        <div class="container-fluid d-flex justify-content-center m-5">  
+        <div class="container-fluid m-5">  
                 <div class="col-9">
                         <div class="row justify-content-center" style="margin-left: 20px;">
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
-                                </div>
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
-                                </div>
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
+                                <div class="col-md-3" *ngFor="let event of eventsList">
+                                        <app-card-events [event]="event"></app-card-events>
                                 </div>
                         </div>
                 </div>
@@ -26,18 +20,10 @@
                         <app-title [title]="'LO ÚLTIMO'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
         </div>
-        <div class="container-fluid d-flex justify-content-center m-5">  
+        <div class="d-flex justify-content-center m-5">  
                 <div class="col-9">
                         <div class="row justify-content-center" style="margin-left: 20px;">
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
-                                </div>
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
-                                </div>
-                                <div class="col-md-3">
-                                        <app-card-events></app-card-events>
-                                </div>
+
                         </div>
                 </div>
         </div>

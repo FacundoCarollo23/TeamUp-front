@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/api/services';
+import { EventService } from 'src/app/api/services';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +7,19 @@ import { UserService } from 'src/app/api/services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  constructor(private userService: UserService){
+  eventsList : any[] = [];
+  private currentSlide = 0;
+
+
+  constructor(private eventService: EventService){
   }
   ngOnInit(): void {
-    this.userService.apiUserListGet().subscribe((res: any)=>{
-      let json = JSON.parse(res)
-      console.log(json.value) 
-    })
+    this.eventService.apiEventListGet().subscribe(
+      (res: any)=>{
+        let json = JSON.parse(res)
+        this.eventsList = json.value
+        console.log(this.eventsList);
+      }
+    )
   }
 }
