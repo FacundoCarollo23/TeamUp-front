@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/api/services';
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 
 @Component({
   selector: 'app-home',
@@ -8,8 +12,6 @@ import { EventService } from 'src/app/api/services';
 })
 export class HomeComponent implements OnInit {
   eventsList : any[] = [];
-  private currentSlide = 0;
-
 
   constructor(private eventService: EventService){
   }

@@ -40,8 +40,7 @@ import { FormsModule } from '@angular/forms';
         };
       }
     }
-   
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

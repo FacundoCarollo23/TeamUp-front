@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from "../shared/nav-bar/nav-bar.component";
 import { MaterialModule } from "../material.module";
@@ -33,14 +33,14 @@ const appRoutes:Routes=[
     NosotrosComponent,
     RegistroComponent,
     LoginComponent, 
-    FooterComponent
+    FooterComponent,
   ],
     imports: [
       MaterialModule,
       RouterModule.forRoot(appRoutes)
     ],
     providers: [],
-
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
   })
   
 export class ModuloPrincipalModule { }
