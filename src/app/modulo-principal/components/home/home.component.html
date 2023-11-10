@@ -1,31 +1,26 @@
 <div class="container-fluid" style="padding: 0;">
         <app-nav-bar></app-nav-bar>
         <app-hero></app-hero>
-        <div class="row" style="margin-left: 140px; margin-top: 100px;">
-                <div class="mt-5">
+        <div class="row mx-auto" style="width: 75%;">
+                <div class="col-3" style="margin-top: 100px;">
                         <app-title [title]="'DESTACADOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
+                <swiper-container class="col-12 mx-auto" navigation="true" space-between="40" style="--swiper-navigation-color: #FF990F; --swiper-navigation-size: 20px;"
+                        slides-per-view="3">
+                        <swiper-slide *ngFor="let event of eventsList">
+                                <app-card-events [event]="event"></app-card-events>
+                        </swiper-slide>
+                </swiper-container>
         </div>
-        <div class="container-fluid m-5">  
-                <div class="col-9">
-                        <div class="row justify-content-center" style="margin-left: 20px;">
-                                <div class="col-md-3" *ngFor="let event of eventsList">
-                                        <app-card-events [event]="event"></app-card-events>
-                                </div>
-                        </div>
-                </div>
-        </div>
-        <div class="row" style="margin-left: 140px; margin-top: 100px;">
-                <div class="mt-5">
+        <div class="row mx-auto" style="width: 75%;">
+                <div class="col-5" style="margin-top: 100px;">
                         <app-title [title]="'LO ÚLTIMO'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
-        </div>
-        <div class="d-flex justify-content-center m-5">  
-                <div class="col-9">
-                        <div class="row justify-content-center" style="margin-left: 20px;">
-
-                        </div>
-                </div>
+                <swiper-container class="col-12 mx-auto" navigation="true" space-between="40" style="--swiper-navigation-color: #FF990F; --swiper-navigation-size: 20px;" slides-per-view="3">
+                        <swiper-slide *ngFor="let event of eventsList">
+                                <app-card-events [event]="event"></app-card-events>
+                        </swiper-slide>
+                </swiper-container>
         </div>
         <app-footer></app-footer>
 </div>

@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from "../shared/nav-bar/nav-bar.component";
 import { MaterialModule } from "../material.module";
@@ -12,6 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {NgxPaginationModule} from 'ngx-pagination'; // Paginación
+
+
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponent},
@@ -34,17 +37,21 @@ const appRoutes:Routes=[
     NosotrosComponent,
     RegistroComponent,
     LoginComponent, 
-    FooterComponent
+    FooterComponent,
     
   ],
+   
+
     imports: [
       MaterialModule,
-      RouterModule.forRoot(appRoutes),
+      RouterModule.forRoot(appRoutes), 
+      NgxPaginationModule,
       ReactiveFormsModule,
-      FormsModule
-    ], 
-    providers: [],
+      FormsModule,
+    ],
 
+    providers: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
   })
   
 export class ModuloPrincipalModule { }

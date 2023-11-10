@@ -1,6 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,8 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ModuloPrincipalRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    FormsModule, 
     ReactiveFormsModule,
-    FormsModule
+
   ],
   providers: [
     [Title],{
@@ -41,8 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         };
       }
     }
-   
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
