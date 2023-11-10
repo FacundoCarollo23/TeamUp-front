@@ -17,6 +17,18 @@
         }
       }
     },
+    "/api/Event/ListRecent": {
+      "get": {
+        "tags": [
+          "Event"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Event/Create": {
       "post": {
         "tags": [
@@ -293,6 +305,10 @@
         "additionalProperties": false
       },
       "UserDTO": {
+        "required": [
+          "userLastname",
+          "userName"
+        ],
         "type": "object",
         "properties": {
           "userId": {
@@ -300,12 +316,16 @@
             "format": "int32"
           },
           "userName": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 10,
+            "minLength": 3,
+            "pattern": "^(^[a-zA-Z]+$)",
+            "type": "string"
           },
           "userLastname": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 10,
+            "minLength": 3,
+            "pattern": "^(^[a-zA-Z]+$)",
+            "type": "string"
           },
           "dateOfBirthText": {
             "type": "string",
@@ -313,9 +333,13 @@
           },
           "email": {
             "type": "string",
+            "format": "email",
             "nullable": true
           },
           "password": {
+            "maxLength": 15,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,15}$",
             "type": "string",
             "nullable": true
           },
