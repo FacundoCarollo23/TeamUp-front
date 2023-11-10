@@ -63,9 +63,12 @@
             </div>
             <a style="font-size: 16px; color: #FF990F;" (click)="filterCountry('')">Resetear Filtros</a>
         </div>
-        <div class="col-md-8 d-flex flex-wrap gap-2">
-            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsListFiltered">
+        <div class="col-md-8 d-flex flex-wrap gap-1">
+            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 3, currentPage: page }">
                 <app-card-events [event]="event"></app-card-events>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
             </div>
         </div>
     </div>

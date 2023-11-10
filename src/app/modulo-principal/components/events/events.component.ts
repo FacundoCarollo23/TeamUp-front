@@ -15,6 +15,10 @@ export class EventsComponent implements OnInit {
   eventsListFiltered : any [] = [];
   category = ''
 
+  //Paginado
+  public page!: number;
+
+
   constructor(private eventService: EventService){
   }
 
