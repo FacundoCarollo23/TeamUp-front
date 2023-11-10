@@ -11,6 +11,10 @@ export class EventsComponent implements OnInit {
   //Esto hay que ver si hacemos al Event un model o tiene que venir como DTO desde swagger?
   eventsList : any[] = [];
 
+  //Filtro
+  eventsListFiltered : any [] = [];
+  category = ''
+
   constructor(private eventService: EventService){
   }
 
@@ -19,7 +23,9 @@ export class EventsComponent implements OnInit {
       (res: any)=>{
         let json = JSON.parse(res)
         this.eventsList = json.value
+        this.eventsListFiltered = json.value
         console.log(this.eventsList);
+        
       }
     )
   }
@@ -78,5 +84,32 @@ export class EventsComponent implements OnInit {
   
     notShowLocation():void{
       this.displayLocation = false
+    }
+
+    // Filtro por actividad
+    filterActivity(category : string){
+      this.eventsListFiltered = this.eventsList.filter( (a: any) => {
+        if(a.activityName == category || category == '' ){
+          return a;
+        }
+      })
+    }
+
+    // Filtro por dificultad
+    filterDifficulty(category : string){
+      this.eventsListFiltered = this.eventsList.filter( (a: any) => {
+        if(a.difficultyName == category || category == '' ){
+          return a;
+        }
+      })
+    }
+
+    // Filtro por país
+    filterCountry(category : string){
+      this.eventsListFiltered = this.eventsList.filter( (a: any) => {
+        if(a.countryName == category || category == '' ){
+          return a;
+        }
+      })
     }
 }

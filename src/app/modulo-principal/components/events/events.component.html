@@ -24,9 +24,9 @@
                         <a (click)="notShowActivities()" *ngIf="displayActivities"><mat-icon>remove</mat-icon></a>
                     </span>                
                 </div>
-                <div (click)="notShowActivities()" *ngIf="displayActivities">
+                <div *ngIf="displayActivities">
                     <ul>
-                        <li *ngFor="let activity of activities">{{activity}}</li>
+                        <a><li *ngFor="let activity of activities" (click)="filterActivity(activity)">{{ activity }}</li></a>
                     </ul>
                 </div>
                 <hr>
@@ -39,9 +39,9 @@
                         <a (click)="notShowDifficulty()" *ngIf="displayDifficulty"><mat-icon>remove</mat-icon></a>
                     </span>
                 </div>
-                <div (click)="notShowDifficulty()" *ngIf="displayDifficulty">
+                <div *ngIf="displayDifficulty">
                     <ul>
-                        <li *ngFor="let dificulty of difficulties">{{dificulty}}</li>
+                        <a><li *ngFor="let difficulty of difficulties" (click)="filterDifficulty(difficulty)">{{difficulty}}</li></a>
                     </ul>
                 </div>
                 <hr>
@@ -54,17 +54,17 @@
                         <a (click)="notShowLocation()" *ngIf="displayLocation"><mat-icon>remove</mat-icon></a>
                     </span>
                 </div>
-                <div (click)="notShowLocation()" *ngIf="displayLocation">
+                <div *ngIf="displayLocation">
                     <ul>
-                        <li *ngFor="let location of locations">{{location}}</li>
+                        <a><li *ngFor="let location of locations" (click)="filterCountry(location)">{{location}}</li></a>
                     </ul>
                 </div>
                 <hr>
             </div>
-            <a style="font-size: 16px; color: #FF990F;">Resetear Filtros</a>
+            <a style="font-size: 16px; color: #FF990F;" (click)="filterCountry('')">Resetear Filtros</a>
         </div>
         <div class="col-md-8 d-flex flex-wrap gap-2">
-            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsList">
+            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsListFiltered">
                 <app-card-events [event]="event"></app-card-events>
             </div>
         </div>

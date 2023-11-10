@@ -11,7 +11,7 @@ import { ModuloPrincipalRoutingModule } from './modulo-principal/modulo-principa
 import { ApiConfiguration } from './api/api-configuration';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModuloPrincipalModule } from './modulo-principal/modulo-principal.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     ModuloPrincipalRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    FormsModule
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [
     [Title],{
