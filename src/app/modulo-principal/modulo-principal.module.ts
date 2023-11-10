@@ -11,6 +11,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponent},
@@ -34,11 +35,14 @@ const appRoutes:Routes=[
     RegistroComponent,
     LoginComponent, 
     FooterComponent
+    
   ],
     imports: [
       MaterialModule,
-      RouterModule.forRoot(appRoutes)
-    ],
+      RouterModule.forRoot(appRoutes),
+      ReactiveFormsModule,
+      FormsModule
+    ], 
     providers: [],
 
   })

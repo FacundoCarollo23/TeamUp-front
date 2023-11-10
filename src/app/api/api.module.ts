@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { EventService } from './services/event.service';
+import { EventsCommentService } from './services/events-comment.service';
 import { UserService } from './services/user.service';
 
 /**
@@ -16,6 +17,7 @@ import { UserService } from './services/user.service';
   declarations: [],
   providers: [
     EventService,
+    EventsCommentService,
     UserService,
     ApiConfiguration
   ],

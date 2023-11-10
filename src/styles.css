@@ -9,7 +9,7 @@
     font-family: "Open Sans", sans-serif;
 }
 html, body { height: 100%; }
-body { margin: 0px; padding: 0px ; background-color: #111111 }
+body { margin: 0px; padding: 0px ; background-color: #111111; overflow-x: hidden; }
 
 .btn {
     box-sizing: border-box;
