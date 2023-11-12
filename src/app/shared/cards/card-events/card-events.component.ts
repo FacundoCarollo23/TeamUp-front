@@ -13,7 +13,7 @@ export class CardEventsComponent implements OnInit {
 constructor(public eventService: EventService){}
   ngOnInit(): void {
     this.eventService.apiEventListGet$Response().subscribe((res:any)=>{
-      console.log(res)
+      res
     })
   }
 

@@ -5,10 +5,12 @@
 
 
       <div class="spacer"></div>
-      <a mat-button class="custom-button-text custom-button-text-inicio" href=""> Inicio </a>
+      <a mat-button class="custom-button-text custom-button-text-inicio" href="" *ngIf="logueado == false"> Inicio </a>
+      <a mat-button class="custom-button-text custom-button-text-inicio" href="Home" *ngIf="logueado == true"> Inicio </a>
       <a mat-button class="custom-button-text custom-button-text-eventos" href="eventos"> Eventos </a>
       <a mat-button class="custom-button-text custom-button-text-nosotros" href="nosotros"> Nosotros </a>
-      <button class="btn" [routerLink]="['/login']"> INICIA SESIÓN </button>
+      <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
+      <h5 *ngIf="logueado == true" style="color: #FF990F; font-weight: 350;">{{"Hola" + usuario}}</h5>
     </mat-toolbar-row>
 </mat-toolbar>
   
