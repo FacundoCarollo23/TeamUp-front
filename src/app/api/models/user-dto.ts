@@ -6,6 +6,6 @@ export interface UserDto {
   password?: null | string;
   trainingLevel?: number;
   userId?: number;
-  userLastname?: null | string;
-  userName?: null | string;
+  userLastname: string;
+  userName: string;
 }
