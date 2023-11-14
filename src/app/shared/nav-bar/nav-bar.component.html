@@ -1,17 +1,18 @@
-<mat-toolbar class="custom-navbar mat-elevation-z8" >
-    <mat-toolbar-row>
-      <!-- <app-title [title]="'Hola'" [colorTitle]="'#FF990F'"></app-title> -->
-      <img src="./assets/images/logo2.png" alt="Logo" class="logo-image">
+<mat-toolbar class="custom-navbar mat-elevation-z8">
+  <mat-toolbar-row>
+    <!-- <app-title [title]="'Hola'" [colorTitle]="'#FF990F'"></app-title> -->
+    <img src="./assets/images/logo2.png" alt="Logo" class="logo-image">
 
-
-      <div class="spacer"></div>
-      <a mat-button class="custom-button-text custom-button-text-inicio" href="" *ngIf="logueado == false"> Inicio </a>
-      <a mat-button class="custom-button-text custom-button-text-inicio" href="Home" *ngIf="logueado == true"> Inicio </a>
-      <a mat-button class="custom-button-text custom-button-text-eventos" href="eventos"> Eventos </a>
-      <a mat-button class="custom-button-text custom-button-text-nosotros" href="nosotros"> Nosotros </a>
-      <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
-      <h5 *ngIf="logueado == true" style="color: #FF990F; font-weight: 350;">{{"Hola" + usuario}}</h5>
-    </mat-toolbar-row>
+    <div [ngClass]="{'spacer': logueado == false}"></div>
+    <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/']" *ngIf="logueado == false">
+      Inicio </a>
+    <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/Home']"
+      *ngIf="logueado == true"> Inicio </a>
+    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']"> Eventos </a>
+    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']"> Nosotros </a>
+    <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
+    <div [ngClass]="{'spacer': logueado == true}"></div>
+    <h5 *ngIf="logueado == true" style="color: #FF990F; font-weight: 350;">{{"Hola" + usuario}}
+    </h5>
+  </mat-toolbar-row>
 </mat-toolbar>
-  
-

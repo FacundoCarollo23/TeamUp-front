@@ -11,14 +11,13 @@ import { EventService } from 'src/app/api/services';
 export class NavBarComponent implements OnInit{
   @Input() logueado: boolean = false
   saludo: string = "Hola"
-  usuario:  any
+  usuario: any
   constructor(public route: ActivatedRoute){
     this.route.url.subscribe(urlSegments => {
       const urlPath = urlSegments.map(segment => segment.path).join('/');
       if(urlPath == "" || urlPath == "home")
       localStorage.removeItem("usuarioLogueado")
     });
-   
   }
 
   ngOnInit(): void {
@@ -27,11 +26,10 @@ export class NavBarComponent implements OnInit{
     if(userLogueado.value){
       this.logueado = true
       let usuario = userLogueado.value as UserDto
-      this.usuario = "," + usuario.userName  + " " + usuario.userLastname
+      this.usuario = ", " + usuario.userName  + " " + usuario.userLastname
     }else{
       this.logueado = false
       localStorage.removeItem("usuarioLogueado")
-     
     }
   }
   
