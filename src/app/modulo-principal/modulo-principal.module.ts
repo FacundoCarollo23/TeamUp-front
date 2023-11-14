@@ -12,9 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {NgxPaginationModule} from 'ngx-pagination'; // Paginación
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
 
 const appRoutes:Routes=[
   {path:'', component:HomeComponent},
@@ -22,10 +21,7 @@ const appRoutes:Routes=[
   {path:'nosotros', component:NosotrosComponent},
   {path:'registro', component:RegistroComponent},
   {path:'login', component:LoginComponent}  
-
 ]
-
-
 @NgModule({
     declarations: [
     HomeComponent,
@@ -37,10 +33,9 @@ const appRoutes:Routes=[
     NosotrosComponent,
     RegistroComponent,
     LoginComponent, 
-    FooterComponent,
-    
+    FooterComponent, 
+    DashboardEventsComponent   
   ],
-   
 
     imports: [
       MaterialModule,

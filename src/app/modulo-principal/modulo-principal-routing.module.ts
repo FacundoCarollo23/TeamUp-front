@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { EventsComponent } from "./components/events/events.component";
 import { LoginGuard } from "../guards/login.guard";
+import { DashboardEventsComponent } from "./components/dashboard-events/dashboard-events.component";
 
 
 const routes : Routes = [
@@ -13,15 +14,14 @@ const routes : Routes = [
         path: "home", component: HomeComponent  
     },
     {
-
         path: "events", component: EventsComponent
     },
-    
     {
         path: "Home", component: HomeComponent  
     },
-
-
+    {
+        path: "dashboardEvents", component: DashboardEventsComponent
+    }
 ]
 
 @NgModule({

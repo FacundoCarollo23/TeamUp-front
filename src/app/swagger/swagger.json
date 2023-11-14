@@ -1,6 +1,7 @@
 {
     "openapi": "3.0.1",
     "info": {
+<<<<<<< HEAD
       "title": "TeamUp.Api",
       "version": "1.0"
     },
