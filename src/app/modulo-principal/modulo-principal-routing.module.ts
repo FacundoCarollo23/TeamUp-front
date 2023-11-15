@@ -4,6 +4,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { EventsComponent } from "./components/events/events.component";
 import { LoginGuard } from "../guards/login.guard";
 import { DashboardEventsComponent } from "./components/dashboard-events/dashboard-events.component";
+import { NosotrosComponent } from "./components/nosotros/nosotros.component";
 
 
 const routes : Routes = [
@@ -21,6 +22,9 @@ const routes : Routes = [
     },
     {
         path: "dashboardEvents", component: DashboardEventsComponent
+    },
+    {
+        path: "aboutUs", component: NosotrosComponent
     }
 ]
 

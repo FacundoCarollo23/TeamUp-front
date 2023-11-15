@@ -1,23 +1,27 @@
 <div class="container-fluid" style="padding: 0;">
         <app-nav-bar></app-nav-bar>
         <app-hero></app-hero>
+
+        <!-- Eventos DESTACADOS -->
         <div class="row mx-auto" style="width: 75%;">
                 <div class="col-3" style="margin-top: 100px;">
                         <app-title [title]="'DESTACADOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
                 <swiper-container class="col-12 mx-auto" navigation="true" space-between="40" style="--swiper-navigation-color: #FF990F; --swiper-navigation-size: 20px;"
                         slides-per-view="3">
-                        <swiper-slide *ngFor="let event of eventsList">
+                        <swiper-slide *ngFor="let event of highlightedEventsList">
                                 <app-card-events [event]="event"></app-card-events>
                         </swiper-slide>
                 </swiper-container>
         </div>
+
+        <!-- Eventos RECIENTES -->
         <div class="row mx-auto" style="width: 75%;">
                 <div class="col-5" style="margin-top: 100px;">
                         <app-title [title]="'LO ÚLTIMO'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
                 </div>
                 <swiper-container class="col-12 mx-auto" navigation="true" space-between="40" style="--swiper-navigation-color: #FF990F; --swiper-navigation-size: 20px;" slides-per-view="3">
-                        <swiper-slide *ngFor="let event of eventsList">
+                        <swiper-slide *ngFor="let event of recentEventsList">
                                 <app-card-events [event]="event"></app-card-events>
                         </swiper-slide>
                 </swiper-container>

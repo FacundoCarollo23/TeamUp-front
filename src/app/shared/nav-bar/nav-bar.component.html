@@ -1,12 +1,13 @@
+
 <mat-toolbar class="custom-navbar mat-elevation-z8" >
     <mat-toolbar-row>
       <img src="./assets/images/logo2.png" alt="Logo" class="logo-image">
       <div class="spacer"></div>
-      <a mat-button class="custom-button-text custom-button-text-inicio" href="" *ngIf="logueado == false"> Inicio </a>
-      <a mat-button class="custom-button-text custom-button-text-inicio" href="Home" *ngIf="logueado == true"> Inicio </a>
-      <a mat-button class="custom-button-text custom-button-text-eventos" href="eventos"> Eventos </a>
-      <a mat-button class="custom-button-text custom-button-text-nosotros" href="nosotros"> Nosotros </a>
-      <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
+      <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/Home']"
+      *ngIf="logueado == true"> Inicio </a>
+    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']"> Eventos </a>
+    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']"> Nosotros </a>
+    <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
       <a *ngIf="logueado == true"  style="color: #FF990F; font-weight: 350; text-decoration: none; font-family: 'Open Sans', sans-serif; " [matMenuTriggerFor]="afterMenu"   aria-label="Example icon-button with a menu"  (menuOpened)="onMenuOpened()" 
       (menuClosed)="onMenuClosed()" >{{"Hola" + usuario}}  <mat-icon style="padding-top: 7px;">{{ menuOpen ? 'expand_less' : 'expand_more' }}</mat-icon> </a>
       <mat-menu  #afterMenu="matMenu" [mat-elevation]="0">
@@ -26,4 +27,3 @@
     </mat-toolbar-row>
 </mat-toolbar>
   
-

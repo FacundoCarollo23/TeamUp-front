@@ -14,12 +14,12 @@ export class NavBarComponent implements OnInit{
   usuario:  any
   menuOpen: boolean = false;
   constructor(public route: ActivatedRoute , public router: Router){
+
     this.route.url.subscribe(urlSegments => {
       const urlPath = urlSegments.map(segment => segment.path).join('/');
       if(urlPath == "" || urlPath == "home")
       localStorage.removeItem("usuarioLogueado")
     });
-   
   }
 
   ngOnInit(): void {
@@ -28,11 +28,10 @@ export class NavBarComponent implements OnInit{
     if(userLogueado.value){
       this.logueado = true
       let usuario = userLogueado.value as UserDto
-      this.usuario = "," + usuario.userName  + " " + usuario.userLastname
+      this.usuario = ", " + usuario.userName  + " " + usuario.userLastname
     }else{
       this.logueado = false
       localStorage.removeItem("usuarioLogueado")
-     
     }
   }
 
