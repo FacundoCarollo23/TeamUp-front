@@ -3,51 +3,54 @@
     <div class="background-image">
     <div class="registro-form">
         
-        <form>
+        <form [formGroup]="formRegistro">
             <br>
-
-            <h1 style="font-family: 'Open Sans'; color: #FF990F; font-size: 32px;">Creá tu cuenta</h1>
+            <app-title [title]="'Creá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'" style="text-align: center;"></app-title>
         <div class="form-group">
           <label for="nombre" class="text">Nombre</label>
           <div style="display: flex; align-items: center;">
-            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required class="rounded-input">
+            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" formControlName="nombre" required class="rounded-input" style="height: 45px;">
           </div>
-          <div class="error-message">* Debes completar este campo</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('nombre')?.hasError('required') && this.formRegistro.get('nombre')?.touched">El nombre es requerido</div>
         </div>
   
         <div class="form-group">
           <label for="apellido" class="text">Apellido</label>
           <div style="display: flex; align-items: center;">
-            <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required class="rounded-input">
+            <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" formControlName="apellido"  required class="rounded-input" style="height: 45px; ">
           </div>
-          <div class="error-message">* Debes completar este campo</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('apellido')?.hasError('required') && this.formRegistro.get('apellido')?.touched">El apellido es requerido</div>
         </div>
   
         <div class="form-group">
           <label for="fechaNacimiento" class="text">Fecha de Nacimiento </label>
           <div style="display: flex; align-items: center;">
-            <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="(DD/MM/AAAA)" required class="rounded-input">
+            <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="(DD/MM/AAAA)" formControlName="fechaNacimiento"  required class="rounded-input" style="height: 45px;">
           </div>
-          <div class="error-message">* Debes completar este campo</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('fechaNacimiento')?.hasError('required') && this.formRegistro.get('fechaNacimiento')?.touched">La fecha de nacimiento es requerida</div>
         </div>
   
         <div class="form-group">
           <label for="email" class="text">Correo Electrónico</label>
           <div style="display: flex; align-items: center;">
-            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required class="rounded-input">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico"  formControlName="email" required class="rounded-input" style="height: 45px;">
           </div>
-          <div class="error-message">* Debes completar este campo</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('email')?.hasError('required') && this.formRegistro.get('email')?.touched">El email es requerido</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('email')?.hasError('email') && this.formRegistro.get('email')?.touched && this.formRegistro.get('email')?.hasError('pattern')">Ingrese un email válido</div>
+          <div class="error-message" *ngIf="this.formRegistro.get('email')?.hasError('minlength') && this.formRegistro.get('email')?.touched">El email debe tener al menos 3 caracteres</div>
         </div>
   
         <div class="form-group">
           <label for="password" class="text">Contraseña</label>
           <div style="display: flex; align-items: center;">
-            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required class="rounded-input">
+            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" formControlName="password"  required class="rounded-input" style="height: 45px;">
           </div>
-          <div class="error-message">* Debes completar este campo</div>
+          <div class="error-message"  *ngIf="this.formRegistro.get('password')?.hasError('required') && this.formRegistro.get('password')?.touched">La contraseña es requerida</div>
+            <div class="error-message" *ngIf="this.formRegistro.get('password')?.hasError('minlength') || this.formRegistro.get('password')?.hasError('maxlength') && this.formRegistro.get('password')?.touched">La contraseña debe tener entre 8 y 15 caracteres</div>
+            <div class="error-message"  *ngIf="this.formRegistro.get('password')?.hasError('pattern') && this.formRegistro.get('password')?.touched">La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo</div>
         </div>
   
-        <button class="btn" type="submit">REGISTRATE</button>
+        <button class="btn" type="submit" (click)="OnSubmit()">REGISTRATE</button>
   
         <button class="btn-secondary" type="button">REGISTRATE CON GOOGLE</button>
         <br><br>

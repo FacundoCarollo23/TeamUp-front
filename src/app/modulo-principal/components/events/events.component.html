@@ -1,21 +1,32 @@
 <div class="container-fluid" style="padding: 0;">
+    <!-- navbar -->
     <div class="row">
         <app-nav-bar></app-nav-bar>
     </div>
+
+    <!-- hero -->
     <div class="row">
         <app-hero></app-hero>
     </div>
+
+    <!-- titulo EVENTOS -->
     <div class="row" style="margin-left: 140px; margin-top: 100px;">
         <div class="col-1 mt-5">
             <app-title [title]="'EVENTOS'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
         </div>
     </div>
+
+
     <div class="row" style="margin-left: 140px; margin-top: 100px;">
-        <div class="col-md-4">
+
+        <!-- filtros -->
+        <div class="col-4 d-flex flex-column">
             <div>
                 <app-title [title]="'Filtros'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
                 <hr>
             </div>
+
+            <!-- filtro por TIPO DE ACTIVIDAD -->
             <div class="mt-5 mb-5">
                 <div class="d-flex justify-content-between">
                     <app-title [title]="'Tipo de Actividad'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
@@ -31,7 +42,9 @@
                 </div>
                 <hr>
             </div>
-            <div class="mt-4 mb-4">
+
+            <!-- filtro por NIVEL DE DIFICULTAD -->
+            <div class="mb-5">
                 <div class="d-flex justify-content-between">
                     <app-title [title]="'Nivel Dificultad'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
                     <span>
@@ -46,7 +59,9 @@
                 </div>
                 <hr>
             </div>
-            <div class="mt-5 mb-5">
+
+            <!-- filtro por UBICACION -->
+            <div class="mb-5">
                 <div class="d-flex justify-content-between">
                     <app-title [title]="'Ubicación'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'24px'" [fontWeightTitle]="'400'"></app-title> 
                     <span>
@@ -61,14 +76,21 @@
                 </div>
                 <hr>
             </div>
+
             <a style="font-size: 16px; color: #FF990F;" (click)="filterCountry('')">Resetear Filtros</a>
+
         </div>
-        <div class="col-md-8 d-flex flex-wrap gap-1">
-            <div class="col-md-4 col-xl-3  m-3" style="width: 33,33%; height: 310px;" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 3, currentPage: page }">
+
+
+        <!-- cards -->
+        <div class="col-8 d-flex flex-wrap justify-content-xl-around h-100">
+
+            <div class="col-4 col-xl-3 m-3" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 3, currentPage: page }">
                 <app-card-events [event]="event"></app-card-events>
             </div>
+
             <div class="col-12 d-flex justify-content-center">
-                <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+                <pagination-controls (pageChange)="page = $event" [autoHide]=true [responsive]=true previousLabel="" nextLabel="" ></pagination-controls>
             </div>
         </div>
     </div>

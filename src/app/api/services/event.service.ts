@@ -15,6 +15,8 @@ import { apiEventDeleteIdDelete } from '../fn/event/api-event-delete-id-delete';
 import { ApiEventDeleteIdDelete$Params } from '../fn/event/api-event-delete-id-delete';
 import { apiEventListGet } from '../fn/event/api-event-list-get';
 import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
+import { apiEventListRecentGet } from '../fn/event/api-event-list-recent-get';
+import { ApiEventListRecentGet$Params } from '../fn/event/api-event-list-recent-get';
 
 @Injectable({ providedIn: 'root' })
 export class EventService extends BaseService {
@@ -43,6 +45,31 @@ export class EventService extends BaseService {
    */
   apiEventListGet(params?: ApiEventListGet$Params, context?: HttpContext): Observable<void> {
     return this.apiEventListGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiEventListRecentGet()` */
+  static readonly ApiEventListRecentGetPath = '/api/Event/ListRecent';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventListRecentGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListRecentGet$Response(params?: ApiEventListRecentGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventListRecentGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventListRecentGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListRecentGet(params?: ApiEventListRecentGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventListRecentGet$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }

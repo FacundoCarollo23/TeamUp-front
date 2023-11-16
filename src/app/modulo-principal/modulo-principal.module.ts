@@ -13,6 +13,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { NewEventComponent } from './components/new-event/new-event.component'; // Paginación
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
@@ -25,16 +26,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRadioGroup, MatRadioModule  } from "@angular/material/radio"
 
-const appRoutes:Routes=[
-  {path:'', component:HomeComponent},
-  {path:'eventos', component:EventsComponent},
-  {path:'nosotros', component:NosotrosComponent},
-  {path:'registro', component:RegistroComponent},
-  {path:'login', component:LoginComponent},  
-  {path:'newevent', component:NewEventComponent},  
-  {path: 'userProfile', component:UserProfileComponent}
+import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
 
-]
 
 
 @NgModule({
@@ -51,12 +44,12 @@ const appRoutes:Routes=[
     FooterComponent, 
     NewEventComponent, UserProfileComponent,
     
+    DashboardEventsComponent   
   ],
-   
 
     imports: [
       MaterialModule,
-      RouterModule.forRoot(appRoutes), 
+      RouterModule, 
       NgxPaginationModule,
       ReactiveFormsModule,
       FormsModule,
@@ -64,8 +57,8 @@ const appRoutes:Routes=[
       MatNativeDateModule,
       MatInputModule,
       // NgxMaterialTimepickerModule,
-      TimepickerModule.forRoot(),
-      BsDatepickerModule.forRoot(),
+      TimepickerModule,
+      BsDatepickerModule,
       DateTimePickerModule,
       MatCheckboxModule,
       MatRadioModule
