@@ -15,10 +15,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">provisorio</th>
-                        <td>provisorio</td>
-                        <td>provisorio</td>
+                    <tr *ngFor="let event of userEventsList">
+                        <th scope="row">{{ event.eventName }}</th>
+                        <td>{{ event.dateTime }}</td>
+                        <td>{{ event.city + " - " + event.countryName  }}</td>
                         <td class="d-flex justify-content-between">
                             <a>
                                 <mat-icon class="material-icons-round">search</mat-icon> 
@@ -53,16 +53,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">provisorio</th>
-                        <td>provisorio </td>
-                        <td>provisorio</td>
+                    <tr *ngFor="let event of userEventsList">
+                        <th scope="row">{{ event.eventName }}</th>
+                        <td>{{ event.dateTime }}</td>
+                        <td>{{ event.city + " - " + event.countryName  }}</td>
                         <td>
                             <a>
                                 <mat-icon class="material-icons-round">search</mat-icon> 
                             </a>
                             <a class="ms-4" style="color: #000000;">
-                                <mat-icon class="material-icons-round">delete</mat-icon>
+                                <mat-icon class="material-icons-round" (click)="deleteEvent(event.eventId)" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</mat-icon>
                             </a>
                         </td>
                     </tr>
@@ -70,6 +70,26 @@
             </table>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">ATENCION</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"  aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Desea cancelar el evento?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="confirmDelete()">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <div class="row">
