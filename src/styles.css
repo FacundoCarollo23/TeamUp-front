@@ -1,4 +1,18 @@
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 /* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+
+
+
+
 *{
     margin: 0px;
 	padding: 0px;
@@ -42,3 +56,28 @@ h4{
     padding: 0px !important;
 }
 
+.e-datetime-wrapper .e-input-group-icon.e-date-icon, .e-datetime-wrapper .e-input-group-icon.e-time-icon {
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    color: #FF990F;
+    background-color: rgb(255, 255, 255) !important;
+  }
+  
+  .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input {
+    font-size: 20px;
+    height: 40px;
+    background-color: rgb(255, 255, 255) !important;
+  }
+  ::ng-deep .timepicker-container {
+    width: 500px;
+    margin: 10px 0;
+    background-color: #ffffff ;
+    border-radius: 5px;
+    padding: 10px;  
+    height: 30px;
+    border: 1px solid #ffffff;
+  }
+  
+  ::ng-deep .container .timepicker-container {
+    text-align: left;
+  }
