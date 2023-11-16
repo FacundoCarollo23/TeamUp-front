@@ -5,6 +5,8 @@
       <div class="spacer"></div>
       <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/Home']"
       *ngIf="logueado == true"> Inicio </a>
+      <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['']"
+      *ngIf="logueado == false"> Inicio </a>
     <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']"> Eventos </a>
     <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']"> Nosotros </a>
     <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
