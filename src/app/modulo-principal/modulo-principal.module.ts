@@ -13,7 +13,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
-
 import { NewEventComponent } from './components/new-event/new-event.component'; // Paginación
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
@@ -22,10 +21,7 @@ import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRadioGroup, MatRadioModule  } from "@angular/material/radio"
-
 import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
-
-
 
 @NgModule({
     declarations: [
@@ -39,8 +35,9 @@ import { DashboardEventsComponent } from './components/dashboard-events/dashboar
     RegistroComponent,
     LoginComponent, 
     FooterComponent, 
-    NewEventComponent, UserProfileComponent,
-    DashboardEventsComponent,  
+    NewEventComponent, 
+    UserProfileComponent,
+    DashboardEventsComponent   
   ],
 
     imports: [
