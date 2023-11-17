@@ -33,10 +33,9 @@ this.formLogin = this.fb.group({
     }
     
     if(this.formLogin.valid){
-      console.log(this.userLoguin)
       this.userService.apiUserLoginPost$Response({body:usuario}).subscribe((res:any) =>{
         let json = JSON.parse(res.body) as any
-        if(json){
+        if(json.value.token){
           localStorage.setItem("usuarioLogueado", res.body) 
           this.route.navigate(['Home'])
         }else{
