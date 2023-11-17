@@ -35,6 +35,7 @@ export class NewEventComponent implements OnInit{
       fechaEvento: ['', [Validators.required]],
       horarioEvento: ['', [Validators.required]],
       tipoEvento: ['', [Validators.required]],
+      actividadEvento: ['', [Validators.required]],
       eventDateTime: null,
     });
 
