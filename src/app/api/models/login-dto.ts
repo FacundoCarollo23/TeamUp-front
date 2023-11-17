@@ -3,4 +3,5 @@
 export interface LoginDto {
   email?: null | string;
   password?: null | string;
+  token?: null | string 
 }
