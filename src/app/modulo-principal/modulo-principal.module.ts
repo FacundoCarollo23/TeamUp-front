@@ -18,9 +18,6 @@ import { NewEventComponent } from './components/new-event/new-event.component'; 
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-// import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -43,8 +40,7 @@ import { DashboardEventsComponent } from './components/dashboard-events/dashboar
     LoginComponent, 
     FooterComponent, 
     NewEventComponent, UserProfileComponent,
-    
-    DashboardEventsComponent   
+    DashboardEventsComponent,  
   ],
 
     imports: [
@@ -56,12 +52,9 @@ import { DashboardEventsComponent } from './components/dashboard-events/dashboar
       MatDatepickerModule,
       MatNativeDateModule,
       MatInputModule,
-      // NgxMaterialTimepickerModule,
-      TimepickerModule,
-      BsDatepickerModule,
       DateTimePickerModule,
       MatCheckboxModule,
-      MatRadioModule
+      MatRadioModule,
     ],
 
     providers: [],

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventDto } from 'src/app/api/models';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { ViewEncapsulation } from '@angular/core';
 
 
