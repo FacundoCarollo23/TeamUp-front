@@ -13,15 +13,23 @@ import { RouterModule, Routes } from "@angular/router";
 import { FooterComponent } from "../shared/footer/footer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxPaginationModule } from 'ngx-pagination';
+
+import { NewEventComponent } from './components/new-event/new-event.component'; // Paginación
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+// import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatRadioGroup, MatRadioModule  } from "@angular/material/radio"
+
 import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
 
-const appRoutes:Routes=[
-  {path:'', component:HomeComponent},
-  {path:'eventos', component:EventsComponent},
-  {path:'nosotros', component:NosotrosComponent},
-  {path:'registro', component:RegistroComponent},
-  {path:'login', component:LoginComponent}  
-]
+
+
 @NgModule({
     declarations: [
     HomeComponent,
@@ -34,15 +42,26 @@ const appRoutes:Routes=[
     RegistroComponent,
     LoginComponent, 
     FooterComponent, 
+    NewEventComponent, UserProfileComponent,
+    
     DashboardEventsComponent   
   ],
 
     imports: [
       MaterialModule,
-      RouterModule.forRoot(appRoutes), 
+      RouterModule, 
       NgxPaginationModule,
       ReactiveFormsModule,
       FormsModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatInputModule,
+      // NgxMaterialTimepickerModule,
+      TimepickerModule,
+      BsDatepickerModule,
+      DateTimePickerModule,
+      MatCheckboxModule,
+      MatRadioModule
     ],
 
     providers: [],

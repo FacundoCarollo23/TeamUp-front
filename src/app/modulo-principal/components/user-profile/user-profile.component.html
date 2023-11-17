@@ -1,0 +1,43 @@
+
+<div class="container-fluid" style="padding: 0;">
+    <app-nav-bar></app-nav-bar>
+  
+    <div class="big-Cards-Container">
+      <!-- Primera Card -->
+      <mat-card class="big-Card">
+        <mat-card-title class="text">Completá tu perfil</mat-card-title>
+        <div class="sub-Cards-Container">
+
+          <!-- Primera Sub-Card con radio buttons -->
+          <mat-card class="sub-Card-a">
+            <mat-card-title>Tu nivel de entrenamiento:</mat-card-title>
+            <mat-card-content>
+              <mat-radio-group formControlName="nivelEntrenamiento">
+                <mat-radio-button value="Principiante">Principiante</mat-radio-button>
+                <mat-radio-button value="Intermedio">Intermedio</mat-radio-button>
+                <mat-radio-button value="Avanzado">Avanzado</mat-radio-button>
+                <mat-radio-button value="Experto">Experto</mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+          </mat-card>
+  
+          <!-- Segunda Sub-Card con checkbox -->
+          <mat-card class="sub-Card-b">
+            <mat-card-title>Tus actividades preferidas:</mat-card-title>
+            <mat-card-content>
+                <mat-checkbox *ngFor="let actividad of actividades" formControlName="actividades" [value]="actividad">
+                    {{ actividad }}
+            </mat-checkbox>
+        </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card>
+      <br> <br> <br>
+      <!-- Segunda Card -->
+      <mat-card class="big-Card">
+        <mat-card-title>Desafíos Semanales</mat-card-title>
+            <!-- contenido de desafios -->
+      </mat-card>
+    </div>
+  </div>
+  

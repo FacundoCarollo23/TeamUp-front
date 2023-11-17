@@ -11,6 +11,7 @@ import { ApiConfiguration } from './api/api-configuration';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModuloPrincipalModule } from './modulo-principal/modulo-principal.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     MatButtonModule,
     FormsModule, 
-    ReactiveFormsModule,
+    ReactiveFormsModule, CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule,
 
   ],
   providers: [
