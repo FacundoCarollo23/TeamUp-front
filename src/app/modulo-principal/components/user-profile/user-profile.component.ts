@@ -12,12 +12,12 @@ export class UserProfileComponent implements OnInit{
 
 
   actividades = ['Futbol', 'Padel', 'Patinaje', 'Rugby', 'Ciclismo', 'Quidditch', 'Hockey', 'Running', 'Rafting', 'Basket', 'Senderismo', 'Escalada', 'Voley', 'Fitness', 'Yoga'];
-  formBuilder: any;
+  // formBuilder: any;   segun gpt está de mas, lo defino dos veces
 
   constructor(private fb: FormBuilder) {
     this.formularioPerfil = this.fb.group({
-      nivelEntrenamiento: ['', Validators.required],
-      actividades: this.fb.array([]),
+      nivelEntrenamiento: new FormControl (''),
+      actividades: new FormControl ([]),
     });
   }
   
