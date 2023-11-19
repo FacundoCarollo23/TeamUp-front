@@ -6,16 +6,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { EventUserDto } from '../../models/event-user-dto';
 
-export interface ApiEventCreatePost$Params {
-      body?: EventUserDto
+export interface ApiEventGetByIdIdGet$Params {
+  id: number;
 }
 
-export function apiEventCreatePost(http: HttpClient, rootUrl: string, params?: ApiEventCreatePost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiEventCreatePost.PATH, 'post');
+export function apiEventGetByIdIdGet(http: HttpClient, rootUrl: string, params: ApiEventGetByIdIdGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiEventGetByIdIdGet.PATH, 'get');
   if (params) {
-    rb.body(params.body, 'application/*+json');
+    rb.path('id', params.id, {"style":"simple"});
   }
 
   return http.request(
@@ -28,4 +27,4 @@ export function apiEventCreatePost(http: HttpClient, rootUrl: string, params?: A
   );
 }
 
-apiEventCreatePost.PATH = '/api/Event/Create';
+apiEventGetByIdIdGet.PATH = '/api/Event/GetById/{id}';

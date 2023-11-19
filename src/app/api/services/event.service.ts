@@ -13,6 +13,10 @@ import { apiEventCreatePost } from '../fn/event/api-event-create-post';
 import { ApiEventCreatePost$Params } from '../fn/event/api-event-create-post';
 import { apiEventDeleteIdDelete } from '../fn/event/api-event-delete-id-delete';
 import { ApiEventDeleteIdDelete$Params } from '../fn/event/api-event-delete-id-delete';
+import { apiEventGetByIdIdGet } from '../fn/event/api-event-get-by-id-id-get';
+import { ApiEventGetByIdIdGet$Params } from '../fn/event/api-event-get-by-id-id-get';
+import { apiEventListFeaturedGet } from '../fn/event/api-event-list-featured-get';
+import { ApiEventListFeaturedGet$Params } from '../fn/event/api-event-list-featured-get';
 import { apiEventListGet } from '../fn/event/api-event-list-get';
 import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
 import { apiEventListRecentGet } from '../fn/event/api-event-list-recent-get';
@@ -70,6 +74,56 @@ export class EventService extends BaseService {
    */
   apiEventListRecentGet(params?: ApiEventListRecentGet$Params, context?: HttpContext): Observable<void> {
     return this.apiEventListRecentGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiEventListFeaturedGet()` */
+  static readonly ApiEventListFeaturedGetPath = '/api/Event/ListFeatured';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventListFeaturedGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListFeaturedGet$Response(params?: ApiEventListFeaturedGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventListFeaturedGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventListFeaturedGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListFeaturedGet(params?: ApiEventListFeaturedGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventListFeaturedGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiEventGetByIdIdGet()` */
+  static readonly ApiEventGetByIdIdGetPath = '/api/Event/GetById/{id}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventGetByIdIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventGetByIdIdGet$Response(params: ApiEventGetByIdIdGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventGetByIdIdGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventGetByIdIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventGetByIdIdGet(params: ApiEventGetByIdIdGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventGetByIdIdGet$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }

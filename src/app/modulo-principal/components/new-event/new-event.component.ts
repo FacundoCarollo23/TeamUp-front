@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { EventDto } from 'src/app/api/models';
 import { ViewEncapsulation } from '@angular/core';
 
 
