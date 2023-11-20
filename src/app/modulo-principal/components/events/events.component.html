@@ -85,7 +85,7 @@
         <!-- cards -->
         <div class="col-8 d-flex flex-wrap justify-content-xl-around h-100">
 
-            <div class="col-4 col-xl-3 m-3" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 3, currentPage: page }">
+            <div class="col-4 col-xl-3 m-3" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 6, currentPage: page }">
                 <app-card-events [event]="event"></app-card-events>
             </div>
 

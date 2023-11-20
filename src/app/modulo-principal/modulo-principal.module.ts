@@ -22,6 +22,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRadioGroup, MatRadioModule  } from "@angular/material/radio"
 import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
+import { EventViewComponent } from './components/event-view/event-view.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { DashboardEventsComponent } from './components/dashboard-events/dashboar
     FooterComponent, 
     NewEventComponent, 
     UserProfileComponent,
-    DashboardEventsComponent   
+    DashboardEventsComponent,
+    EventViewComponent   
   ],
 
     imports: [
