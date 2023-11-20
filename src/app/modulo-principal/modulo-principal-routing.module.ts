@@ -63,8 +63,9 @@ const routes: Routes = [
         component: LoginComponent 
     },
     {
-        path: 'event/:id',
-        component: EventViewComponent
+        path: 'TeamUp/Event/:id',
+        component: EventViewComponent,
+        canActivate: [LoginGuard]
     },
 ];
 @NgModule({
