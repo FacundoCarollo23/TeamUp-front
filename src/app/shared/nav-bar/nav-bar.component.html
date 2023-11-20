@@ -8,8 +8,8 @@
       Inicio </a>
     <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/TeamUp/Events']" *ngIf="logueado == true"> Eventos </a>
     <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/TeamUp/AboutUs']" *ngIf="logueado == true"> Nosotros </a>
-    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['events']" *ngIf="logueado == false"> Eventos </a>
-    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['aboutUs']" *ngIf="logueado == false"> Nosotros </a>
+    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']" *ngIf="logueado == false"> Eventos </a>
+    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']" *ngIf="logueado == false"> Nosotros </a>
     <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
     <div style="margin-left: auto;">
       <a *ngIf="logueado == true"

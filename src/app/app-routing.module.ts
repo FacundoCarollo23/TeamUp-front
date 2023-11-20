@@ -15,33 +15,27 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-},
-
-{ 
-  path: 'login', 
-  component: LoginComponent 
-},
-
-{ 
-  path: 'register', 
-  component: RegistroComponent 
-},
-{
-  path: 'events',
-  component: EventsComponent,
-},
-
-{
-  path: 'aboutUs',
-  component: NosotrosComponent,
-},
-
-
-
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegistroComponent,
+  },
+  {
+    path: 'events',
+    component: EventsComponent,
+  },
+  {
+    path: 'aboutUs',
+    component: NosotrosComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -42,6 +42,14 @@ const routes: Routes = [
         component: DashboardEventsComponent,
         canActivate:[LoginGuard],
     },
+    {
+        path: 'aboutUs',
+        component: NosotrosComponent,
+    },
+    { 
+        path: 'register', 
+        component: RegistroComponent 
+    },
     { 
         path: 'newevent', 
         component: NewEventComponent 
