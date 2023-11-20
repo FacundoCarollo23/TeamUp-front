@@ -21,6 +21,7 @@ import { apiEventListGet } from '../fn/event/api-event-list-get';
 import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
 import { apiEventListRecentGet } from '../fn/event/api-event-list-recent-get';
 import { ApiEventListRecentGet$Params } from '../fn/event/api-event-list-recent-get';
+import { EventUserDto } from '../models/event-user-dto';
 
 @Injectable({ providedIn: 'root' })
 export class EventService extends BaseService {
@@ -177,5 +178,9 @@ export class EventService extends BaseService {
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
-
+  guardarEvento(evento: EventUserDto): Observable<void> {
+    return apiEventCreatePost(this.http, this.rootUrl, { body: evento }).pipe(
+      map((r: StrictHttpResponse<void>) => r.body)
+    );
+  }
 }
