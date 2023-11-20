@@ -1,92 +1,143 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import { EventUserDto } from 'src/app/api/models';
 import { EventService } from 'src/app/api/services';
 import { Route, Router } from '@angular/router';
-
+import { Environment } from 'src/assets/environments/environments';
+import { Observable } from 'rxjs';
+import { CitiesService } from 'src/app/services/cities.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
-  styleUrls: ['./new-event.component.css'], encapsulation: ViewEncapsulation.None,
-  
+  styleUrls: ['./new-event.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-
-
-export class NewEventComponent implements OnInit{
-
+export class NewEventComponent implements OnInit, OnChanges {
   time: Date = new Date();
   formularioEvento: FormGroup;
   // timePickerConfig: Partial<BsDatepickerConfig>;
   Component: any;
   Class: any;
-  eventUser: EventUserDto [] = []
+  eventUser: EventUserDto[] = [];
 
+  //Variable country para almacenar el id
+  country : number = 0;
 
-  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router){
-    this.formularioEvento = this.fb.group ({
-      nombreEvento: ['', [Validators.required]],
-      descripcionEvento: ['', [Validators.required]],
-      paisEvento: ['', [Validators.required]],
-      ciudadEvento: ['', [Validators.required]],
-      dificultadEvento: ['', [Validators.required]],
-      fechaEvento: ['', [Validators.required]],  //DUDA SOBRE FORMATO DE FECHA Y HORA, PORQUE ES UN DATETIME, Y ACA DOS SEPARADOS O UNO JUNTO?
-      horarioEvento: ['', [Validators.required]],
-      tipoEvento: ['', [Validators.required]],
-      actividadEvento: ['', [Validators.required]],
-      // eventDateTime: null,
+  //Variable y array para almacenar el string del país y ciudades
+  cities: any[] = [];
+  countryCodes: any[] = [{ id: 1, code: 'AR', name: 'Argentina'}, { id: 2, code: 'UY', name: 'Uruguay'}, { id: 3, code: 'CL', name: 'Chile'}];
+
+  //Variable fecha y hora
+  dateTime : any;
+  date : any = "DD/MM/YYYY";
+  hour : any = "hh:mm"
+
+  constructor(
+    private fb: FormBuilder,
+    private eventService: EventService,
+    private router: Router,
+    private citiesService: CitiesService
+  ) {
+    // Form
+    this.formularioEvento = this.fb.group({
+      nombreEvento: ['', [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
+      descripcionEvento: ['',[Validators.required, Validators.maxLength(1000)]], // OK CHEQUEADO
+      ciudadEvento: ['', [Validators.required]], // Ya esta OK
+      fechaHoraEvento: ['', [Validators.required]], // Ya esta OK 
+      paisEvento: ['', [Validators.required]], // Ya esta OK revisado
+      dificultadEvento: ['', [Validators.required]], // Ya esta OK revisado
+      actividadEvento: ['', [Validators.required]], // Ya esta OK revisado
     });
-
-      
-    // this.timePickerConfig = {
-    //   showMeridian: true,
-    //   min: new Date(),
-      
-    // };
   }
 
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+  }
+
+  getCiudades(data : any) :void{
+    //API CIUDADES
+    this.citiesService.getCities(data).subscribe((res: any) => {
+      console.log(res);
+      this.cities = res;
+      console.log(this.cities);
+    });
+  }
+
+  ngOnInit(): void {
+    this.formularioEvento.get('paisEvento')?.valueChanges.subscribe((data : any) => {
+      console.log(data);
+      this.getCiudades(data)
+      this.setCountryId(data)
+      // this.getCountryId()
+    })
+
+    this.formularioEvento.get('fechaHoraEvento')?.valueChanges.subscribe((data : any) => {
+      console.log(data);
+      this.setDateTime(data)
+      // this.getDateTime()
+    })
+  }
+
+  setCountryId(countryCode: string) : void{
+    const country = this.countryCodes.find(c => c.code === countryCode);
+    this.country = country ? country.id : undefined;
+  }
+
+  getCountryId() : number{
+    return this.country 
+  }
+
+  setDateTime(data : any){
+    this.date = moment(data).format('DD/MM/YYYY')
+    this.hour = moment(data).format(' hh:mm')
+    this.dateTime = this.date + this.hour
+    console.log(this.date);
+    console.log(this.hour);
+    console.log(this.dateTime);
+  }
+
+  getDateTime(){
+    return this.dateTime
+  }
+
+
+  OnSubmit() {
+    let userLogueado = JSON.parse(
+      localStorage.getItem('usuarioLogueado') as any
+    );
+
+    let dificultad : any = JSON.parse(this.formularioEvento.controls['dificultadEvento'].value as any) as Number;
+    let actividad : any = JSON.parse( this.formularioEvento.controls['actividadEvento'].value  as any) as Number;
+
+    let evento: EventUserDto = {
+      userId: userLogueado.value.userId as number, 
+      activityId:actividad,
+      difficultyLevelId: dificultad,
+      countryId: this.getCountryId(),
+      eventName: this.formularioEvento.controls['nombreEvento'].value,
+      eventDescription: this.formularioEvento.controls['descripcionEvento'].value,
+      city: this.formularioEvento.controls['ciudadEvento'].value,
+      dateTime: this.getDateTime()
+    };
   
-  
-  onSubmit() {
-    if (this.formularioEvento.valid) {
-
-      /*
-      const fechaEvento: string = this.formularioEvento.controls['fechaEvento'].value;
-      const horarioEvento: string = this.formularioEvento.controls['horarioEvento'].value;
-
-      COMBINA LA FECHA Y LA HORA EN UN SOLO CAMPO ANTES DE ENVIARLO AL BACKEND
-      const dateTime: string = fechaEvento + ' ' + horarioEvento;
-      
-      */
-      const usuarioLogueado = localStorage.getItem("usuarioLogueado");
-      if (usuarioLogueado) {
-        const usuario = JSON.parse(usuarioLogueado);
-
-      let evento: EventUserDto = {
-        userId: usuario.id, // NO SE COMO ENGANCHARLO CON EL USUARIO QUE YA ESTÁ LOGUEADO
-        // eventId: null, // DEBERÍA PONER ALGO QUE ME GENERE UN ID AUTOMÁTICAMENTE, O NO?
-        activityId: this.formularioEvento.controls['actividadEvento'].value,
-        difficultyLevelId: this.formularioEvento.controls['dificultadEvento'].value,
-        countryId: this.formularioEvento.controls['paisEvento'].value,
-        eventName: this.formularioEvento.controls['nombreEvento'].value,
-        eventDescription: this.formularioEvento.controls['descripcionEvento'].value,
-        city: this.formularioEvento.controls['ciudadEvento'].value,
-        dateTime: this.formularioEvento.controls['fechaEvento'].value + ' ' + this.formularioEvento.controls['horarioEvento'].value,
-        // dateTime: dateTime, // Aquí asignamos la fecha y hora combinadas
-      };
-    
-      this.eventService.guardarEvento(evento).subscribe(
+    if(this.formularioEvento.valid) {
+      this.eventService.apiEventCreatePost$Response({ body: evento }).subscribe(
         (respuesta: any) => {
           // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
           console.log('Evento guardado exitosamente', respuesta);
-          this.router.navigate(['Home']);
+          this.router.navigate(['TeamUp']);
         },
         (error: any) => {
           console.error('Error al guardar el evento', error);
         }
-      );}
+      );
     }
   }
 }

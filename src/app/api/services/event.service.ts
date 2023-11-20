@@ -178,9 +178,4 @@ export class EventService extends BaseService {
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
-  guardarEvento(evento: EventUserDto): Observable<void> {
-    return apiEventCreatePost(this.http, this.rootUrl, { body: evento }).pipe(
-      map((r: StrictHttpResponse<void>) => r.body)
-    );
-  }
 }
