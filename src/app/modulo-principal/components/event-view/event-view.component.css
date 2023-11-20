@@ -1,0 +1,16 @@
+::ng-deep p {
+    margin: 0px 0px 0px !important;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before{
+    background-color: #757575 !important;
+}
+
+::ng-deep  .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper{
+    background-color: #FFFFFF !important;
+    margin-top: 10px;
+}
+
+::ng-deep  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
+    padding-top: 8px !important;
+}

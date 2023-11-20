@@ -5,3 +5,12 @@
 a {
     cursor: pointer;
 }
+
+::ng-deep .ngx-pagination a, .ngx-pagination button {
+    color: #111111 !important;
+}
+
+::ng-deep .ngx-pagination .current {
+    background: #FF990F !important;
+    font-size: 16px;
+}

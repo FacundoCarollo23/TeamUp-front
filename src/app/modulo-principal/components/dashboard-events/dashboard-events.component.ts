@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DashboardEventsComponent implements OnInit{
   userEventsList : any[] = [];
+  public page!: number;
 
   constructor(private eventService: EventService, private dialog: MatDialog){
   }
@@ -23,19 +24,20 @@ export class DashboardEventsComponent implements OnInit{
     )
   }
 
-  // deleteEvent(id: number){
-  //     this.eventService.apiEventDeleteIdDelete$Response({ id }).subscribe()
-  //     this.eventService.apiEventListGet().subscribe()
-  // }
-
   eventToDelete: any; // Variable para rastrear el evento que se eliminará
 
   deleteEvent(id: number) {
+    console.log(id);
+    
     // Encuentra el evento correspondiente al ID
     this.eventToDelete = this.userEventsList.find(event => event.eventId === id);
+    console.log(this.eventToDelete);
+    
   }
 
   confirmDelete() {
+    console.log(this.eventToDelete);
+    
     this.eventService.apiEventDeleteIdDelete$Response({ id: this.eventToDelete.eventId }).subscribe(
       a => {
         this.getEvents()
@@ -52,6 +54,4 @@ export class DashboardEventsComponent implements OnInit{
       }
     )
   }
-
-
 }

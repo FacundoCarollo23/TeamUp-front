@@ -2,12 +2,14 @@
   <mat-toolbar-row>
     <img src="./assets/images/logo2.png" alt="Logo" class="logo-image">
     <div [ngClass]="{'spacer': logueado == false}"></div>
-    <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/Home']"
+    <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/TeamUp']"
       *ngIf="logueado == true"> Inicio </a>
     <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['']" *ngIf="logueado == false">
       Inicio </a>
-    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']"> Eventos </a>
-    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']"> Nosotros </a>
+    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/TeamUp/Events']" *ngIf="logueado == true"> Eventos </a>
+    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/TeamUp/AboutUs']" *ngIf="logueado == true"> Nosotros </a>
+    <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']" *ngIf="logueado == false"> Eventos </a>
+    <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']" *ngIf="logueado == false"> Nosotros </a>
     <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
     <div style="margin-left: auto;">
       <a *ngIf="logueado == true"
@@ -20,10 +22,10 @@
       <mat-menu #afterMenu="matMenu" [mat-elevation]="0">
         <div ng-deep class="custom-menu">
           <button mat-menu-item class="btn-m">
-            <span [routerLink]="['/userProfile']">Mi Perfil</span>
+            <span [routerLink]="['/TeamUp/userProfile']">Mi Perfil</span>
           </button>
           <button mat-menu-item class="btn-m">
-            <span [routerLink]="['/dashboardEvents']">Mis Eventos</span>
+            <span [routerLink]="['/TeamUp/dashboardEvents']">Mis Eventos</span>
           </button>
           <button mat-menu-item class="btn-m" (click)="CloseSession()">
             <span>Cerrar Sesión</span>
