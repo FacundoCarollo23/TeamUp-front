@@ -1,8 +1,13 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserDto } from '../api/models';
+import { Injectable } from '@angular/core';
 
-export class LoginGuard  {
+@Injectable({
+	providedIn: "root",
+  })
+
+export class LoginGuard implements CanActivate {
 	constructor(private router: Router) {}
 	canActivate(
 		route: ActivatedRouteSnapshot,
@@ -19,7 +24,7 @@ export class LoginGuard  {
       
 			if (usuarioString !== null) {
 				const usuario = JSON.parse(usuarioString) as any;
-				const token = usuario.token
+				const token = usuario.value.token
 				if (!token) {
 					return false;
 				}

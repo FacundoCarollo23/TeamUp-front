@@ -11,51 +11,63 @@ import { NewEventComponent } from './components/new-event/new-event.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
+  
+
     {
-        path: '',
-        pathMatch: 'full',
+        path: 'TeamUp',
         component: HomeComponent,
+        canActivate:[LoginGuard],
+        
     },
-    {
-        path: 'home',
-        component: HomeComponent,
+    { 
+        path: 'TeamUp/newevent', 
+        component: NewEventComponent,
+        canActivate:[LoginGuard],
+    
     },
+    { 
+        path: 'TeamUp/userProfile', 
+        component: UserProfileComponent,
+        canActivate:[LoginGuard],
+       
+    },
+
     {
-        path: 'events',
+        path: 'TeamUp/Events',
         component: EventsComponent,
+        canActivate:[LoginGuard],
+      
     },
     {
-        path: 'Home',
-        component: HomeComponent,
-    },
-    {
-        path: 'dashboardEvents',
-        component: DashboardEventsComponent,
-    },
-    {
-        path: 'aboutUs',
+        path: 'TeamUp/AboutUs',
         component: NosotrosComponent,
+        canActivate:[LoginGuard],
+     
     },
-    { 
-        path: 'register', 
-        component: RegistroComponent 
+
+    {
+        path: 'TeamUp/dashboardEvents',
+        component: DashboardEventsComponent,
+        canActivate:[LoginGuard],
+
     },
-    { 
-        path: 'newevent', 
-        component: NewEventComponent 
-    },
-    { 
-        path: 'userProfile', 
-        component: UserProfileComponent 
-    },
-    { 
-        path: 'login', 
-        component: LoginComponent 
-    },
-];
+    
+    
+]
+      
+     
+   
+   
+   
+ 
+  
+  
+
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
+    providers: [LoginGuard],
     exports: [RouterModule],
+    
 })
 export class ModuloPrincipalRoutingModule {}

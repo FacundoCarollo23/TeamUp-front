@@ -37,7 +37,7 @@ this.formLogin = this.fb.group({
         let json = JSON.parse(res.body) as any
         if(json.value.token){
           localStorage.setItem("usuarioLogueado", res.body) 
-          this.route.navigate(['Home'])
+          this.route.navigate(['TeamUp'])
         }else{
           localStorage.removeItem("usuarioLogueado")
         }
