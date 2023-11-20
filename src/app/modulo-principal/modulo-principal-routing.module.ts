@@ -13,33 +13,34 @@ import { EventViewComponent } from './components/event-view/event-view.component
 
 const routes: Routes = [
     {
-        path: '',
-        pathMatch: 'full',
+        path: 'TeamUp',
         component: HomeComponent,
-    },
-    {
-        path: 'home',
-        component: HomeComponent,
-    },
-    {
-        path: 'events',
-        component: EventsComponent,
-    },
-    {
-        path: 'Home',
-        component: HomeComponent,
-    },
-    {
-        path: 'dashboardEvents',
-        component: DashboardEventsComponent,
-    },
-    {
-        path: 'aboutUs',
-        component: NosotrosComponent,
+        canActivate:[LoginGuard],
     },
     { 
-        path: 'register', 
-        component: RegistroComponent 
+        path: 'TeamUp/newevent', 
+        component: NewEventComponent,
+        canActivate:[LoginGuard],
+    },
+    { 
+        path: 'TeamUp/userProfile', 
+        component: UserProfileComponent,
+        canActivate:[LoginGuard],
+    },
+    {
+        path: 'TeamUp/Events',
+        component: EventsComponent,
+        canActivate:[LoginGuard],
+    },
+    {
+        path: 'TeamUp/AboutUs',
+        component: NosotrosComponent,
+        canActivate:[LoginGuard],
+    },
+    {
+        path: 'TeamUp/dashboardEvents',
+        component: DashboardEventsComponent,
+        canActivate:[LoginGuard],
     },
     { 
         path: 'newevent', 
@@ -58,9 +59,10 @@ const routes: Routes = [
         component: EventViewComponent
     },
 ];
-
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
+    providers: [LoginGuard],
     exports: [RouterModule],
+    
 })
 export class ModuloPrincipalRoutingModule {}

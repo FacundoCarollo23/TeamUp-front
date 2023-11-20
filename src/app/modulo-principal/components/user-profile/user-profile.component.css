@@ -1,3 +1,4 @@
+
 /* CARD GIGANTE, UNA PARA NIVEL ENTRENAMIENTO + ACTIVIDADES; OTRA PARA DESAFÍOS SEMANALES; MAS TARDE, OTRA MENSUALES */
 
 .big-Card {
@@ -10,7 +11,7 @@
     margin: auto;
     flex-direction: column;
     align-items: center;
-
+    
 }
 
 
@@ -20,7 +21,15 @@
     font-size: 36px;
     color: #ff990f;
     text-align: left;
+    align-self: flex-start;
+    font-family: 'Open Sans', sans-serif;
 }
+
+::ng-deep .text-options{
+    color: #ff990f !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
 /* 
 .sub-Card {
     margin-top: 20px;
@@ -49,7 +58,6 @@
     width: 800px; */
 }
 
-
 .sub-Card-a, .sub-Card-b {
     display: grid;
     flex-direction: column;
@@ -72,24 +80,23 @@
     /* grid-template-columns: repeat(2, 1fr); */
     margin: 5px;
     
+    
 }
 
 .mat-radio-button, .mat-checkbox {
     margin: 5px;
     color: #ff990f;
-  }
-  
+}
+
 
 .sub-Card-b {
-    margin: 0 10px; /* Espacio entre sub-cards */
-    gap: 6px;
+    margin: 0 15px; /* Espacio entre sub-cards */
     width: 1000px;
     height: 200px;
 }
 
 
 .sub-Card-b .mat-checkbox {
-  
     margin: 5px;
 }
 
@@ -97,10 +104,11 @@
 .sub-Card-b mat-card-content {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px; /* Ajusta el espacio entre los checkboxes según sea necesario */
+    gap: 0px;
 }
 
 .mat-checkbox-checked .mat-checkbox-background {
-    background-color: #1976D2; /* Cambia este color al tono de azul que desees */
+        background-color: #1976D2;
 }
+
 
