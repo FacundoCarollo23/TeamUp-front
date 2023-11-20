@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit{   
+  logueado : boolean = false;
+
   constructor(){}
   ngOnInit(): void {
-  
+    let userLogueado = JSON.parse(localStorage.getItem("usuarioLogueado") as any)
+    if(userLogueado.value){
+      this.logueado = true
+    }
   }
-  
 }
