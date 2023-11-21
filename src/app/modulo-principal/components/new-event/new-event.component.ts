@@ -96,7 +96,7 @@ export class NewEventComponent implements OnInit, OnChanges {
 
   setDateTime(data : any){
     this.date = moment(data).format('DD/MM/YYYY')
-    this.hour = moment(data).format(' hh:mm')
+    this.hour = moment(data).format(' HH:mm')
     this.dateTime = this.date + this.hour
     console.log(this.date);
     console.log(this.hour);
