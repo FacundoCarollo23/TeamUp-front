@@ -1,42 +1,172 @@
-
-<div class="container-fluid" style="padding: 0;">
-    <app-nav-bar></app-nav-bar>
+<div class="container-fluid" style="padding: 0">
+  <app-nav-bar></app-nav-bar>
   <form [formGroup]="formularioPerfil">
     <div class="big-Cards-Container">
       <!-- Primera Card -->
       <mat-card class="big-Card">
         <mat-card-title class="text">Completá tu perfil</mat-card-title>
         <div class="sub-Cards-Container">
-
           <!-- Primera Sub-Card con radio buttons -->
           <mat-card class="sub-Card-a">
-            <mat-card-title style="padding-left: 20px;">Tu nivel de entrenamiento:</mat-card-title>
+            <mat-card-title style="padding-left: 20px"
+              >Tu nivel de entrenamiento:</mat-card-title
+            >
             <mat-card-content>
-                        <mat-radio-group formControlName="nivelEntrenamiento">
-                          <mat-radio-button value="1" >Principiante</mat-radio-button>
-                          <mat-radio-button value="2">Intermedio</mat-radio-button>
-                          <mat-radio-button value="3">Avanzado</mat-radio-button>
-                          <mat-radio-button value="4" style="padding-left: 15px;">Experto</mat-radio-button>
-                        </mat-radio-group>
+              <mat-radio-group formControlName="nivelEntrenamiento">
+                <mat-radio-button value="1">Principiante</mat-radio-button>
+                <mat-radio-button value="2">Intermedio</mat-radio-button>
+                <mat-radio-button value="3">Avanzado</mat-radio-button>
+                <mat-radio-button value="4" style="padding-left: 15px"
+                  >Experto</mat-radio-button
+                >
+              </mat-radio-group>
             </mat-card-content>
           </mat-card>
-  
+
           <!-- Segunda Sub-Card con checkbox -->
           <mat-card class="sub-Card-b">
-            <mat-card-title style="padding-left: 20px; margin-top: 5px;">Tus actividades preferidas:</mat-card-title>
+            <mat-card-title style="padding-left: 20px; margin-top: 5px"
+              >Tus actividades preferidas:</mat-card-title
+            >
             <mat-card-content>
-                            <mat-checkbox *ngFor="let actividad of actividades" formControlName="actividades" [value]="actividad">
-                                {{ actividad }}
-                            </mat-checkbox>
-        </mat-card-content>
+              <mat-checkbox
+                *ngFor="let actividad of actividades"
+                formControlName="actividades"
+                [value]="actividad"
+              >
+                {{ actividad }}
+              </mat-checkbox>
+            </mat-card-content>
           </mat-card>
         </div>
-        <button type="submit" class="btn" style="margin-left: auto; margin-top: 20px; margin-right: 20px;" > GUARDAR </button>
+        <button
+          type="submit"
+          class="btn"
+          style="margin-left: auto; margin-top: 20px; margin-right: 20px"
+        >
+          GUARDAR
+        </button>
       </mat-card>
-      <br> <br> <br>
-      
+      <br />
+      <br />
+      <br />
+
       <!-- Segunda Card -->
 
+      <mat-card class="big-Card">
+        <mat-card-title class="text">Desafíos Semanales</mat-card-title>
+        <div class="sub-Cards-Container">
+          <!-- Nueva Sub-Card con información de desafío semanal 1 -->
+          <mat-card class="sub-Card-c">
+            <mat-card-header>
+              <mat-card-title class="mb-2">
+                <div class="row width: 50%, align-items-center">
+                  <div class="col-md-2" style="height: 100%">
+                    <mat-icon>directions_run</mat-icon>
+                  </div>
+                </div>
+              </mat-card-title>
+              <mat-card-subtitle
+                class="ms-2"
+                style="font-size: 20px; color: #ff990f"
+                >Carrera 5K</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content
+              class="ms-2"
+              style="font-size: 16px; font-weight: 400; margin-top: 10px;"
+            >
+              Organizá una carrera de 5K en tu barrio y ganá 50 puntos por
+              usuario que se sume.
+            </mat-card-content>
+          </mat-card>
+
+
+
+
+          <!-- Nueva Sub-Card con información de desafío semanal 2 -->
+          <mat-card class="sub-Card-c">
+            <mat-card-header>
+              <mat-card-title class="mb-2">
+                <div class="row width: 100%, align-items-center">
+                  <div class="col-md-2" style="height: 100%">
+                    <mat-icon>self_improvement</mat-icon>
+                  </div>
+                </div>
+              </mat-card-title>
+              <mat-card-subtitle
+                class="ms-2"
+                style="font-size: 20px; color: #ff990f"
+                >Yoga</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content
+              class="ms-2"
+              style="font-size: 16px; font-weight: 400; margin-top: 10px;"
+            >
+            Invita a otros a unirse a una sesión de meditación en línea y sumá
+            50 puntos.
+            </mat-card-content>
+          </mat-card>
+
+
+
+        <!-- Nueva Sub-Card con información de desafío semanal 1 -->
+          <mat-card class="sub-Card-c">
+            <mat-card-header>
+              <mat-card-title class="mb-2">
+                <div class="row width: 100%, align-items-center">
+                  <div class="col-md-2" style="height: 100%">
+                    <mat-icon>sports_soccer</mat-icon>
+                  </div>
+                </div>
+              </mat-card-title>
+              <mat-card-subtitle
+                class="ms-2"
+                style="font-size: 20px; color: #ff990f"
+                >Fútbol</mat-card-subtitle
+              >
+            </mat-card-header>
+            <mat-card-content
+              class="ms-2"
+              style="font-size: 16px; font-weight: 400; margin-top: 10px;"
+            >
+            Retá a otros usuarios a un partido de fútbol al aire libre y sumá 200 puntos.
+            </mat-card-content>
+          </mat-card>
+
+                    <!-- Nueva Sub-Card con información de desafío semanal 2 -->
+                    <mat-card class="sub-Card-c">
+                      <mat-card-header>
+                        <mat-card-title class="mb-2">
+                          <div class="row width: 100%, align-items-center">
+                            <div class="col-md-2" style="height: 100%">
+                              <mat-icon>hiking</mat-icon>
+                            </div>
+                          </div>
+                        </mat-card-title>
+                        <mat-card-subtitle
+                          class="ms-2"
+                          style="font-size: 20px; color: #ff990f"
+                          >Senderismo</mat-card-subtitle
+                        >
+                      </mat-card-header>
+                      <mat-card-content
+                        class="ms-2"
+                        style="font-size: 16px; font-weight: 400; margin-top: 10px;"
+                      >
+                      Rompe la rutina explorando la naturaleza con otros usuarios para ganar 500 puntos.
+                      </mat-card-content>
+                    </mat-card>
+        </div>
+        <button
+          type="submit"
+          class="btn"
+          style="margin-left: auto; margin-right: 20px; margin-bottom: 30px;"
+        >
+          VER MÁS
+        </button>
+      </mat-card>
     </div>
   </form>
-  </div>
+</div>

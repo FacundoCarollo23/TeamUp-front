@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit{
   constructor(private fb: FormBuilder) {
     this.formularioPerfil = this.fb.group({
       nivelEntrenamiento: new FormControl (''),
-      actividades: new FormControl ([]),
+      actividades: new FormControl (),
     });
   }
   

@@ -1,17 +1,19 @@
+/*****************************************************      E S T I L O S   G E N E R A L E S     ****************************************************/
 
 /* CARD GIGANTE, UNA PARA NIVEL ENTRENAMIENTO + ACTIVIDADES; OTRA PARA DESAFÍOS SEMANALES; MAS TARDE, OTRA MENSUALES */
 
 .big-Card {
     width: 1200px;
-    height: 376px;
+    height: 400px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #D9D9D9;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin: auto;
+    margin-top: 30px;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 
@@ -23,9 +25,10 @@
     text-align: left;
     align-self: flex-start;
     font-family: 'Open Sans', sans-serif;
+    /* margin-left: 30px; */
 }
 
-::ng-deep .text-options{
+::ng-deep .text-options {
     color: #ff990f !important;
     font-family: 'Open Sans', sans-serif !important;
 }
@@ -58,13 +61,21 @@
     width: 800px; */
 }
 
-.sub-Card-a, .sub-Card-b {
+
+
+/*************************************************    E S T I L O S   S U B - C A R D   A   y   B    *************************************************/
+
+
+.sub-Card-a,
+.sub-Card-b {
     display: grid;
     flex-direction: column;
     align-items: center;
     align-content: center;
-    text-align: left; /* porque no funciona? tampoco funciona poner un .mat-card-title y ponerle un color o align-text */
-    margin: 0 10px; /* Espacio entre sub-cards */
+    text-align: left;
+    /* porque no funciona? tampoco funciona poner un .mat-card-title y ponerle un color o align-text */
+    margin: 0 10px;
+    /* Espacio entre sub-cards */
     color: #ff990f;
     background-color: #504F4F;
     gap: 6px;
@@ -73,24 +84,26 @@
 .sub-Card-a {
     gap: 6px;
     width: 500px;
-    height: 200px;   
+    height: 200px;
 }
 
 .sub-Card-a mat-radio-button {
     /* grid-template-columns: repeat(2, 1fr); */
     margin: 5px;
-    
-    
+
+
 }
 
-.mat-radio-button, .mat-checkbox {
+.mat-radio-button,
+.mat-checkbox {
     margin: 5px;
     color: #ff990f;
 }
 
 
 .sub-Card-b {
-    margin: 0 15px; /* Espacio entre sub-cards */
+    margin: 0 15px;
+    /* Espacio entre sub-cards */
     width: 1000px;
     height: 200px;
 }
@@ -108,7 +121,50 @@
 }
 
 .mat-checkbox-checked .mat-checkbox-background {
-        background-color: #1976D2;
+    background-color: #1976D2;
 }
 
 
+
+/*********************************** E S T I L O S   S U B - C A R D   C :   D E S A F I O S   S E M A N A L E S  ***********************************/
+
+.sub-Card-c {
+    max-width: 200px;
+    min-width: 200px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    background-color: #504F4F;
+    /* Puedes ajustar el color de fondo según tu diseño */
+    margin: 0 50px;
+    /* Espacio entre las nuevas Sub-Cards */
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sub-Card-c mat-card-content {
+    max-width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #D9D9D9;
+}
+
+.sub-Card-c .mat-card-subtitle {
+    min-height: 44px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #ff990f;
+    font-weight: 700;
+}
+
+.sub-Card-c mat-icon {
+    font-size: 36px;
+    height: 36px;
+    width: 36px;
+    color: #ff990f;
+    /* Puedes ajustar el color del icono según tu diseño */
+}
