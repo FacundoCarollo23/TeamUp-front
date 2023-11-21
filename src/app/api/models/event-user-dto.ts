@@ -7,7 +7,7 @@ export interface EventUserDto {
   dateTime?: null | string;
   difficultyLevelId?: number;
   eventDescription?: null | string;
-  eventId?: number | null;
+  eventId?: number;
   eventName?: null | string;
   userId?: number;
 }

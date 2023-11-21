@@ -15,13 +15,16 @@ import { apiEventDeleteIdDelete } from '../fn/event/api-event-delete-id-delete';
 import { ApiEventDeleteIdDelete$Params } from '../fn/event/api-event-delete-id-delete';
 import { apiEventGetByIdIdGet } from '../fn/event/api-event-get-by-id-id-get';
 import { ApiEventGetByIdIdGet$Params } from '../fn/event/api-event-get-by-id-id-get';
+import { apiEventListAcceptedByUserUserIdGet } from '../fn/event/api-event-list-accepted-by-user-user-id-get';
+import { ApiEventListAcceptedByUserUserIdGet$Params } from '../fn/event/api-event-list-accepted-by-user-user-id-get';
+import { apiEventListCreatedByUserUserIdGet } from '../fn/event/api-event-list-created-by-user-user-id-get';
+import { ApiEventListCreatedByUserUserIdGet$Params } from '../fn/event/api-event-list-created-by-user-user-id-get';
 import { apiEventListFeaturedGet } from '../fn/event/api-event-list-featured-get';
 import { ApiEventListFeaturedGet$Params } from '../fn/event/api-event-list-featured-get';
 import { apiEventListGet } from '../fn/event/api-event-list-get';
 import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
 import { apiEventListRecentGet } from '../fn/event/api-event-list-recent-get';
 import { ApiEventListRecentGet$Params } from '../fn/event/api-event-list-recent-get';
-import { EventUserDto } from '../models/event-user-dto';
 
 @Injectable({ providedIn: 'root' })
 export class EventService extends BaseService {
@@ -104,6 +107,56 @@ export class EventService extends BaseService {
     );
   }
 
+  /** Path part for operation `apiEventListCreatedByUserUserIdGet()` */
+  static readonly ApiEventListCreatedByUserUserIdGetPath = '/api/Event/ListCreatedByUser/{userId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventListCreatedByUserUserIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListCreatedByUserUserIdGet$Response(params: ApiEventListCreatedByUserUserIdGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventListCreatedByUserUserIdGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventListCreatedByUserUserIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListCreatedByUserUserIdGet(params: ApiEventListCreatedByUserUserIdGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventListCreatedByUserUserIdGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiEventListAcceptedByUserUserIdGet()` */
+  static readonly ApiEventListAcceptedByUserUserIdGetPath = '/api/Event/ListAcceptedByUser/{userId}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventListAcceptedByUserUserIdGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListAcceptedByUserUserIdGet$Response(params: ApiEventListAcceptedByUserUserIdGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventListAcceptedByUserUserIdGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventListAcceptedByUserUserIdGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventListAcceptedByUserUserIdGet(params: ApiEventListAcceptedByUserUserIdGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventListAcceptedByUserUserIdGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
   /** Path part for operation `apiEventGetByIdIdGet()` */
   static readonly ApiEventGetByIdIdGetPath = '/api/Event/GetById/{id}';
 
@@ -178,4 +231,5 @@ export class EventService extends BaseService {
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
+
 }
