@@ -15,13 +15,22 @@ export class DashboardEventsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.eventService.apiEventListGet().subscribe(
-      (res: any)=>{
-        let json = JSON.parse(res)
-        this.userEventsList = json.value
-        console.log(this.userEventsList);
-      }
-    )
+    let userLogueado = JSON.parse(
+      localStorage.getItem('usuarioLogueado') as any
+    );
+
+    userLogueado = userLogueado.value.userId as number
+
+    console.log(userLogueado);
+    
+
+    // this.eventService.().subscribe(
+    //   (res: any)=>{
+    //     let json = JSON.parse(res)
+    //     this.userEventsList = json.value
+    //     console.log(this.userEventsList);
+    //   }
+    // )
   }
 
   eventToDelete: any; // Variable para rastrear el evento que se eliminará
