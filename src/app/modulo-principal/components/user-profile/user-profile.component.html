@@ -170,3 +170,14 @@
     </div>
   </form>
 </div>
+
+
+<form [formGroup]="formularioPerfil">
+  <!-- Agrega campos de perfil de usuario -->
+  <div class="form-group">
+    <label for="nombre" class="text">Nombre</label>
+    <div style="display: flex; align-items: center;">
+      <input type="text" id="nombre" name="nombre" formControlName="nombre" required class="rounded-input" style="height: 45px;">
+    </div>
+    <!-- Agrega mensaje de error si es necesario -->
+  </div>
