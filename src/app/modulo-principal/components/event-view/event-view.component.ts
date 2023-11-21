@@ -42,8 +42,11 @@ export class EventViewComponent implements OnInit{
       }
     )
   
+    //Llamada para recuperar los comentarios
     this.eventCommentService.apiEventsCommentListGet({ userId: this.idUserEvent }).subscribe(
       (res: any)=>{
+        console.log(this.idUserEvent);
+        
         let json = JSON.parse(res)
         this.comments = json.value
         console.log(this.comments);
