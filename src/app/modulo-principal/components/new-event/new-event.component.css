@@ -34,7 +34,7 @@
 
 .rounded-input {
   width: 500px;
-  height: 30px;
+  min-height: 56px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;

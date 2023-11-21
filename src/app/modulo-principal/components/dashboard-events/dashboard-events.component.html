@@ -77,7 +77,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let event of userEventsList | paginate: { itemsPerPage: 5, currentPage: page }">
+                    <tr *ngFor="let event of userJoinedEventsList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: userEventsList.length}">
                         <th scope="row">{{ event.eventName }}</th>
                         <td>{{ event.dateTime }}</td>
                         <td>{{ event.city + " - " + event.countryName  }}</td>

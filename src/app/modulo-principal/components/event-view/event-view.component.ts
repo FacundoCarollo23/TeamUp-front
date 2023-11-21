@@ -38,7 +38,6 @@ export class EventViewComponent implements OnInit{
         console.log(this.event);
         this.idUserEvent = this.event.userId
         console.log(this.idUserEvent);
-        
       }
     )
   

@@ -6,10 +6,12 @@
       <div class="col-md-8">
         <div class="newEvent-form">
           <form [formGroup]="formularioEvento">
-            <app-title [title]="'Creá un nuevo evento'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+            <div class="mt-5">
+              <app-title [title]="'Creá un nuevo evento'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+            </div>
             <div class="form-group">
               <!-- Nombre del Evento OK CHEQUEADO-->
-              <div class="mb-3">
+              <div  class="mb-4">
                 <label for="nombreEvento" class="text">Nombre Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <input type="string" id="nombreEvento" name="nombreEvento" formControlName="nombreEvento" placeholder="Ingresa el nombre del Evento" required class="rounded-input" style="height: 45px; width: 100%; ">
@@ -19,7 +21,7 @@
               </div>
 
               <!-- Descripción del Evento OK REVISADO-->
-              <div class="mb-3">
+              <div  class="mb-4">
                 <label for="descripcionEvento" class="text">Descripción Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <input type="string" id="descripcionEvento" name="descripcionEvento" formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required class="rounded-input" style="height: 45px; width: 100%;">
@@ -29,10 +31,10 @@
               </div>
 
               <!-- País del Evento OK REVISADO PAIS EVENTO -->
-              <div class="mb-3">
+              <div >
                 <label for="paisEvento" class="text">País Del Evento</label>
                 <div style="display: flex; align-items: center;">
-                  <mat-form-field appearance="fill" style="width: 100%">
+                  <mat-form-field appearance="fill" style="width: 100%;">
                     <mat-label>País del Evento</mat-label>
                     <mat-select formControlName="paisEvento">
                       <mat-option [value]="country.code" *ngFor="let country of countryCodes">{{ country.name }}</mat-option>
@@ -104,7 +106,7 @@
               </div>
               <br>
               <button class="btn-createEvent" (click)="OnSubmit()">CREAR EVENTO</button>
-              <button class="btn-secondary">VOLVER ATRAS</button>
+              <button class="btn-secondary" [routerLink]="['/TeamUp/dashboardEvents']">VOLVER ATRAS</button>
             </div>
           </form>
         </div>
