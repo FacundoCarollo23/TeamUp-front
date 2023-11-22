@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { EventService } from 'src/app/api/services';
 
 @Component({
@@ -6,9 +6,10 @@ import { EventService } from 'src/app/api/services';
   templateUrl: './card-events.component.html',
   styleUrls: ['./card-events.component.css']
 })
-export class CardEventsComponent implements OnInit {
+export class CardEventsComponent implements OnInit, OnChanges {
   events: any = []
   @Input() event: any;
+  logueado : boolean = false;
 
 constructor(public eventService: EventService){}
   ngOnInit(): void {
@@ -17,4 +18,12 @@ constructor(public eventService: EventService){}
     })
   }
 
+  ngOnChanges(){
+    let userLogueado = JSON.parse(localStorage.getItem("usuarioLogueado") as any)
+    if(userLogueado && userLogueado.value){
+      this.logueado = true
+    }  else {
+      this.logueado = false;
+    }
+  }
 }

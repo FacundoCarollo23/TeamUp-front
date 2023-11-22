@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     )
 
     //Slider Eventos DESTACADOS
-    this.eventService.apiEventListGet().subscribe(
+    this.eventService.apiEventListFeaturedGet().subscribe(
       (res: any)=>{
         let json = JSON.parse(res)
         this.highlightedEventsList = json.value

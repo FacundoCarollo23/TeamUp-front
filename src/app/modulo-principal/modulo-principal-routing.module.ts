@@ -67,6 +67,14 @@ const routes: Routes = [
         component: EventViewComponent,
         canActivate: [LoginGuard]
     },
+    {
+        path: 'Event/:id',
+        component: EventViewComponent,
+    },
+    {
+        path: 'home/Event/:id',
+        component: EventViewComponent,
+    },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
