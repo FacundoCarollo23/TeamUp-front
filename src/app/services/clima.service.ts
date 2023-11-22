@@ -6,10 +6,9 @@ import { Environment } from 'src/assets/environments/environments';
   providedIn: 'root'
 })
 export class ClimaService {
-  private urlApi = Environment.apiClima
-  private apiKey = '9898af008c693355031bc44d610070ce';
   URI: string = '';
-  
+  private apiKey = Environment.apiKeyClima
+
   constructor(private http: HttpClient) {
     this.URI = `https://api.openweathermap.org/data/2.5/weather?appid=${this.apiKey}&units=metric&q=`;
   }

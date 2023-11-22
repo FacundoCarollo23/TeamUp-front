@@ -28,6 +28,7 @@ export class EventViewComponent implements OnInit{
 
   //Variable para guardar temperatura
   temperature : any;
+  iconTemperature : any;
 
   constructor(private eventService: EventService, private route : ActivatedRoute, private eventCommentService: EventsCommentService, private climaService : ClimaService){
     this.idUrl = this.route.snapshot.params['id']
@@ -72,7 +73,11 @@ export class EventViewComponent implements OnInit{
   getClima(data : any, code : string) :void{
     this.climaService.getWeather(data, code).subscribe((res: any) => {
       console.log(res.main.temp);
+      console.log(res);
       this.temperature = Math.round(res.main.temp)
+      this.iconTemperature = res.weather[0].icon
+      console.log(this.iconTemperature);
+      
     });
   }
 }

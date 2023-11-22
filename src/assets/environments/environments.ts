@@ -1,4 +1,4 @@
 export const Environment = {
     api : 'https://api.countrystatecity.in/v1/countries/',
-    apiClima: 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/geo/1.0/direct?'
+    apiKeyClima: '9898af008c693355031bc44d610070ce'
 }
