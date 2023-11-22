@@ -11,7 +11,7 @@ export class HeroComponent implements OnInit{
   constructor(){}
   ngOnInit(): void {
     let userLogueado = JSON.parse(localStorage.getItem("usuarioLogueado") as any)
-    if(userLogueado.value){
+    if(userLogueado && userLogueado.value){
       this.logueado = true
     }
   }

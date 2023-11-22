@@ -17,8 +17,8 @@
             </div>
             <div class="card-body" style="padding: 32px;">
                 <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px;">{{event.eventName}}</h2>
-                <p class="card-text" style="color: #FF990F;">Nivel: {{event.difficultyName}}</p>
-                <p class="card-text">Asistentes:</p>
+                <p class="card-text" style="color: #FF990F;">Nivel: Intermedio {{event.difficultyName}}</p>
+                <p class="card-text">Asistentes: 25</p>
                 <p class="card-text mt-3">{{event.eventDescription}}</p>
 
                 <!-- seccion comentarios -->
@@ -27,7 +27,7 @@
                         <p style="color: #FF990F; font-weight: bold;">{{comment.userIdName}}</p>
                         <p style="color:#111111">{{comment.comment}}</p>
                     </mat-card-content>
-                    <mat-form-field>
+                    <mat-form-field *ngIf="logueado == true">
                         <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
                         <input matInput>
                         <mat-icon matSuffix style="cursor: pointer;">send</mat-icon>
@@ -35,7 +35,9 @@
                 </mat-card>
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn"> ME SUMO </button>
+                    <button class="btn" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> MIS EVENTOS </button>
+                    <button class="btn" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button>
+                    <button class="btn" *ngIf="logueado == true" style="margin-left: 20px;"> ME SUMO </button>
                 </div>
             </div>
         </div>

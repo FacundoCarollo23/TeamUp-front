@@ -14,3 +14,7 @@
 ::ng-deep  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
     padding-top: 8px !important;
 }
+
+h2{
+    margin-bottom: 0px !important;
+}

@@ -76,7 +76,8 @@ export class DashboardEventsComponent implements OnInit {
 
   getEvents() {
     // Endpoint GET Eventos del Usuario LOGUEADO
-    this.eventService.apiEventListCreatedByUserUserIdGet$Response({
+    this.eventService
+      .apiEventListCreatedByUserUserIdGet$Response({
         userId: this.userLogueado,
       })
       .subscribe((res: any) => {
@@ -88,4 +89,6 @@ export class DashboardEventsComponent implements OnInit {
         this.userEventsList = responseBody.value;
       });
   }
+
+  
 }
