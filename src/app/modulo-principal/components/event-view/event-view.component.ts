@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventUserDto } from 'src/app/api/models';
 import { EventService, EventsCommentService } from 'src/app/api/services';
+import { ClimaService } from 'src/app/services/clima.service';
 
 @Component({
   selector: 'app-event-view',
@@ -25,7 +26,10 @@ export class EventViewComponent implements OnInit{
   //Variable usuario logueado para mostrar o no INPUT comentario y el botón me sumo
   logueado : boolean = false;
 
-  constructor(private eventService: EventService, private route : ActivatedRoute, private eventCommentService: EventsCommentService){
+  //Variable para guardar temperatura
+  temperature : any;
+
+  constructor(private eventService: EventService, private route : ActivatedRoute, private eventCommentService: EventsCommentService, private climaService : ClimaService){
     this.idUrl = this.route.snapshot.params['id']
   }
 
@@ -41,6 +45,7 @@ export class EventViewComponent implements OnInit{
         console.log(this.event);
         this.idUserEvent = this.event.userId
         console.log(this.idUserEvent);
+        this.getClima(this.event.city, 'AR')
       }
     )
   
@@ -48,7 +53,6 @@ export class EventViewComponent implements OnInit{
     this.eventCommentService.apiEventsCommentListGet({ userId: this.idUserEvent }).subscribe(
       (res: any)=>{
         console.log(this.idUserEvent);
-        
         let json = JSON.parse(res)
         this.comments = json.value
         console.log(this.comments);
@@ -62,5 +66,13 @@ export class EventViewComponent implements OnInit{
     }  else {
       this.logueado = false;
     }
+  }
+
+  //API Clima
+  getClima(data : any, code : string) :void{
+    this.climaService.getWeather(data, code).subscribe((res: any) => {
+      console.log(res.main.temp);
+      this.temperature = Math.round(res.main.temp)
+    });
   }
 }
