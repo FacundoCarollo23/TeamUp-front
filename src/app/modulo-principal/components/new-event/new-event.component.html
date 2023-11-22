@@ -81,6 +81,8 @@
                 <label class="text">Fecha y hora del evento</label>
                 <div>
                   <ejs-datetimepicker placeholder="Seleccione Fecha y Hora del Evento" format="yyy-MM-dd HH:mm" formControlName="fechaHoraEvento"></ejs-datetimepicker>
+                  <div class="error-message" *ngIf="this.formularioEvento.get('fechaHoraEvento')?.value == '' && formularioEvento.get('fechaHoraEvento')?.touched">El campo fecha / hora  es obligatorio</div>
+                  <div class="error-message" *ngIf="this.formularioEvento.get('fechaHoraEvento')?.hasError('esHoy') && formularioEvento.get('fechaHoraEvento')?.touched ">La fecha no puede ser la del día de Hoy</div>
                 </div>
               </div>
 
