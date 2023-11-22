@@ -51,7 +51,7 @@ export class NewEventComponent implements OnInit, OnChanges {
       nombreEvento: ['', [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
       descripcionEvento: ['',[Validators.required, Validators.maxLength(1000)]], // OK CHEQUEADO
       ciudadEvento: ['', [Validators.required]], // Ya esta OK
-      fechaHoraEvento: ['', [Validators.required]], // Ya esta OK 
+      fechaHoraEvento: ['', [Validators.required, this.fechaNoEsHoy.bind(this)]], // Ya esta OK 
       paisEvento: ['', [Validators.required]], // Ya esta OK revisado
       dificultadEvento: ['', [Validators.required]], // Ya esta OK revisado
       actividadEvento: ['', [Validators.required]], // Ya esta OK revisado
@@ -132,12 +132,18 @@ export class NewEventComponent implements OnInit, OnChanges {
         (respuesta: any) => {
           // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
           console.log('Evento guardado exitosamente', respuesta);
-          this.router.navigate(['TeamUp']);
+          this.router.navigate(['TeamUp/dashboardEvents']);
         },
         (error: any) => {
           console.error('Error al guardar el evento', error);
         }
       );
     }
+  }
+
+  fechaNoEsHoy(control: any) {
+    const fechaSeleccionada = moment(control.value).format('YYYY-MM-DD');
+    const fechaActual = moment().format('YYYY-MM-DD');
+    return fechaSeleccionada !== fechaActual ? null : { esHoy: true };
   }
 }
