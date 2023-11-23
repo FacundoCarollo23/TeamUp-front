@@ -1,9 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.css']
+  styleUrls: ['./hero.component.css'],
+
+  animations: [
+    //ANIMACION PARA TEXTOS
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1500)),
+    ]),
+
+    //ANIMACION PARA BOTONES
+    trigger('fade', [
+     transition('void => *',[
+      style({ backgroundColor: 'yellow', opacity:0 }),
+      animate(3000)
+     ])
+    ]),
+  ]
+
 })
 export class HeroComponent implements OnInit{   
   logueado : boolean = false;

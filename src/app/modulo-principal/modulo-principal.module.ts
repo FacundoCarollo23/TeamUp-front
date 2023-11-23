@@ -23,6 +23,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatRadioGroup, MatRadioModule  } from "@angular/material/radio"
 import { DashboardEventsComponent } from './components/dashboard-events/dashboard-events.component';
 import { EventViewComponent } from './components/event-view/event-view.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -54,6 +56,8 @@ import { EventViewComponent } from './components/event-view/event-view.component
       DateTimePickerModule,
       MatCheckboxModule,
       MatRadioModule,
+      BrowserModule,
+      BrowserAnimationsModule
     ],
 
     providers: [],

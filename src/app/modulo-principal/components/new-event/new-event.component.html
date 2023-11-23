@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
               <!-- Nombre del Evento OK CHEQUEADO-->
-              <div  class="mb-4">
+              <div  class="mb-4" [@fadeInOut]>
                 <label for="nombreEvento" class="text">Nombre Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <input type="string" id="nombreEvento" name="nombreEvento" formControlName="nombreEvento" placeholder="Ingresa el nombre del Evento" required class="rounded-input" style="height: 45px; width: 100%; ">
@@ -21,7 +21,7 @@
               </div>
 
               <!-- Descripción del Evento OK REVISADO-->
-              <div  class="mb-4">
+              <div  class="mb-4" [@fadeInOut]>
                 <label for="descripcionEvento" class="text">Descripción Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <input type="string" id="descripcionEvento" name="descripcionEvento" formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required class="rounded-input" style="height: 45px; width: 100%;">
@@ -31,7 +31,7 @@
               </div>
 
               <!-- País del Evento OK REVISADO PAIS EVENTO -->
-              <div >
+              <div class="mb-3" [@fadeInOut]>
                 <label for="paisEvento" class="text">País Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <mat-form-field appearance="fill" style="width: 100%;">
@@ -45,7 +45,7 @@
               </div>
 
               <!-- Ciudad del Evento -->
-              <div class="mb-3">
+              <div class="mb-3" [@fadeInOut]>
                 <label for="ciudadEvento" class="text">Ciudad Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <!-- <input type="string" id="ciudadEvento" name="ciudadEvento" formControlName="ciudadEvento" placeholder="Ingresa la ciudad del Evento" required class="rounded-input" style="height: 45px;"> -->
@@ -60,7 +60,7 @@
               </div>
 
               <!-- Nivel de Dificultad del Evento YA ESTA OK REVISADO -->
-              <div class="mb-3">
+              <div class="mb-3" [@fadeInOut]>
                 <label for="dificultadEvento" class="text">Dificultad Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <mat-form-field appearance="fill" style="width: 100%">
@@ -77,7 +77,7 @@
               </div>
 
               <!-- Fecha y Hora del Evento -->
-              <div class="mb-3">
+              <div class="mb-3" [@fadeInOut]>
                 <label class="text">Fecha y hora del evento</label>
                 <div>
                   <ejs-datetimepicker placeholder="Seleccione Fecha y Hora del Evento" format="yyy-MM-dd HH:mm" formControlName="fechaHoraEvento"></ejs-datetimepicker>
@@ -87,7 +87,7 @@
               </div>
 
               <!-- Tipo de Actividad del Evento YA ESTA OK REVISADO--> 
-              <div class="mb-3">
+              <div class="mb-3" [@fadeInOut]>
                 <label for="actividadEvento" class="text">Tipo actividad Del Evento</label>
                 <div style="display: flex; align-items: center;">
                   <mat-form-field appearance="fill" style="width: 100%">
@@ -107,8 +107,8 @@
                 <div class="error-message" *ngIf="formularioEvento.get('actividadEvento')?.invalid && formularioEvento.get('actividadEvento')?.touched">El campo Tipo de Actividad es obligatorio</div>
               </div>
               <br>
-              <button class="btn-createEvent" (click)="OnSubmit()">CREAR EVENTO</button>
-              <button class="btn-secondary" [routerLink]="['/TeamUp/dashboardEvents']">VOLVER ATRAS</button>
+              <button class="btn-createEvent" (click)="OnSubmit()" @fade>CREAR EVENTO</button>
+              <button class="btn-secondary" [routerLink]="['/TeamUp/dashboardEvents']" @fade2>VOLVER ATRAS</button>
             </div>
           </form>
         </div>

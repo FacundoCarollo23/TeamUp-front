@@ -13,12 +13,37 @@ import { Environment } from 'src/assets/environments/environments';
 import { Observable } from 'rxjs';
 import { CitiesService } from 'src/app/services/cities.service';
 import * as moment from 'moment';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-new-event',
   templateUrl: './new-event.component.html',
   styleUrls: ['./new-event.component.css'],
   encapsulation: ViewEncapsulation.None,
+  animations: [
+    //ANIMACION PARA DESPLEGABLES
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1500)),
+    ]),
+
+    //ANIMACION PARA BOTONES
+    trigger('fade', [
+     transition('void => *',[
+      style({ backgroundColor: 'yellow', opacity:0 }),
+      animate(3000)
+     ])
+    ]),
+
+    trigger('fade2', [
+      transition('void => *',[
+       style({ backgroundColor: 'white', opacity:0 }),
+       animate(3000)
+      ])
+     ])
+  ]
 })
 export class NewEventComponent implements OnInit, OnChanges {
   time: Date = new Date();
