@@ -18,3 +18,7 @@
 h2{
     margin-bottom: 0px !important;
 }
+
+::ng-deep .card-header{
+    background-color: #757575 !important;
+}

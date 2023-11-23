@@ -21,7 +21,7 @@ export class EventViewComponent implements OnInit{
   comments : any = []
 
   //Variable para almacenar el id del usuario del evento
-  idUserEvent : any | undefined;
+  idUserEvent : any = 0;
 
   //Variable usuario logueado para mostrar o no INPUT comentario y el botón me sumo
   logueado : boolean = false;
@@ -44,21 +44,25 @@ export class EventViewComponent implements OnInit{
         // Asigna el objeto parseado a la propiedad event
         this.event = responseBody.value;
         console.log(this.event);
-        this.idUserEvent = this.event.userId
+        this.idUserEvent = this.event[0].userId
         console.log(this.idUserEvent);
         this.getClima(this.event.city, 'AR')
+
+            //Llamada para recuperar los comentarios
+        this.eventCommentService.apiEventsCommentListGet$Response({ userId: this.idUserEvent }).subscribe(
+          (res: any)=>{
+            console.log(this.idUserEvent);
+            console.log(res);
+            const responseBody = JSON.parse(res.body);
+            console.log(responseBody);
+            this.comments = responseBody.value
+            
+          }
+        )
       }
     )
   
-    //Llamada para recuperar los comentarios
-    this.eventCommentService.apiEventsCommentListGet({ userId: this.idUserEvent }).subscribe(
-      (res: any)=>{
-        console.log(this.idUserEvent);
-        let json = JSON.parse(res)
-        this.comments = json.value
-        console.log(this.comments);
-      }
-    )
+
 
     // Chequear si el usuario esta o no logueado para que le muestre o no determinados componentes
     let userLogueado = JSON.parse(localStorage.getItem("usuarioLogueado") as any)

@@ -8,21 +8,21 @@
             <div class="card-header" style="padding: 24px;">
                 <div class="d-flex gap-2 align-items-center">
                     <mat-icon>event</mat-icon>
-                    <p>{{event.dateTime}} - </p>
+                    <p>{{event[0].dateTime}} - </p>
     
                     <img [src]="'https://openweathermap.org/img/wn/' + iconTemperature + '.png'" alt="" srcset="" style="height: 40px; width: 40px;">
                     <p>{{temperature}}°C</p>
                 </div>
                 <div class="d-flex gap-2 align-items-center mt-2">
                     <mat-icon>location_on</mat-icon>
-                    <p>{{event.city}}, {{event.countryName}}</p>
+                    <p>{{event[0].city}}, {{event[0].countryName}}</p>
                 </div>
             </div>
             <div class="card-body" style="padding: 32px;">
-                <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px;">{{event.eventName}}</h2>
-                <p class="card-text" style="color: #FF990F;">Nivel: Intermedio {{event.difficultyName}}</p>
-                <p class="card-text">Asistentes: 25</p>
-                <p class="card-text mt-3">{{event.eventDescription}}</p>
+                <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px;">{{event[0].eventName}}</h2>
+                <p class="card-text" style="color: #FF990F;">Nivel: {{event[0].difficultyName}}</p>
+                <p class="card-text">Asistentes: 0</p>
+                <p class="card-text mt-3">{{event[0].eventDescription}}</p>
 
                 <!-- seccion comentarios -->
                 <mat-card style="background-color: #757575; padding: 0px 20px; margin: 50px 0px;">
