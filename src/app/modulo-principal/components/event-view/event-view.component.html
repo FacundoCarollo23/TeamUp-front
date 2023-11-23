@@ -7,14 +7,14 @@
         <div class="card col-lg-9 col-md-9 col-sm-10 mx-auto">
             <div class="card-header" style="padding: 24px;">
                 <div class="d-flex gap-2 align-items-center">
-                    <mat-icon>event</mat-icon>
+                    <mat-icon class="calendar-icon">event</mat-icon>
                     <p>{{event[0].dateTime}} - </p>
     
                     <img [src]="'https://openweathermap.org/img/wn/' + iconTemperature + '.png'" alt="" srcset="" style="height: 40px; width: 40px;">
                     <p>{{temperature}}°C</p>
                 </div>
                 <div class="d-flex gap-2 align-items-center mt-2">
-                    <mat-icon>location_on</mat-icon>
+                    <mat-icon class="location-icon">location_on</mat-icon>
                     <p>{{event[0].city}}, {{event[0].countryName}}</p>
                 </div>
             </div>
