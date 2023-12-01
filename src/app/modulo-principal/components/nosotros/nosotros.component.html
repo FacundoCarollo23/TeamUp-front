@@ -1,52 +1,81 @@
 <div class="container-fluid" style="padding: 0;">
     <app-nav-bar></app-nav-bar>
     <div class="hero">
+        <div class="hero-content">
+            <app-title [title]="'El equipo TEAM UP'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+            <p style="color:#FF990F; font-size: 24px;">Conocé al equipo que dio vida a esta comunidad de eventos deportivos</p>
+        </div>
+    </div>
 
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/lucas.jpg" alt="Lucas Poggio">
-            <p style="color: #ff990f">Lucas Poggio</p>
-            <p style="color: #ff990f">Backend</p>
+    <div class="row hero-content" style="margin-top: 100px;">
+        <div class="mt-5">
+            <app-title [title]="'¿QUIENES SOMOS?'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
         </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/mauro.jpg" alt="Mauro Riera">
-            <p style="color: #ff990f">Mauro Riera</p>
-            <p style="color: #ff990f">Backend</p>
-        </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/gonzalo.jpg" alt="Gonzalo Gatius">
-            <p style="color: #ff990f">Gonzalo Gatius</p>
-            <p style="color: #ff990f">Frontend</p>
-        </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/antonella.jpg" alt="Antonella Duca">
-            <p style="color: #ff990f">Antonella Duca</p>
-            <p style="color: #ff990f">Frontend</p>
-            <!-- <p style="color: #ff990f">Product Owner</p> -->
-        </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/agustin.jpg" alt="Agustin Pullol">
-            <p style="color: #ff990f">Agustin Pullol</p>
-            <p style="color: #ff990f">Backend</p>
-            <!-- <p style="color: #ff990f">Product Management</p> -->
-        </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/milton.jpg" alt="Milton Szpryngier">
-            <p style="color: #ff990f">Milton Szpryngier</p>
-            <p style="color: #ff990f">Backend</p>
-        </div>
-        <div class="team-members" [@fadeInOut]>
-            <div class="team-member">
-            <img src="/assets/images/facundo.jpg" alt="Facundo Carollo">
-            <p style="color: #ff990f">Facundo Carollo</p>
-            <p style="color: #ff990f">Frontend</p>
-        </div>
-        
     </div>
     
+    <div>
+        <div class="d-flex justify-content-center gap-4" style="margin-top: 50px;">
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/gonzalo.jpg" alt="Gonzalo Gatius" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">GONZALO GATIUS</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Frontend</p>
+                </div>
+            </div>
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/facundo.jpg" alt="Facundo Carollo" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">FACUNDO CAROLLO</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Frontend</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-4" style="margin-top: 70px;">
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/lucas.jpg" alt="Lucas Poggio" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">LUCAS POGGIO</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Backend</p>
+                </div>
+            </div>
+    
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/mauro.jpg" alt="Mauro Riera" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">MAURO RIERA</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Backend</p>
+                </div>
+            </div>
+
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/milton.jpg" alt="Milton Szpryngier" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">MILTON SZPRYNGIER</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Backend</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-4" style="margin-top: 50px;">
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/agustin.jpg" alt="Agustin Pullol" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">AGUSTIN PULLOL</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Scrum Master</p>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Backend</p>
+                </div>
+            </div>
+            <div class="card" style="width: 25rem;">
+                <img src="/assets/images/antonella.jpg" alt="Antonella Duca" style="height: 398px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="color: #ff990f; font-size: 32px; font-weight: bold;">ANTONELLA DUCA</h5>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Product Owner</p>
+                    <p class="card-text" style="color: #ff990f; font-size: 24px;">Frontend</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
 </div>
