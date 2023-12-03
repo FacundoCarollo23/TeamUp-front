@@ -26,6 +26,7 @@ import { EventViewComponent } from './components/event-view/event-view.component
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UpdateEventComponent } from './components/update-event/update-event.component';
+import { NoPageComponent } from './components/no-page/no-page.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { UpdateEventComponent } from './components/update-event/update-event.com
     UserProfileComponent,
     DashboardEventsComponent,
     EventViewComponent,
-    UpdateEventComponent   
+    UpdateEventComponent,
+    NoPageComponent   
   ],
 
     imports: [

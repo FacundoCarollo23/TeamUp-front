@@ -43,6 +43,18 @@
                     *ngIf="this.formLogin.get('password')?.hasError('pattern') && this.formLogin.get('password')?.touched">
                     La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo</div>
                 </div>
+                
+          
+                <button class="btn"  (click)="OnSubmit()">Iniciar Sesión</button>
+          
+                <!-- <button class="btn-secondary" >Iniciar Sesión con Google</button> -->
+                <br/>
+                <p class="recover-password" class="text">Recuperar Contraseña</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
               </div>
               <button class="btn" (click)="OnSubmit()">Iniciar Sesión</button>
               <!-- <p class="recover-password" class="text">Recuperar Contraseña</p> -->
