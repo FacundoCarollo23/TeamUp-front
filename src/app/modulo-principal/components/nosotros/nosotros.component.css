@@ -1,27 +1,36 @@
-.team-members {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card{
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.card img{
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto; 
+  transition: all .5s;
 }
 
-.team-member {
-  text-align: center;
-  width: auto; 
-  margin: 10px;
-  display: inline-block;
+.card:hover img{
+  transform: scale(1.09);
+}
+
+.card .card-body{
+  background: rgba(0, 0, 0, .7);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  height: 100%;
+  color: #fff;
   box-sizing: border-box;
-  
+  width: 100%;
 }
 
-.team-member img {
-  width: 100%; 
-  max-width: 100%;
-  height: auto;
-  border-radius: 50%;
-  /* max-height: 200px;*/
-  min-height: 150px;
-  min-width: 150px;
+.card-body h5{
+  text-align: center;
+  border-bottom: 1px solid #ff990f;
+  padding: 0px 10px 20px 10px;
+  margin-top: 50%;
+}
+
+.card:hover .card-body{
+  top: 0;
 }

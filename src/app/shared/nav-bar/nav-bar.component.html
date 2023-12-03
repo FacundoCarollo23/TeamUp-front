@@ -1,6 +1,7 @@
 <mat-toolbar class="custom-navbar mat-elevation-z8">
   <mat-toolbar-row>
-    <img src="./assets/images/logo2.png" alt="Logo" class="logo-image">
+    <img src="./assets/images/logo2.png" alt="Logo" class="logo-image" [routerLink]="['/TeamUp']" *ngIf="logueado == true" style="cursor: pointer;">
+    <img src="./assets/images/logo2.png" alt="Logo" class="logo-image" [routerLink]="['']" *ngIf="logueado == false" style="cursor: pointer;">
     <div [ngClass]="{'spacer': logueado == false}"></div>
     <a mat-button class="custom-button-text custom-button-text-inicio" [routerLink]="['/TeamUp']"
       *ngIf="logueado == true"> Inicio </a>

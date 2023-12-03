@@ -13,7 +13,13 @@ import { Environment } from 'src/assets/environments/environments';
 import { Observable } from 'rxjs';
 import { CitiesService } from 'src/app/services/cities.service';
 import * as moment from 'moment';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-new-event',
@@ -23,27 +29,30 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     //ANIMACION PARA DESPLEGABLES
     trigger('fadeInOut', [
-      state('void', style({
-        opacity: 0
-      })),
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
       transition('void <=> *', animate(1500)),
     ]),
 
     //ANIMACION PARA BOTONES
     trigger('fade', [
-     transition('void => *',[
-      style({ backgroundColor: 'yellow', opacity:0 }),
-      animate(3000)
-     ])
+      transition('void => *', [
+        style({ backgroundColor: 'yellow', opacity: 0 }),
+        animate(3000),
+      ]),
     ]),
 
     trigger('fade2', [
-      transition('void => *',[
-       style({ backgroundColor: 'white', opacity:0 }),
-       animate(3000)
-      ])
-     ])
-  ]
+      transition('void => *', [
+        style({ backgroundColor: 'white', opacity: 0 }),
+        animate(3000),
+      ]),
+    ]),
+  ],
 })
 export class NewEventComponent implements OnInit, OnChanges {
   time: Date = new Date();
@@ -54,39 +63,37 @@ export class NewEventComponent implements OnInit, OnChanges {
   eventUser: EventUserDto[] = [];
 
   //Variable country para almacenar el id
-  country : number = 0;
+  country: number = 0;
 
   //Variable y array para almacenar el string del país y ciudades
   cities: any[] = [];
-  countryCodes: any[] = [{ id: 1, code: 'AR', name: 'Argentina'}, { id: 2, code: 'UY', name: 'Uruguay'}, { id: 3, code: 'CL', name: 'Chile'}];
+  countryCodes: any[] = [
+    { id: 1, code: 'AR', name: 'Argentina' },
+    { id: 2, code: 'UY', name: 'Uruguay' },
+    { id: 3, code: 'CL', name: 'Chile' },
+  ];
 
   //Variable fecha y hora
-  dateTime : any;
-  date : any = "DD/MM/YYYY";
-  hour : any = "hh:mm"
+  dateTime: any;
+  date: any = 'DD/MM/YYYY';
+  hour: any = 'hh:mm';
 
-  constructor(
-    private fb: FormBuilder,
-    private eventService: EventService,
-    private router: Router,
-    private citiesService: CitiesService
-  ) {
+  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router, private citiesService: CitiesService) {
     // Form
     this.formularioEvento = this.fb.group({
       nombreEvento: ['', [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
-      descripcionEvento: ['',[Validators.required, Validators.maxLength(1000)]], // OK CHEQUEADO
+      descripcionEvento: ['', [Validators.required, Validators.maxLength(1000)],], // OK CHEQUEADO
       ciudadEvento: ['', [Validators.required]], // Ya esta OK
-      fechaHoraEvento: ['', [Validators.required, this.fechaNoEsHoy.bind(this)]], // Ya esta OK 
+      fechaHoraEvento: ['', [Validators.required, this.fechaNoEsHoy.bind(this)],], // Ya esta OK
       paisEvento: ['', [Validators.required]], // Ya esta OK revisado
       dificultadEvento: ['', [Validators.required]], // Ya esta OK revisado
       actividadEvento: ['', [Validators.required]], // Ya esta OK revisado
     });
   }
 
-  ngOnChanges(): void {
-  }
+  ngOnChanges(): void {}
 
-  getCiudades(data : any) :void{
+  getCiudades(data: any): void {
     //API CIUDADES
     this.citiesService.getCities(data).subscribe((res: any) => {
       console.log(res);
@@ -96,63 +103,71 @@ export class NewEventComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.formularioEvento.get('paisEvento')?.valueChanges.subscribe((data : any) => {
-      console.log(data);
-      this.getCiudades(data)
-      this.setCountryId(data)
-      // this.getCountryId()
-    })
+    this.formularioEvento
+      .get('paisEvento')
+      ?.valueChanges.subscribe((data: any) => {
+        console.log(data);
+        this.getCiudades(data);
+        this.setCountryId(data);
+        // this.getCountryId()
+      });
 
-    this.formularioEvento.get('fechaHoraEvento')?.valueChanges.subscribe((data : any) => {
-      console.log(data);
-      this.setDateTime(data)
-      // this.getDateTime()
-    })
+    this.formularioEvento
+      .get('fechaHoraEvento')
+      ?.valueChanges.subscribe((data: any) => {
+        console.log(data);
+        this.setDateTime(data);
+        // this.getDateTime()
+      });
   }
 
-  setCountryId(countryCode: string) : void{
-    const country = this.countryCodes.find(c => c.code === countryCode);
+  setCountryId(countryCode: string): void {
+    const country = this.countryCodes.find((c) => c.code === countryCode);
     this.country = country ? country.id : undefined;
   }
 
-  getCountryId() : number{
-    return this.country 
+  getCountryId(): number {
+    return this.country;
   }
 
-  setDateTime(data : any){
-    this.date = moment(data).format('DD/MM/YYYY')
-    this.hour = moment(data).format(' HH:mm')
-    this.dateTime = this.date + this.hour
+  setDateTime(data: any) {
+    this.date = moment(data).format('DD/MM/YYYY');
+    this.hour = moment(data).format(' HH:mm');
+    this.dateTime = this.date + this.hour;
     console.log(this.date);
     console.log(this.hour);
     console.log(this.dateTime);
   }
 
-  getDateTime(){
-    return this.dateTime
+  getDateTime() {
+    return this.dateTime;
   }
-
 
   OnSubmit() {
     let userLogueado = JSON.parse(
       localStorage.getItem('usuarioLogueado') as any
     );
 
-    let dificultad : any = JSON.parse(this.formularioEvento.controls['dificultadEvento'].value as any) as Number;
-    let actividad : any = JSON.parse( this.formularioEvento.controls['actividadEvento'].value  as any) as Number;
+    let dificultad: any = JSON.parse(
+      this.formularioEvento.controls['dificultadEvento'].value as any
+    ) as Number;
+    let actividad: any = JSON.parse(
+      this.formularioEvento.controls['actividadEvento'].value as any
+    ) as Number;
 
     let evento: EventUserDto = {
-      userId: userLogueado.value.userId as number, 
-      activityId:actividad,
+      userId: userLogueado.value.userId as number,
+      activityId: actividad,
       difficultyLevelId: dificultad,
       countryId: this.getCountryId(),
       eventName: this.formularioEvento.controls['nombreEvento'].value,
-      eventDescription: this.formularioEvento.controls['descripcionEvento'].value,
+      eventDescription:
+        this.formularioEvento.controls['descripcionEvento'].value,
       city: this.formularioEvento.controls['ciudadEvento'].value,
-      dateTime: this.getDateTime()
+      dateTime: this.getDateTime(),
     };
-  
-    if(this.formularioEvento.valid) {
+
+    if (this.formularioEvento.valid) {
       this.eventService.apiEventCreatePost$Response({ body: evento }).subscribe(
         (respuesta: any) => {
           // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página

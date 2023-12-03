@@ -14,14 +14,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       })),
       transition('void <=> *', animate(1500)),
     ]),
-
-    //ANIMACION PARA BOTONES
-    trigger('fade', [
-     transition('void => *',[
-      style({ backgroundColor: 'yellow', opacity:0 }),
-      animate(3000)
-     ])
-    ]),
   ]
 
 })

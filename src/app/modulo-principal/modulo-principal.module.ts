@@ -25,6 +25,7 @@ import { DashboardEventsComponent } from './components/dashboard-events/dashboar
 import { EventViewComponent } from './components/event-view/event-view.component';
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { UpdateEventComponent } from './components/update-event/update-event.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     NewEventComponent, 
     UserProfileComponent,
     DashboardEventsComponent,
-    EventViewComponent   
+    EventViewComponent,
+    UpdateEventComponent   
   ],
 
     imports: [

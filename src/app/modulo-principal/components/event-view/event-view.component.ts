@@ -46,7 +46,7 @@ export class EventViewComponent implements OnInit{
         console.log(this.event);
         this.idUserEvent = this.event[0].userId
         console.log(this.idUserEvent);
-        this.getClima(this.event.city, 'AR')
+        this.getClima(this.event[0].city, 'AR')
 
             //Llamada para recuperar los comentarios
         this.eventCommentService.apiEventsCommentListGet$Response({ userId: this.idUserEvent }).subscribe(
