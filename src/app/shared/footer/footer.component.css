@@ -1,4 +1,7 @@
 footer{
+    display: flex;
+    flex-direction: column;
     background-color: #504F4F;
-    height: 70px;
+    min-height: 10vh;
+    
 }

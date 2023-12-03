@@ -1,0 +1,37 @@
+.background-image {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    min-height: 200%; /* Resta la distancia superior para el alto de la imagen */
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(src/assets/images/hero.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.rounded-input {
+    width: 500px;
+    min-height: 56px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.text {
+    color: #FF990F;
+    text-align: left;
+    margin-bottom: 5px;
+}
