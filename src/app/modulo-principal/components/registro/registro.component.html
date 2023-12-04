@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
       <div class="background-image">
-        <div class="registro-form" style="padding-top: 200px;">
+        <div class="registro-form" >
           <form [formGroup]="formRegistro">
             <app-title [title]="'Creá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'"
             [fontWeightTitle]="'400'" style="text-align: center;"></app-title>
@@ -30,16 +30,30 @@
           </div>
 
           <div class="form-group">
-            <label for="fechaNacimiento" class="text">Fecha de Nacimiento </label>
-            <div style="display: flex; align-items: center;">
-              <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="(DD/MM/AAAA)"
-                formControlName="fechaNacimiento" required class="rounded-input" style="height: 45px;">
+            <label for="fechaNacimiento" class="text">Fecha de Nacimiento</label>
+            <div>
+              <input 
+                [formControlName] = "'fechaNacimiento'"
+                placeholder="DD/MM/YYYY"
+                class="rounded-input"
+                bsDatepicker
+                style="height: 45px;"
+                locale='es'
+                required
+                [daysDisabled]="[6,0]"
+                [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-orange' }">
+           </div>
+         
+            <div
+              class="error-message"
+              *ngIf="formRegistro.get('fechaNacimiento')?.hasError('required') && formRegistro.get('fechaNacimiento')?.touched"
+            >
+              La fecha de nacimiento es requerida
             </div>
-            <div class="error-message"
-              *ngIf="this.formRegistro.get('fechaNacimiento')?.hasError('required') && this.formRegistro.get('fechaNacimiento')?.touched">
-              La fecha de nacimiento es requerida</div>
+            <div *ngIf="formRegistro.get('fechaNacimiento')?.errors?.['fechaInvalida'] && formRegistro.get('fechaNacimiento')?.dirty" class="error-message">
+              La fecha de nacimiento es invalida.
+            </div>
           </div>
-
           <div class="form-group">
             <label for="email" class="text">Correo Electrónico</label>
             <div style="display: flex; align-items: center;">
@@ -74,7 +88,7 @@
               La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo</div>
             <br>
               <button class="btn" type="submit" (click)="OnSubmit()">REGISTRATE</button>
-            <button class="btn-secondary" type="button">REGISTRATE CON GOOGLE</button>
+        
           </div>
           </form>
         </div>

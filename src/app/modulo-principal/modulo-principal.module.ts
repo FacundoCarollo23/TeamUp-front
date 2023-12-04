@@ -26,7 +26,7 @@ import { EventViewComponent } from './components/event-view/event-view.component
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UpdateEventComponent } from './components/update-event/update-event.component';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
     declarations: [
     HomeComponent,
@@ -47,6 +47,7 @@ import { UpdateEventComponent } from './components/update-event/update-event.com
   ],
 
     imports: [
+      BsDatepickerModule.forRoot(),
       MaterialModule,
       RouterModule, 
       NgxPaginationModule,
@@ -59,7 +60,8 @@ import { UpdateEventComponent } from './components/update-event/update-event.com
       MatCheckboxModule,
       MatRadioModule,
       BrowserModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+    
     ],
 
     providers: [],

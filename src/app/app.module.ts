@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModuloPrincipalModule } from './modulo-principal/modulo-principal.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModu
     MatButtonModule,
     FormsModule, 
     ReactiveFormsModule, CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule,
+    BsDatepickerModule.forRoot(),
 
   ],
   providers: [
