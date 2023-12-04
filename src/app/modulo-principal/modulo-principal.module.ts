@@ -27,6 +27,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UpdateEventComponent } from './components/update-event/update-event.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NoPageComponent } from './components/no-page/no-page.component';
+
+
 @NgModule({
     declarations: [
     HomeComponent,
@@ -43,7 +46,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     UserProfileComponent,
     DashboardEventsComponent,
     EventViewComponent,
-    UpdateEventComponent   
+    UpdateEventComponent,
+    NoPageComponent   
   ],
 
     imports: [

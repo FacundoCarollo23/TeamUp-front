@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NewEventComponent } from './components/new-event/new-event.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { EventViewComponent } from './components/event-view/event-view.component';
+import { UpdateEventComponent } from './components/update-event/update-event.component';
+import { NoPageComponent } from './components/no-page/no-page.component';
 
 const routes: Routes = [
     {
@@ -74,6 +76,15 @@ const routes: Routes = [
     {
         path: 'home/Event/:id',
         component: EventViewComponent,
+    },
+    { 
+        path: 'TeamUp/updateEvent/:id', 
+        component: UpdateEventComponent,
+        canActivate:[LoginGuard],
+    },
+    {
+        path: '**',
+        component: NoPageComponent,
     },
 ];
 @NgModule({

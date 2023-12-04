@@ -3,14 +3,15 @@
     <app-hero></app-hero>
 
     <!-- card del evento -->
-    <div class="container mt-5"> 
+    <div class="container mt-5">
         <div class="card col-xxl-6 col-xl-6 col-lg-6 col-md-9 col-sm-10 mx-auto">
             <div class="card-header" style="padding: 24px;">
                 <div class="d-flex gap-2 align-items-center">
                     <mat-icon class="calendar-icon">event</mat-icon>
                     <p>{{event[0].dateTime}} - </p>
-    
-                    <img [src]="'https://openweathermap.org/img/wn/' + iconTemperature + '.png'" alt="" srcset="" style="height: 40px; width: 40px;">
+
+                    <img [src]="'https://openweathermap.org/img/wn/' + iconTemperature + '.png'" alt="" srcset=""
+                        style="height: 40px; width: 40px;">
                     <p>{{temperature}}°C</p>
                 </div>
                 <div class="d-flex gap-2 align-items-center mt-2">
@@ -19,20 +20,23 @@
                 </div>
             </div>
             <div class="card-body" style="padding: 32px;">
-                <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px; font-size: 24px;">{{event[0].eventName}}</h2>
+                <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px; font-size: 24px;">
+                    {{event[0].eventName}}</h2>
                 <p class="card-text" style="color: #FF990F;">Nivel: {{ event[0].difficultyName }}</p>
                 <p class="card-text">Asistentes: {{ event[0].userCount }} </p>
                 <p class="card-text" style="padding: 20px 0px;">{{ event[0].eventDescription }}</p>
                 <hr>
 
                 <!-- seccion comentarios -->
-                <mat-card *ngIf="comments && comments.length > 0; else noComments" style="background-color: #111111; padding: 30px 20px; margin: 50px 0px;">
-                    <mat-card-content  *ngFor="let comment of comments" style="padding-bottom: 8px;">
-                        <div style="color: #FF990F" class="d-flex">
-                        <mat-icon style="margin-right: 10px;">account_circle</mat-icon>
-                        <p style="color: #FF990F; font-weight: bold;">{{"Julieta"}}</p>
+                <mat-card *ngIf="comments && comments.length > 0; else noComments"
+                    style="background-color: #111111; padding: 30px 20px; margin: 50px 0px;">
+                    <mat-card-content *ngFor="let comment of comments" style="padding-bottom: 8px;">
+                        <div style="color: #FF990F" class="d-flex align-items-center mb-2" >
+                            <mat-icon style="margin-right: 10px;">account_circle</mat-icon>
+                            <p style="color: #FF990F; font-weight: bold;">{{"Julieta"}}</p>
                         </div>
                         <p style="color:#FF990F">{{comment.comment}}</p>
+                        <hr style="color:#FF990F" *ngIf="comments.length > 1">
                     </mat-card-content>
                     <mat-form-field *ngIf="logueado == true">
                         <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
@@ -40,25 +44,27 @@
                         <mat-icon matSuffix style="cursor: pointer;">send</mat-icon>
                     </mat-form-field>
                 </mat-card>
-                
-                
+
+
                 <ng-template #noComments>
                     <mat-card style="background-color: #111111; padding: 0px 20px; margin: 50px 0px;">
-                    <mat-card-content style="color: #FF990F; font-weight: bold; padding-top: 20px; padding-bottom: 40px;">
-                    <mat-icon class="rate_review">rate_review</mat-icon>
-                    <p *ngIf="logueado == false">No hay comentarios todavía...</p>
-                    <p *ngIf="logueado == true">No hay comentarios todavía... ¡Hacé el primero!</p>
-                    </mat-card-content>
-                    <mat-form-field *ngIf="logueado == true">
-                        <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
-                        <input matInput>
-                        <mat-icon matSuffix style="cursor: pointer;">send</mat-icon>
-                    </mat-form-field>
-                </mat-card>
+                        <mat-card-content
+                            style="color: #FF990F; font-weight: bold; padding-top: 20px; padding-bottom: 40px;">
+                            <mat-icon class="rate_review">rate_review</mat-icon>
+                            <p *ngIf="logueado == false">No hay comentarios todavía...</p>
+                            <p *ngIf="logueado == true">No hay comentarios todavía... ¡Hacé el primero!</p>
+                        </mat-card-content>
+                        <mat-form-field *ngIf="logueado == true">
+                            <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
+                            <input matInput>
+                            <mat-icon matSuffix style="cursor: pointer;">send</mat-icon>
+                        </mat-form-field>
+                    </mat-card>
                 </ng-template>
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> MIS EVENTOS </button>
+                    <button class="btn" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> MIS EVENTOS
+                    </button>
                     <button class="btn" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button>
                     <button class="btn" *ngIf="logueado == true" style="margin-left: 20px;"> ME SUMO </button>
                 </div>
