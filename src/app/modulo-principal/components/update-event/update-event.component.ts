@@ -35,7 +35,7 @@ export class UpdateEventComponent implements OnInit {
 
     // Form
     this.formUpdateEvent = this.fb.group({
-      nombreEvento: [this.event.eventName , [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
+      nombreEvento: ['' , [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
       descripcionEvento: ['', [Validators.required, Validators.maxLength(1000)],], // OK CHEQUEADO
       ciudadEvento: ['', [Validators.required]], // Ya esta OK
       fechaHoraEvento: ['', [Validators.required, this.fechaNoEsHoy.bind(this)],], // Ya esta OK

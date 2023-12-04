@@ -12,6 +12,7 @@ export class DashboardEventsComponent implements OnInit {
   public page!: number;
   userJoinedEventsList: any[] = [];
   userLogueado: any = 0;
+  
 
   constructor(private eventService: EventService, private dialog: MatDialog) {}
 
@@ -90,5 +91,13 @@ export class DashboardEventsComponent implements OnInit {
       });
   }
 
+
+  isUserCreatedEvent(event: any): boolean {
+    return this.userEventsList.some(userEvent => userEvent.eventId === event.eventId);
+  }
+  leaveEvent(eventId: number) {
+    // Implementar la lógica para que el usuario "se baje" del evento
+    // Puedes llamar al servicio correspondiente o realizar la lógica necesaria.
+  }
   
 }

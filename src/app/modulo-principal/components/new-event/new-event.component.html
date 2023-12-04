@@ -12,7 +12,7 @@
                   [fontWeightTitle]="'400'"></app-title>
               </div>
               <div class="form-group">
-                <!-- Nombre del Evento OK CHEQUEADO-->
+                <!-- ----------------------------------------- Nombre del Evento OK CHEQUEADO------------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
                   <label for="nombreEvento" class="text">Nombre Del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -28,13 +28,14 @@
                     El nombre del evento debe tener máximo 50 caracteres</div>
                 </div>
 
-                <!-- Descripción del Evento OK REVISADO-->
+                <!-- -----------------------------------------Descripción del Evento OK REVISADO ----------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
                   <label for="descripcionEvento" class="text">Descripción Del Evento</label>
                   <div style="display: flex; align-items: center;">
-                    <input type="string" id="descripcionEvento" name="descripcionEvento"
+                    <textarea id="descripcionEvento" name="descripcionEvento"
                       formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required
-                      class="rounded-input" style="height: 45px; width: 100%;">
+                      class="rounded-input" style="resize: vertical; width: 100%;">
+                    </textarea>
                   </div>
                   <div class="error-message"
                     *ngIf="formularioEvento.get('descripcionEvento')?.invalid && formularioEvento.get('descripcionEvento')?.touched">
@@ -44,7 +45,7 @@
                     La descripción del Evento debe tener como máximo 1000 caracteres</div>
                 </div>
 
-                <!-- País del Evento OK REVISADO PAIS EVENTO -->
+                <!-- ----------------------------------------- País del Evento OK REVISADO PAIS EVENTO----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label for="paisEvento" class="text">País Del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -61,7 +62,7 @@
                     El campo País es obligatorio</div>
                 </div>
 
-                <!-- Ciudad del Evento -->
+                <!-- -----------------------------------------Ciudad del Evento----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label for="ciudadEvento" class="text">Ciudad Del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -78,7 +79,7 @@
                     El campo Ciudad es obligatorio</div>
                 </div>
 
-                <!-- Nivel de Dificultad del Evento YA ESTA OK REVISADO -->
+                <!-- -----------------------------------------Nivel de Dificultad del Evento YA ESTA OK REVISADO----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label for="dificultadEvento" class="text">Dificultad Del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -97,7 +98,7 @@
                     El campo Nivel de Dificultad es obligatorio</div>
                 </div>
 
-                <!-- Fecha y Hora del Evento -->
+                <!-- -----------------------------------------Fecha y Hora del Evento----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label class="text">Fecha y hora del evento</label>
                   <div>
@@ -112,7 +113,7 @@
                   </div>
                 </div>
 
-                <!-- Tipo de Actividad del Evento YA ESTA OK REVISADO-->
+                <!-- -----------------------------------------Tipo de Actividad del Evento YA ESTA OK REVISADO----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label for="actividadEvento" class="text">Tipo actividad Del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -135,6 +136,7 @@
                     El campo Tipo de Actividad es obligatorio</div>
                 </div>
                 <br>
+                <!-- ----------------------------------------- BOTONES----------------------------------------- -->
                 <button class="btn-createEvent" (click)="OnSubmit()" @fade>CREAR EVENTO</button>
                 <button class="btn-secondary" [routerLink]="['/TeamUp/dashboardEvents']" @fade2>VOLVER ATRAS</button>
               </div>

@@ -11,7 +11,7 @@
     <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/TeamUp/AboutUs']" *ngIf="logueado == true"> Nosotros </a>
     <a mat-button class="custom-button-text custom-button-text-eventos" [routerLink]="['/events']" *ngIf="logueado == false"> Eventos </a>
     <a mat-button class="custom-button-text custom-button-text-nosotros" [routerLink]="['/aboutUs']" *ngIf="logueado == false"> Nosotros </a>
-    <button class="btn" [routerLink]="['/login']" *ngIf="logueado == false"> INICIA SESIÓN </button>
+    <button class="btn" style="background-color: #ff990f; font-weight: bold; font-family: 'Open Sans', sans-serif; font-size: 14px; height: 3em; width: 10em; ; padding: 6px 12px;color: #111111;" [routerLink]="['/login']" *ngIf="logueado == false"> INICIAR SESION </button>
     <div style="margin-left: auto;">
       <a *ngIf="logueado == true"
         style="color: #FF990F; font-weight: 350; text-decoration: none; font-family: 'Open Sans', sans-serif; "
