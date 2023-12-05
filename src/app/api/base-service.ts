@@ -15,15 +15,14 @@ export class BaseService {
   ) {
   }
 
-  private _rootUrl: string = '';
+  private _rootUrl?: string;
 
   /**
    * Returns the root url for all operations in this service. If not set directly in this
    * service, will fallback to `ApiConfiguration.rootUrl`.
    */
   get rootUrl(): string {
-    return this._rootUrl || this.config.apiBaseUrl;
-   
+    return this._rootUrl || this.config.rootUrl;
   }
 
   /**
