@@ -1,131 +1,86 @@
 <div class="container-fluid" style="padding: 0;">
   <app-nav-bar></app-nav-bar>
   <div class="background-image">
-  <div class="row justify-content-center">
-    <div class="col-md-8" style="padding: 0px;">
-        <div class="login-form m-auto">
-          <form [formGroup]="formLogin">
-            <app-title
-              [title]="'Ingresá a tu Cuenta'"
-              [colorTitle]="'#FF990F'"
-              [fontSizeTitle]="'48px'"
-              [fontWeightTitle]="'400'"
-              style="text-align: center"
-            ></app-title>
-            <div class="form-group">
-              <label for="email" class="text">Email</label>
-              <br />
-              <div style="display: flex; align-items: center">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  formControlName="email"
-                  placeholder="Ingresa tu correo electrónico"
-                  required
-                  class="rounded-input"
-                  style="height: 45px"
-                />
-              </div>
-              <div
-                class="error-message"
-                *ngIf="
+    <div class="col-md-8 mx-auto" style="padding: 6rem;">
+      <div class="login-form">
+        <form [formGroup]="formLogin" class="align">
+          <app-title [title]="'Ingresá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'"
+            [fontWeightTitle]="'400'" style="text-align: center"></app-title>
+          <div class="form-group">
+            <label for="email" class="text">Email</label>
+            <br />
+            <div style="display: flex; align-items: center">
+              <input type="email" id="email" name="email" formControlName="email"
+                placeholder="Ingresa tu correo electrónico" required class="rounded-input" style="height: 45px" />
+            </div>
+            <div class="error-message" *ngIf="
                   formLogin.get('email')?.hasError('required') &&
                   formLogin.get('email')?.touched
-                "
-              >
-                El email es requerido
-              </div>
-              <div
-                class="error-message"
-                *ngIf="
+                ">
+              El email es requerido
+            </div>
+            <div class="error-message" *ngIf="
                   formLogin.get('email')?.hasError('email') &&
                   formLogin.get('email')?.touched &&
                   formLogin.get('email')?.hasError('pattern')
-                "
-              >
-                Ingrese un email válido
-              </div>
-              <div
-                class="error-message"
-                *ngIf="
+                ">
+              Ingrese un email válido
+            </div>
+            <div class="error-message" *ngIf="
                   formLogin.get('email')?.hasError('minlength') &&
                   formLogin.get('email')?.touched
-                "
-              >
-                El email debe tener al menos 3 caracteres
-              </div>
+                ">
+              El email debe tener al menos 3 caracteres
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="password" class="text">Password</label>
-              <div style="display: flex; align-items: center">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  formControlName="password"
-                  placeholder="Ingresa tu contraseña"
-                  required
-                  class="rounded-input"
-                  style="height: 45px"
-                />
-              </div>
-              <div
-                class="error-message"
-                *ngIf="
+          <div class="form-group">
+            <label for="password" class="text">Password</label>
+            <div style="display: flex; align-items: center">
+              <input type="password" id="password" name="password" formControlName="password"
+                placeholder="Ingresa tu contraseña" required class="rounded-input" style="height: 45px" />
+            </div>
+            <div class="error-message" *ngIf="
                   this.formLogin.get('password')?.touched &&
                   this.formLogin.get('password')?.invalid &&
                   this.formLogin.get('password')?.touched
-                "
-              >
-                <div
-                  class="error-message"
-                  *ngIf="
+                ">
+              <div class="error-message" *ngIf="
                     this.formLogin.get('password')?.hasError('required') &&
                     this.formLogin.get('password')?.touched
-                  "
-                >
-                  La contraseña es requerida
-                </div>
-                <div
-                  class="error-message"
-                  *ngIf="
+                  ">
+                La contraseña es requerida
+              </div>
+              <div class="error-message" *ngIf="
                     this.formLogin.get('password')?.hasError('minlength') ||
                     (this.formLogin.get('password')?.hasError('maxlength') &&
                       this.formLogin.get('password')?.touched)
-                  "
-                >
-                  La contraseña debe tener entre 8 y 15 caracteres
-                </div>
-                <div
-                  class="error-message"
-                  *ngIf="
+                  ">
+                La contraseña debe tener entre 8 y 15 caracteres
+              </div>
+              <div class="error-message" *ngIf="
                     this.formLogin.get('password')?.hasError('pattern') &&
                     this.formLogin.get('password')?.touched
-                  "
-                >
-                  La contraseña debe contener al menos una minúscula, una
-                  mayúscula, un número y un símbolo
-                </div>
+                  ">
+                La contraseña debe contener al menos una minúscula, una
+                mayúscula, un número y un símbolo
               </div>
             </div>
+          </div>
 
-            <button class="btn" (click)="OnSubmit()">INICIAR SESION</button>
-            <button
-              class="btn"
-              style="background-color: #757575"
-              [routerLink]="['']"
-            >
-              VOLVER ATRAS
-            </button>
+          <button class="btn" (click)="OnSubmit()">INICIAR SESION</button>
+          <button class="btn" style="background-color: #757575" [routerLink]="['']">
+            VOLVER ATRAS
+          </button>
 
-            <!-- <button class="btn-secondary" >Iniciar Sesión con Google</button> -->
-            <!-- <p class="recover-password" class="text">Recuperar Contraseña</p> -->
-          </form>
-        </div>
+          <!-- <button class="btn-secondary" >Iniciar Sesión con Google</button> -->
+          <!-- <p class="recover-password" class="text">Recuperar Contraseña</p> -->
+        </form>
       </div>
-      <app-footer ></app-footer>
     </div>
+    <div class="row mt-auto">
+      <app-footer></app-footer>
+    </div>
+
   </div>
 </div>

@@ -12,7 +12,9 @@ import { esLocale } from 'ngx-bootstrap/locale';
 import { UserDto } from 'src/app/api/models';
 import { UserService } from 'src/app/api/services';
 
-const fechaNacimientoValidator = (control: FormControl): { [key: string]: boolean } | null => {
+const fechaNacimientoValidator = (
+  control: FormControl
+): { [key: string]: boolean } | null => {
   const today = new Date(); // Fecha actual
   const fechaNacimiento = new Date(control.value);
 
@@ -21,7 +23,7 @@ const fechaNacimientoValidator = (control: FormControl): { [key: string]: boolea
     return null; // Fecha válida
   }
 
-  return { 'fechaInvalida': true }; // Fecha no válida
+  return { fechaInvalida: true }; // Fecha no válida
 };
 
 @Component({
@@ -29,7 +31,6 @@ const fechaNacimientoValidator = (control: FormControl): { [key: string]: boolea
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css'],
 })
-
 export class RegistroComponent implements OnInit {
   [x: string]: any;
   datapickerConfig!: Partial<BsDatepickerConfig>;
@@ -43,8 +44,11 @@ export class RegistroComponent implements OnInit {
     this.formRegistro = this.fb.group({
       nombre: new FormControl(''),
       apellido: new FormControl('', [Validators.required]),
-      // alias: new FormControl('', [Validators.required]),                  //VER EL USERDTO CUANDO LO HAGAN PARA VER EL NOMBRE DEL ALIAS Y PONERLO
-      fechaNacimiento: new FormControl('', [Validators.required, fechaNacimientoValidator]),
+      alias: new FormControl('', [Validators.required]),
+      fechaNacimiento: new FormControl('', [
+        Validators.required,
+        fechaNacimientoValidator,
+      ]),
       email: new FormControl('', [
         Validators.required,
         Validators.pattern(
@@ -55,7 +59,9 @@ export class RegistroComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(15),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,15}$/),
+        Validators.pattern(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,15}$/
+        ),
       ]),
     });
 
@@ -66,22 +72,26 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {}
 
   OnSubmit() {
-    let fechaNacimiento = moment(this.formRegistro.controls["fechaNacimiento"].value).format('YYYY-MM-DD');
+    let fechaNacimiento = moment(
+      this.formRegistro.controls['fechaNacimiento'].value
+    ).format('YYYY-MM-DD');
     let nuevoUsuario: UserDto = {
-      userName: this.formRegistro.controls["nombre"].value,
-      userLastname: this.formRegistro.controls["apellido"].value,
-      // userAlias: this.formRegistro.controls["alias"].value,            //VER EL USERDTO CUANDO LO HAGAN PARA VER EL NOMBRE DEL ALIAS Y PONERLO
+      userName: this.formRegistro.controls['nombre'].value,
+      userLastname: this.formRegistro.controls['apellido'].value,
       dateOfBirthText: fechaNacimiento,
-      email: this.formRegistro.controls["email"].value,
-      password: this.formRegistro.controls["password"].value,
+      email: this.formRegistro.controls['email'].value,
+      password: this.formRegistro.controls['password'].value,
+      // alias: this.formRegistro.controls['alias'].value,
     };
 
     console.log(nuevoUsuario);
-    
+
     if (this.formRegistro.valid) {
-      this.userService.apiUserCreatePost$Response({ body: nuevoUsuario }).subscribe((res: any) => {
-        console.log(res);
-      });
+      this.userService
+        .apiUserCreatePost$Response({ body: nuevoUsuario })
+        .subscribe((res: any) => {
+          console.log(res);
+        });
     }
   }
 }
