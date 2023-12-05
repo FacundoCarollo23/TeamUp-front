@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /**
@@ -10,11 +11,37 @@ import { Injectable } from '@angular/core';
 })
 export class ApiConfiguration {
   rootUrl: string = '';
+
+  private appConfig: any;
+
+  private http: HttpClient;
+
+  constructor(
+    handler: HttpBackend) {
+    this.http = new HttpClient(handler);
 }
 
-/**
- * Parameters for `ApiModule.forRoot()`
- */
+  loadAppConfig() {
+    return this.http.get('assets/config.json')
+      .toPromise()
+      .then(data => {
+
+        this.appConfig = data;
+
+      });
+  }
+
+
+  get apiBaseUrl() {
+
+    if (!this.appConfig) {
+      throw Error('Error en el archivo de configuracion de ruta');
+    }
+
+    return this.appConfig.apiBaseUrl;
+  }
+}
+
 export interface ApiConfigurationParams {
   rootUrl?: string;
 }
