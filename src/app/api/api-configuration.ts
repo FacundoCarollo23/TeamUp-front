@@ -10,7 +10,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = '';
 
   private appConfig: any;
 
@@ -40,7 +39,16 @@ export class ApiConfiguration {
 
     return this.appConfig.apiBaseUrl;
   }
+
+
+
+
+
 }
+
+/**
+ * Parameters for `ApiModule.forRoot()`
+ */
 
 export interface ApiConfigurationParams {
   rootUrl?: string;
