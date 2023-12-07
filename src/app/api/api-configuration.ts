@@ -24,13 +24,13 @@ export class ApiConfiguration {
     return this.http.get('assets/config.json')
       .toPromise()
       .then(data => {
-  
+
         this.appConfig = data;
-        
+
       });
   }
 
- 
+
   get apiBaseUrl() {
 
     if (!this.appConfig) {
@@ -39,17 +39,17 @@ export class ApiConfiguration {
 
     return this.appConfig.apiBaseUrl;
   }
-  
 
 
 
-  
+
+
 }
 
 /**
  * Parameters for `ApiModule.forRoot()`
  */
+
 export interface ApiConfigurationParams {
   rootUrl?: string;
 }
-

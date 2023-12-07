@@ -2,6 +2,7 @@
     background-color: #D9D9D9 !important;
     border-bottom-color: #FF990F;
 }
+
 a {
     cursor: pointer;
 }
@@ -14,3 +15,12 @@ a {
     background: #FF990F !important;
     font-size: 16px;
 }
+
+.table th:last-child,
+.table td:last-child {
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+

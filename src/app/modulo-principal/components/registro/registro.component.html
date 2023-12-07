@@ -1,12 +1,15 @@
 <div class="container-fluid" style="padding: 0;">
   <app-nav-bar></app-nav-bar>
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8">
-      <div class="background-image">
-        <div class="registro-form" >
-          <form [formGroup]="formRegistro">
+  <div class="row ">
+    <div class="background-image">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <div class="registro-form " >
+          <form [formGroup]="formRegistro" style=" height: 100%; margin-top: 50px;">
             <app-title [title]="'Creá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'"
             [fontWeightTitle]="'400'" style="text-align: center;"></app-title>
+
+
+            <!-- ------------------------------------------------------- NOMBRE ------------------------------------------------------- -->
           <div class="form-group">
             <label for="nombre" class="text">Nombre</label>
             <div style="display: flex; align-items: center;">
@@ -17,6 +20,7 @@
               *ngIf="this.formRegistro.get('nombre')?.hasError('required') && this.formRegistro.get('nombre')?.touched">
               El nombre es requerido</div>
           </div>
+            <!-- ------------------------------------------------------ APELLIDO ------------------------------------------------------ -->
 
           <div class="form-group">
             <label for="apellido" class="text">Apellido</label>
@@ -28,6 +32,21 @@
               *ngIf="this.formRegistro.get('apellido')?.hasError('required') && this.formRegistro.get('apellido')?.touched">
               El apellido es requerido</div>
           </div>
+            <!-- ------------------------------------------------------ ALIAS ------------------------------------------------------ -->
+
+            <div class="form-group">
+              <label for="alias" class="text">Alias</label>
+              <div style="display: flex; align-items: center;">
+                <input type="text" id="alias" name="alias" placeholder="Ingresa tu alias"
+                  formControlName="alias" required class="rounded-input" style="height: 45px; ">
+              </div>
+              <div class="error-message"
+                *ngIf="this.formRegistro.get('alias')?.hasError('required') && this.formRegistro.get('alias')?.touched">
+                El alias es requerido</div>
+            </div>
+            
+
+            <!-- ------------------------------------------------ FECHA DE NACIMIENTO ------------------------------------------------ -->
 
           <div class="form-group">
             <label for="fechaNacimiento" class="text">Fecha de Nacimiento</label>
@@ -54,6 +73,9 @@
               La fecha de nacimiento es invalida.
             </div>
           </div>
+
+          <!-- ------------------------------------------------------ MAIL ------------------------------------------------------ -->
+
           <div class="form-group">
             <label for="email" class="text">Correo Electrónico</label>
             <div style="display: flex; align-items: center;">
@@ -70,6 +92,7 @@
               *ngIf="this.formRegistro.get('email')?.hasError('minlength') && this.formRegistro.get('email')?.touched">
               El email debe tener al menos 3 caracteres</div>
           </div>
+            <!-- ------------------------------------------------------ CONTRASEÑA ------------------------------------------------------ -->
 
           <div class="form-group">
             <label for="password" class="text">Contraseña</label>
@@ -88,10 +111,13 @@
               La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo</div>
             <br>
               <button class="btn" type="submit" (click)="OnSubmit()">REGISTRATE</button>
+              <button class="btn" style="background-color: #757575;" [routerLink]="['']" >VOLVER ATRAS</button>
+
           </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
+    <app-footer></app-footer>
   </div>
+</div>
 </div>

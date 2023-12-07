@@ -7,13 +7,13 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface ApiEventRemoveEventIdUserIdDelete$Params {
+export interface ApiEventRemoveFromEventEventIdUserIdDelete$Params {
   eventId: number;
   userId: number;
 }
 
-export function apiEventRemoveEventIdUserIdDelete(http: HttpClient, rootUrl: string, params: ApiEventRemoveEventIdUserIdDelete$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiEventRemoveEventIdUserIdDelete.PATH, 'delete');
+export function apiEventRemoveFromEventEventIdUserIdDelete(http: HttpClient, rootUrl: string, params: ApiEventRemoveFromEventEventIdUserIdDelete$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiEventRemoveFromEventEventIdUserIdDelete.PATH, 'delete');
   if (params) {
     rb.path('eventId', params.eventId, {"style":"simple"});
     rb.path('userId', params.userId, {"style":"simple"});
@@ -29,4 +29,4 @@ export function apiEventRemoveEventIdUserIdDelete(http: HttpClient, rootUrl: str
   );
 }
 
-apiEventRemoveEventIdUserIdDelete.PATH = '/api/Event/Remove/{eventId}/{userId}';
+apiEventRemoveFromEventEventIdUserIdDelete.PATH = '/api/Event/RemoveFromEvent/{eventId}/{userId}';

@@ -6,15 +6,16 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { EventsCommentDto } from '../../models/events-comment-dto';
 
-export interface ApiEventsCommentListGet$Params {
-  eventId?: number;
+export interface ApiEventsCommentCreatePost$Params {
+      body?: EventsCommentDto
 }
 
-export function apiEventsCommentListGet(http: HttpClient, rootUrl: string, params?: ApiEventsCommentListGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiEventsCommentListGet.PATH, 'get');
+export function apiEventsCommentCreatePost(http: HttpClient, rootUrl: string, params?: ApiEventsCommentCreatePost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiEventsCommentCreatePost.PATH, 'post');
   if (params) {
-    rb.query('eventId', params.eventId, {"style":"form"});
+    rb.body(params.body, 'application/*+json');
   }
 
   return http.request(
@@ -27,4 +28,4 @@ export function apiEventsCommentListGet(http: HttpClient, rootUrl: string, param
   );
 }
 
-apiEventsCommentListGet.PATH = '/api/EventsComment/List';
+apiEventsCommentCreatePost.PATH = '/api/EventsComment/Create';

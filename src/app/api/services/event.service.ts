@@ -9,8 +9,8 @@ import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { apiEventAddUserEventIdUserIdPost } from '../fn/event/api-event-add-user-event-id-user-id-post';
-import { ApiEventAddUserEventIdUserIdPost$Params } from '../fn/event/api-event-add-user-event-id-user-id-post';
+import { apiEventAddToEventEventIdUserIdPost } from '../fn/event/api-event-add-to-event-event-id-user-id-post';
+import { ApiEventAddToEventEventIdUserIdPost$Params } from '../fn/event/api-event-add-to-event-event-id-user-id-post';
 import { apiEventCreatePost } from '../fn/event/api-event-create-post';
 import { ApiEventCreatePost$Params } from '../fn/event/api-event-create-post';
 import { apiEventDeleteIdDelete } from '../fn/event/api-event-delete-id-delete';
@@ -29,8 +29,8 @@ import { apiEventListGet } from '../fn/event/api-event-list-get';
 import { ApiEventListGet$Params } from '../fn/event/api-event-list-get';
 import { apiEventListRecentGet } from '../fn/event/api-event-list-recent-get';
 import { ApiEventListRecentGet$Params } from '../fn/event/api-event-list-recent-get';
-import { apiEventRemoveEventIdUserIdDelete } from '../fn/event/api-event-remove-event-id-user-id-delete';
-import { ApiEventRemoveEventIdUserIdDelete$Params } from '../fn/event/api-event-remove-event-id-user-id-delete';
+import { apiEventRemoveFromEventEventIdUserIdDelete } from '../fn/event/api-event-remove-from-event-event-id-user-id-delete';
+import { ApiEventRemoveFromEventEventIdUserIdDelete$Params } from '../fn/event/api-event-remove-from-event-event-id-user-id-delete';
 
 @Injectable({ providedIn: 'root' })
 export class EventService extends BaseService {
@@ -263,52 +263,52 @@ export class EventService extends BaseService {
     );
   }
 
-  /** Path part for operation `apiEventAddUserEventIdUserIdPost()` */
-  static readonly ApiEventAddUserEventIdUserIdPostPath = '/api/Event/AddUser/{eventId}/{userId}';
+  /** Path part for operation `apiEventAddToEventEventIdUserIdPost()` */
+  static readonly ApiEventAddToEventEventIdUserIdPostPath = '/api/Event/addToEvent/{eventId}/{userId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiEventAddUserEventIdUserIdPost()` instead.
+   * To access only the response body, use `apiEventAddToEventEventIdUserIdPost()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventAddUserEventIdUserIdPost$Response(params: ApiEventAddUserEventIdUserIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-    return apiEventAddUserEventIdUserIdPost(this.http, this.rootUrl, params, context);
+  apiEventAddToEventEventIdUserIdPost$Response(params: ApiEventAddToEventEventIdUserIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventAddToEventEventIdUserIdPost(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiEventAddUserEventIdUserIdPost$Response()` instead.
+   * To access the full response (for headers, for example), `apiEventAddToEventEventIdUserIdPost$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventAddUserEventIdUserIdPost(params: ApiEventAddUserEventIdUserIdPost$Params, context?: HttpContext): Observable<void> {
-    return this.apiEventAddUserEventIdUserIdPost$Response(params, context).pipe(
+  apiEventAddToEventEventIdUserIdPost(params: ApiEventAddToEventEventIdUserIdPost$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventAddToEventEventIdUserIdPost$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }
 
-  /** Path part for operation `apiEventRemoveEventIdUserIdDelete()` */
-  static readonly ApiEventRemoveEventIdUserIdDeletePath = '/api/Event/Remove/{eventId}/{userId}';
+  /** Path part for operation `apiEventRemoveFromEventEventIdUserIdDelete()` */
+  static readonly ApiEventRemoveFromEventEventIdUserIdDeletePath = '/api/Event/RemoveFromEvent/{eventId}/{userId}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiEventRemoveEventIdUserIdDelete()` instead.
+   * To access only the response body, use `apiEventRemoveFromEventEventIdUserIdDelete()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventRemoveEventIdUserIdDelete$Response(params: ApiEventRemoveEventIdUserIdDelete$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-    return apiEventRemoveEventIdUserIdDelete(this.http, this.rootUrl, params, context);
+  apiEventRemoveFromEventEventIdUserIdDelete$Response(params: ApiEventRemoveFromEventEventIdUserIdDelete$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventRemoveFromEventEventIdUserIdDelete(this.http, this.rootUrl, params, context);
   }
 
   /**
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `apiEventRemoveEventIdUserIdDelete$Response()` instead.
+   * To access the full response (for headers, for example), `apiEventRemoveFromEventEventIdUserIdDelete$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  apiEventRemoveEventIdUserIdDelete(params: ApiEventRemoveEventIdUserIdDelete$Params, context?: HttpContext): Observable<void> {
-    return this.apiEventRemoveEventIdUserIdDelete$Response(params, context).pipe(
+  apiEventRemoveFromEventEventIdUserIdDelete(params: ApiEventRemoveFromEventEventIdUserIdDelete$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventRemoveFromEventEventIdUserIdDelete$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }

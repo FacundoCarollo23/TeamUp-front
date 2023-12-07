@@ -7,13 +7,13 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface ApiEventAddUserEventIdUserIdPost$Params {
+export interface ApiEventAddToEventEventIdUserIdPost$Params {
   eventId: number;
   userId: number;
 }
 
-export function apiEventAddUserEventIdUserIdPost(http: HttpClient, rootUrl: string, params: ApiEventAddUserEventIdUserIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, apiEventAddUserEventIdUserIdPost.PATH, 'post');
+export function apiEventAddToEventEventIdUserIdPost(http: HttpClient, rootUrl: string, params: ApiEventAddToEventEventIdUserIdPost$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, apiEventAddToEventEventIdUserIdPost.PATH, 'post');
   if (params) {
     rb.path('eventId', params.eventId, {"style":"simple"});
     rb.path('userId', params.userId, {"style":"simple"});
@@ -29,4 +29,4 @@ export function apiEventAddUserEventIdUserIdPost(http: HttpClient, rootUrl: stri
   );
 }
 
-apiEventAddUserEventIdUserIdPost.PATH = '/api/Event/AddUser/{eventId}/{userId}';
+apiEventAddToEventEventIdUserIdPost.PATH = '/api/Event/addToEvent/{eventId}/{userId}';

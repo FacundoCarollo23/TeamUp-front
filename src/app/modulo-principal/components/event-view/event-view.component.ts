@@ -55,7 +55,7 @@ export class EventViewComponent implements OnInit {
 
         //Llamada para recuperar los comentarios
         this.eventCommentService
-          .apiEventsCommentListGet$Response({ userId: this.idUserEvent })
+          .apiEventsCommentListGet$Response({ eventId: this.event.eventId })
           .subscribe((res: any) => {
             console.log(this.idUserEvent);
             console.log(res);
