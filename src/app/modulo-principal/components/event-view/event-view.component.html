@@ -28,7 +28,7 @@
                 <hr>
 
                 <!-- seccion comentarios -->
-                <mat-card *ngIf="comments && comments.length > 0;"
+                <mat-card *ngIf="comments && comments.length > 0; else noComments" 
                     style="background-color: #111111; padding: 30px 20px; margin: 30px 0px;">
                     <mat-card-content *ngFor="let comment of comments" style="padding-bottom: 8px;">
                         <div style="color: #FF990F" class="d-flex align-items-center mb-2" >
@@ -46,7 +46,7 @@
                 </mat-card>
 
 
-                <ng-template *ngIf="!comments && comments.length == 0">
+                <ng-template #noComments>
                     <mat-card style="background-color: #111111; padding: 0px 20px; margin: 50px 0px;">
                         <mat-card-content
                             style="color: #FF990F; font-weight: bold; padding-top: 20px; padding-bottom: 40px;">

@@ -29,13 +29,20 @@ export class EventViewComponent implements OnInit {
   temperature: any;
   iconTemperature: any;
 
+  // Variable para que si el usuario es el creador del evento NO MUESTRE "me sumo"
+  showMeSumo : boolean=false;
+  idUsuarioLogueado : any;
+
+
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
     private eventCommentService: EventsCommentService,
-    private climaService: ClimaService
+    private climaService: ClimaService,
+
   ) {
     this.idUrl = this.route.snapshot.params['id'];
+    this.obtenerComentariosEventos(this.idUrl)
   }
 
   ngOnInit(): void {
@@ -52,18 +59,7 @@ export class EventViewComponent implements OnInit {
         this.idUserEvent = this.event[0].userId;
         console.log(this.idUserEvent);
         this.getClima(this.event[0].city, 'AR');
-
-        //Llamada para recuperar los comentarios
-        this.eventCommentService
-          .apiEventsCommentListGet$Response({ eventId: this.event.eventId })
-          .subscribe((res: any) => {
-            console.log(this.idUserEvent);
-            console.log(res);
-            const responseBody = JSON.parse(res.body);
-            console.log(responseBody);
-            this.comments = responseBody.value;
-          });
-      });
+        });
 
     // Chequear si el usuario esta o no logueado para que le muestre o no determinados componentes
     let userLogueado = JSON.parse(
@@ -74,6 +70,15 @@ export class EventViewComponent implements OnInit {
     } else {
       this.logueado = false;
     }
+
+    // if (userLogueado.value.id == this.idUserEvent) {
+    //   this.showMeSumo = true;
+    //   console.log(userLogueado.value[2])
+    // }
+    // else {
+    //   this.showMeSumo = false;
+    //   console.log(userLogueado.value[2])
+    // }
   }
 
   //API Clima
@@ -85,5 +90,18 @@ export class EventViewComponent implements OnInit {
       this.iconTemperature = res.weather[0].icon;
       console.log(this.iconTemperature);
     });
+  }
+
+  obtenerComentariosEventos (commentId : number) {
+      //Llamada para recuperar los comentarios
+      this.eventCommentService
+        .apiEventsCommentListGet$Response({ eventId: commentId })
+        .subscribe((res: any) => {
+          console.log(this.idUserEvent);
+          console.log(res);
+          const responseBody = JSON.parse(res.body);
+          console.log(responseBody);
+          this.comments = responseBody.value;
+        });
   }
 }
