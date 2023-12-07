@@ -93,5 +93,6 @@ export class RegistroComponent implements OnInit {
           console.log(res);
         });
     }
+
   }
 }
