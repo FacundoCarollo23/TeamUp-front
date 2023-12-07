@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { EventUserDto } from 'src/app/api/models';
+import * as moment from 'moment';
+import { EventUserDto, EventsCommentDto } from 'src/app/api/models';
 import { EventService, EventsCommentService } from 'src/app/api/services';
 import { ClimaService } from 'src/app/services/clima.service';
 
@@ -10,6 +12,7 @@ import { ClimaService } from 'src/app/services/clima.service';
   styleUrls: ['./event-view.component.css'],
 })
 export class EventViewComponent implements OnInit {
+
   //Variable para almacenar el ID del Evento
   idUrl: number;
 
@@ -18,6 +21,10 @@ export class EventViewComponent implements OnInit {
 
   //Array para almacenar los comentarios
   comments: any = [];
+
+  // Variable para almacenar el nuevo comentrio antes de enviarlo a la base de datos
+  newComment!:FormGroup;
+  
 
   //Variable para almacenar el id del usuario del evento
   idUserEvent: any = 0;
@@ -39,10 +46,30 @@ export class EventViewComponent implements OnInit {
     private route: ActivatedRoute,
     private eventCommentService: EventsCommentService,
     private climaService: ClimaService,
+    private fb : FormBuilder,
+    
 
   ) {
     this.idUrl = this.route.snapshot.params['id'];
-    this.obtenerComentariosEventos(this.idUrl)
+    this.obtenerComentariosEventos(this.idUrl);
+    this.newComment=this.fb.group({
+      newComment : new FormControl(''),
+    })
+
+    // Chequear si el usuario esta o no logueado para que le muestre o no determinados componentes
+    let userLogueado = JSON.parse(
+      localStorage.getItem('usuarioLogueado') as any
+    );
+    if (userLogueado && userLogueado.value) {
+      this.logueado = true;
+      this.idUsuarioLogueado = userLogueado.value.userId; 
+    } else {
+      this.logueado = false;
+    }
+
+
+
+
   }
 
   ngOnInit(): void {
@@ -52,25 +79,30 @@ export class EventViewComponent implements OnInit {
         console.log(res);
         // Parsea el cuerpo de la respuesta JSON
         const responseBody = JSON.parse(res.body);
+        
 
         // Asigna el objeto parseado a la propiedad event
         this.event = responseBody.value;
         console.log(this.event);
-        this.idUserEvent = this.event[0].userId;
+
+        // Verifica si this.event tiene la estructura esperada y contiene al menos un elemento
+        if (this.event && this.event.length > 0) {
+          console.log('this.event[0].userId:', this.event[0].userId);} // Agrega esta línea para imprimir en la consola
+        
+          this.idUserEvent = this.event[0].userId;
         console.log(this.idUserEvent);
         this.getClima(this.event[0].city, 'AR');
         });
 
-    // Chequear si el usuario esta o no logueado para que le muestre o no determinados componentes
-    let userLogueado = JSON.parse(
-      localStorage.getItem('usuarioLogueado') as any
-    );
-    if (userLogueado && userLogueado.value) {
-      this.logueado = true;
-    } else {
-      this.logueado = false;
-    }
 
+  
+
+
+
+
+
+
+    
     // if (userLogueado.value.id == this.idUserEvent) {
     //   this.showMeSumo = true;
     //   console.log(userLogueado.value[2])
@@ -81,6 +113,10 @@ export class EventViewComponent implements OnInit {
     // }
   }
 
+
+  
+  
+  
   //API Clima
   getClima(data: any, code: string): void {
     this.climaService.getWeather(data, code).subscribe((res: any) => {
@@ -103,5 +139,41 @@ export class EventViewComponent implements OnInit {
           console.log(responseBody);
           this.comments = responseBody.value;
         });
-  }
+      }
+
+
+enviarComentario() {
+  let userLogueado = JSON.parse(
+    localStorage.getItem('usuarioLogueado') as any
+  );
+  let userIdName = userLogueado.value
+  let fechaComentario : any = new Date()
+  let comentarioNuevo : EventsCommentDto = {
+    eventId: this.idUrl,
+    eventName: this.event[0].eventName,
+    userId: this.idUsuarioLogueado,
+    userIdName: userIdName.userName, 
+    comment: this.newComment.controls['newComment'].value,
+    dateTime: moment(fechaComentario).format('DD/MM/YYYY HH:MM'),
+  };
+  console.log(comentarioNuevo)
+
+  this.eventCommentService
+    .apiEventsCommentCreatePost$Response({ body: comentarioNuevo})
+    .subscribe((res: any) => {
+      console.log(res);
+  let json = JSON.parse(res.body) as any
+ 
+      console.log(json)
+      this.comments.push(json.value)
+      this.limpiar()
+    });
 }
+
+limpiar(){
+  this.newComment.reset()
+}
+
+
+}
+
