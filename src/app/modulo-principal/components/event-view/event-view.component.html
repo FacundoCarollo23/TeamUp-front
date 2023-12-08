@@ -73,11 +73,12 @@
                 <!-- ---------------------------------------- BOTONES --------------------------------------- -->
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> MIS EVENTOS
+                    <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> IR A MIS EVENTOS 
                     </button>
                     <button class="btn-cta" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button>
                     <!-- <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp']"> VOLVER ATRÁS </button> -->
-                    <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado" style="margin-left: 20px;"> ME SUMO </button>
+                    <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && !idMeBajoEvent" style="margin-left: 20px;" (click)="MeSumoEvento()"> ME SUMO </button>
+                   <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && idMeBajoEvent" style="margin-left: 20px;" (click)="MebajoEvent()"> ME BAJO </button>
                 </div>
             </div>
         </div>

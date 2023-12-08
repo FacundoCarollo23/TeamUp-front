@@ -16,11 +16,19 @@
         </div>
     </div>
 
+    
 
     <div class="row" style="margin-left: 50px; margin-top: 50px;">
-
+        
         <!-- filtros -->
         <div class="col-4 d-flex flex-column">
+            <form style="width: 100%; margin-bottom: 20px;" [formGroup]="formSearch" >
+                <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
+                    <mat-label style="color: #FF990F;">Buscar Evento</mat-label>
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input matInput placeholder="Maraton en Palermo" class="search" formControlName="search" style="width: 100%; color: #FF990F;" [value]="formSearch.controls['search'].value" >
+                  </mat-form-field>
+            </form>
             <div>
                 <app-title [title]="'Filtros'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'" [fontWeightTitle]="'400'"></app-title>
                 <hr>
@@ -87,8 +95,11 @@
 
             <div class="col-4 col-xl-3 m-3" *ngFor="let event of eventsListFiltered  | paginate: { itemsPerPage: 6, currentPage: page }">
                 <app-card-events [event]="event"></app-card-events>
+              
             </div>
-
+                
+                    <p  style="color: #FF990F; font-size: 16px; font-weight: bold;" *ngIf="eventsListFiltered.length === 0">El evento no ha sido encontrado</p>
+                
             <div class="col-12 d-flex justify-content-center">
                 <pagination-controls (pageChange)="page = $event" [autoHide]=true [responsive]=true previousLabel="" nextLabel="" ></pagination-controls>
             </div>

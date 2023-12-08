@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { EventService } from 'src/app/api/services';
 
 @Component({
@@ -7,7 +8,7 @@ import { EventService } from 'src/app/api/services';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-
+  formSearch!: FormGroup
   //Esto hay que ver si hacemos al Event un model o tiene que venir como DTO desde swagger?
   eventsList : any[] = [];
 
@@ -15,23 +16,39 @@ export class EventsComponent implements OnInit {
   eventsListFiltered : any [] = [];
   category = ''
 
+
   //Paginado
   public page!: number;
 
 
-  constructor(private eventService: EventService){
+  constructor(private eventService: EventService, private fb : FormBuilder){
+    this.formSearch = this.fb.group({
+      search: new FormControl('')
+    })
+
+    this.formSearch.controls['search'].valueChanges.subscribe((res: any) => {
+      if (res === '' && this.eventsListFiltered.length === 0) {
+        // Si el valor está vacío y eventsListFiltered también está vacío,
+        // realizar una nueva solicitud getAll llamando a obtenerEventos()
+        this.obtenerEventos();
+      } else {
+        // Si el valor no está vacío o eventsListFiltered tiene datos, realizar la búsqueda según la palabra clave
+        this.eventService.apiEventGetByWordWordGet$Response({ word: res }).subscribe((res: any) => {
+          let req = JSON.parse(res.body) as any;
+          console.log(req);
+          this.eventsListFiltered = req.value;
+          console.log(this.eventsListFiltered)
+        }, (error:any)=>{
+          if(error){
+            this.obtenerEventos()
+          }
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.eventService.apiEventListGet().subscribe(
-      (res: any)=>{
-        let json = JSON.parse(res)
-        this.eventsList = json.value
-        this.eventsListFiltered = json.value
-        console.log(this.eventsList);
-        
-      }
-    )
+   this.obtenerEventos()
   }
 
   // Variables para ocultar o mostrar las diferentes categorias
@@ -116,4 +133,26 @@ export class EventsComponent implements OnInit {
         }
       })
     }
+
+    obtenerEventos(){
+      this.eventService.apiEventListGet().subscribe(
+        (res: any)=>{
+          let json = JSON.parse(res)
+          this.eventsList = json.value
+          this.eventsListFiltered = json.value
+          console.log(this.eventsList);
+          
+        }
+      )
+    }
+
+    
+        
+       
+    
+
+
+
+
+
 }
