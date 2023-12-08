@@ -14,7 +14,7 @@
     <button class="btn" style="background-color: #ff990f; font-weight: bold; font-family: 'Open Sans', sans-serif; font-size: 14px; height: 3em; width: 10em; ; padding: 6px 12px;color: #111111;" [routerLink]="['/login']" *ngIf="logueado == false"> INICIAR SESION </button>
     <div style="margin-left: auto;">
       <a *ngIf="logueado == true"
-        style="color: #FF990F; font-weight: 350; text-decoration: none; font-family: 'Open Sans', sans-serif; "
+        style="color: #FF990F; font-weight: 350; text-decoration: none; font-family: 'Open Sans', sans-serif; cursor:pointer"
         [matMenuTriggerFor]="afterMenu" aria-label="Example icon-button with a menu" (menuOpened)="onMenuOpened()"
         (menuClosed)="onMenuClosed()">{{"Hola" + usuario}} <mat-icon style="padding-top: 7px; cursor: pointer;">{{ menuOpen ?
           'expand_less'
