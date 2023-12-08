@@ -32,8 +32,8 @@
                     style="background-color: #111111; padding: 30px 20px; margin: 30px 0px;">
                     <mat-card-content *ngFor="let comment of comments" style="padding-bottom: 8px; position: relative;">
                         <div style="color: #FF990F" class="d-flex align-items-center mb-2" >
-                            <p style="color: #FF990F; font-weight: bold; margin-bottom: 0;">{{comment.userAlias}}</p>
                             <mat-icon style="margin-right: 10px;">account_circle</mat-icon>
+                            <p style="color: #FF990F; font-weight: bold; margin-bottom: 0;">{{comment.userAlias}}</p>
                             <div style="margin-left: auto;">
                                 <p style="color: #FF990F; font-weight: lighter; font-size: 10px; margin-bottom: 0;">{{comment.dateTime}}</p>
                             </div>                        </div>
@@ -60,7 +60,7 @@
                             <p *ngIf="logueado == true">No hay comentarios todavía... ¡Hacé el primero!</p>
                         </mat-card-content>
                             <form [formGroup]="newComment">
-                                <mat-form-field *ngIf="logueado == true">
+                                <mat-form-field *ngIf="logueado == true" style="padding-left: 18px ;width: 97%;">
                                     <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
                                     <input matInput formControlName="newComment">
                                     <mat-icon matSuffix style="cursor: pointer;" (click)="enviarComentario()">send</mat-icon>
