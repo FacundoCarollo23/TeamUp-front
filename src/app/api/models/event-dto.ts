@@ -2,16 +2,17 @@
 /* eslint-disable */
 export interface EventDto {
   activityId?: number;
-  activityName?: string | null;
-  city?: string | null;
-  countryId?: number | null;
-  countryName?: string | null;
-  dateTime?: string | null;
+  activityName?: null | string;
+  alias?: null | string;
+  city?: null | string;
+  countryId?: null | number;
+  countryName?: null | string;
+  dateTime?: null | string;
   difficultyLevelId?: number;
-  difficultyName?: string | null;
-  eventDescription?: string | null;
+  difficultyName?: null | string;
+  eventDescription?: null | string;
   eventId?: number;
-  eventName?: string | null;
-  userCount?: number | null;
+  eventName?: null | string;
+  userCount?: null | number;
   userId?: number;
 }

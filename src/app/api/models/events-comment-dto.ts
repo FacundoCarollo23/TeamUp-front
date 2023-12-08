@@ -1,11 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface EventsCommentDto {
-  comment?: string | null;
-  dateTime?: string | null;
+  comment?: null | string;
+  dateTime?: null | string;
   eventCommentId?: number;
   eventId?: number;
-  eventName?: string | null;
+  eventName?: null | string;
+  userAlias?: null | string;
   userId?: number;
-  userIdName?: string | null;
+  userIdName?: null | string;
 }

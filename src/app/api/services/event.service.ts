@@ -19,6 +19,8 @@ import { apiEventEditPut } from '../fn/event/api-event-edit-put';
 import { ApiEventEditPut$Params } from '../fn/event/api-event-edit-put';
 import { apiEventGetByIdIdGet } from '../fn/event/api-event-get-by-id-id-get';
 import { ApiEventGetByIdIdGet$Params } from '../fn/event/api-event-get-by-id-id-get';
+import { apiEventGetByWordWordGet } from '../fn/event/api-event-get-by-word-word-get';
+import { ApiEventGetByWordWordGet$Params } from '../fn/event/api-event-get-by-word-word-get';
 import { apiEventListAcceptedByUserUserIdGet } from '../fn/event/api-event-list-accepted-by-user-user-id-get';
 import { ApiEventListAcceptedByUserUserIdGet$Params } from '../fn/event/api-event-list-accepted-by-user-user-id-get';
 import { apiEventListCreatedByUserUserIdGet } from '../fn/event/api-event-list-created-by-user-user-id-get';
@@ -159,6 +161,31 @@ export class EventService extends BaseService {
    */
   apiEventListAcceptedByUserUserIdGet(params: ApiEventListAcceptedByUserUserIdGet$Params, context?: HttpContext): Observable<void> {
     return this.apiEventListAcceptedByUserUserIdGet$Response(params, context).pipe(
+      map((r: StrictHttpResponse<void>): void => r.body)
+    );
+  }
+
+  /** Path part for operation `apiEventGetByWordWordGet()` */
+  static readonly ApiEventGetByWordWordGetPath = '/api/Event/GetByWord/{word}';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiEventGetByWordWordGet()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventGetByWordWordGet$Response(params: ApiEventGetByWordWordGet$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+    return apiEventGetByWordWordGet(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `apiEventGetByWordWordGet$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiEventGetByWordWordGet(params: ApiEventGetByWordWordGet$Params, context?: HttpContext): Observable<void> {
+    return this.apiEventGetByWordWordGet$Response(params, context).pipe(
       map((r: StrictHttpResponse<void>): void => r.body)
     );
   }

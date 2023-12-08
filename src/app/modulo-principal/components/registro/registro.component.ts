@@ -74,23 +74,22 @@ export class RegistroComponent implements OnInit {
   OnSubmit() {
     let fechaNacimiento = moment(
       this.formRegistro.controls['fechaNacimiento'].value
-    ).format('YYYY-MM-DD');
+    ).format('DD/MM/YYYY');
     let nuevoUsuario: UserDto = {
+      userId: 0,
       userName: this.formRegistro.controls['nombre'].value,
       userLastname: this.formRegistro.controls['apellido'].value,
       dateOfBirthText: fechaNacimiento,
       email: this.formRegistro.controls['email'].value,
       password: this.formRegistro.controls['password'].value,
-      // alias: this.formRegistro.controls['alias'].value,
+      alias: this.formRegistro.controls['alias'].value,
     };
-
     console.log(nuevoUsuario);
-
     if (this.formRegistro.valid) {
       this.userService
         .apiUserCreatePost$Response({ body: nuevoUsuario })
         .subscribe((res: any) => {
-          console.log(res);
+          console.log(res.body);
         });
     }
 

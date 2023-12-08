@@ -2,12 +2,13 @@
 /* eslint-disable */
 export interface EventUserDto {
   activityId?: number;
-  city?: string | null;
-  countryId?: number | null;
-  dateTime?: string | null;
+  city?: null | string;
+  countryId?: null | number;
+  dateTime?: null | string;
   difficultyLevelId?: number;
-  eventDescription?: string | null;
+  eventDescription?: null | string;
   eventId?: number;
-  eventName?: string | null;
+  eventName?: null | string;
+  userCount?: null | number;
   userId?: number;
 }

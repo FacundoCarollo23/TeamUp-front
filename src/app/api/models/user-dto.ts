@@ -1,11 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface UserDto {
-  alias?: string | null;
-  dateOfBirthText?: string | null;
-  email?: string | null;
-  password?: string | null;
-  trainingLevel?: number;
+  alias?: null | string;
+  dateOfBirthText?: null | string;
+  email?: null | string;
+  password?: null | string;
   userId?: number;
   userLastname: string;
   userName: string;
