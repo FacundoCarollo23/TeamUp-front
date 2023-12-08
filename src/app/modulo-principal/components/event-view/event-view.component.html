@@ -32,11 +32,12 @@
                     style="background-color: #111111; padding: 30px 20px; margin: 30px 0px;">
                     <mat-card-content *ngFor="let comment of comments" style="padding-bottom: 8px; position: relative;">
                         <div style="color: #FF990F" class="d-flex align-items-center mb-2" >
-                            <p style="color: #FF990F; font-weight: bold; margin-bottom: 0;">{{comment.userAlias}}</p>
                             <mat-icon style="margin-right: 10px;">account_circle</mat-icon>
+                            <p style="color: #FF990F; font-weight: bold; margin-bottom: 0;">{{comment.userAlias}}</p>
                             <div style="margin-left: auto;">
                                 <p style="color: #FF990F; font-weight: lighter; font-size: 10px; margin-bottom: 0;">{{comment.dateTime}}</p>
-                            </div>                        </div>
+                            </div>                        
+                        </div>
                         <p style="color:#FF990F">{{comment.comment}}</p>
                         <hr style="color:#FF990F" *ngIf="comments.length > 1">
                     </mat-card-content>
