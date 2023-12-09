@@ -135,13 +135,19 @@ export class DashboardEventsComponent implements OnInit {
 
   isUserCreatedEvent(event: any): boolean {
     return this.userEventsList.some(userEvent => userEvent.eventId === event.eventId);
+
   }
-  leaveEvent(eventId: number) {
-    // Implementar la lógica para que el usuario "se baje" del evento
-    // Puedes llamar al servicio correspondiente o realizar la lógica necesaria.
+
+  MebajoEvent(eventId : any){
+    this.eventService.apiEventRemoveFromEventEventIdUserIdDelete$Response({eventId: eventId,  userId: this.userLogueado}).subscribe((res:any)=>{
+    console.log(res)
+    this.userJoinedEventsList = this.userJoinedEventsList.filter((evento: any) => evento.eventId !== eventId)
+    })
   }
+
 }
 
 function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
+
