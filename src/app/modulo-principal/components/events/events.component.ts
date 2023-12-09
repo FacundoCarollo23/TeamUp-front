@@ -32,7 +32,7 @@ export class EventsComponent implements OnInit {
         // realizar una nueva solicitud getAll llamando a obtenerEventos()
         this.obtenerEventos();
       } else {
-        // Si el valor no está vacío o eventsListFiltered tiene datos, realizar la búsqueda según la palabra clave
+        // Si el valor no está vacío o eventsListFiltered tiene datos, realizar la búsqueda según la palabra clave --
         this.eventService.apiEventGetByWordWordGet$Response({ word: res }).subscribe((res: any) => {
           let req = JSON.parse(res.body) as any;
           console.log(req);

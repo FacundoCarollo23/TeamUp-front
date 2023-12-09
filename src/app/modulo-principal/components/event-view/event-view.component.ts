@@ -159,7 +159,7 @@ export class EventViewComponent implements OnInit {
 
     this.eventCommentService
       .apiEventsCommentCreatePost$Response({ body: comentarioNuevo})
-      .subscribe((res: any) => {                                                                //IMPRIMIR EN CONSOLA
+      .subscribe((res: any) => {                                                                //IMPRIMIR EN CONSOLA--
         let json = JSON.parse(res.body) as any                                                                         //IMPRIMIR EN CONSOLA
         this.comments.push(json.value)
         this.limpiar()
