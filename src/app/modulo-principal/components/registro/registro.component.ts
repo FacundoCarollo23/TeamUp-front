@@ -95,7 +95,7 @@ export class RegistroComponent implements OnInit {
         .subscribe((res: any) => {
           console.log(res.body);
           this.router.navigate(["/login"])
-          this.snackbar.mensaje("Su usuario se ha generado correctamente", 3000)
+          this.snackbar.mensaje("Tu usuario se ha generado correctamente 🙌", 3000)
         });
     }
 

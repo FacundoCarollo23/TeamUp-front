@@ -12,10 +12,10 @@ export class SnackBarService {
 
   openSnackBar(message: string, action: string, verticalPosition?: string, horizontalPosition?:string, duration?: number) {
 
-   const snackBar = this.snackBar.openFromComponent(SnackbarComponent, {
+   let snackBar = this.snackBar.openFromComponent(SnackbarComponent, {
       duration: duration,
       verticalPosition: verticalPosition ='bottom',
-      horizontalPosition: horizontalPosition = 'end',
+      horizontalPosition: horizontalPosition = 'center',
       panelClass: 'custom-snackbar', 
       data: { message: message , action: action}, 
       
@@ -78,7 +78,7 @@ export class SnackBarService {
 
   }
   mensaje(msj:any,duration:any) {
-    const snackBar = this.openSnackBar(msj, "Cerrar" ,'', '', duration);
+    let snackBar = this.openSnackBar(msj, "Cerrar" ,'', '', duration);
     snackBar.onAction().subscribe(() => {
       snackBar.dismiss(); 
     });

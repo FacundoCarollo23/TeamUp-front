@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from 'src/app/api/services';
 import { MatDialog } from '@angular/material/dialog';
 import {Sort, MatSortModule} from '@angular/material/sort';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard-events',
@@ -25,8 +28,8 @@ export class DashboardEventsComponent implements OnInit {
     this.userEventsList = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'fecha':
-          return compare(a.fecha, b.fecha, isAsc);
+        case 'dateTime':
+          return compare(moment(a.dateTime).format("DD/MM/YYYY hh:mm"), moment(b.dateTime).format("DD/MM/YYYY hh:mm"), isAsc);
         default:
           return 0;
       }
@@ -44,15 +47,15 @@ export class DashboardEventsComponent implements OnInit {
     this.userJoinedEventsList = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'fecha':
-          return compare(a.fecha, b.fecha, isAsc);
+        case 'dateTime':
+          return compare(moment(a.dateTime).format("DD/MM/YYYY hh:mm"), moment(b.dateTime).format("DD/MM/YYYY hh:mm"), isAsc);
         default:
           return 0;
       }
     });
   }
 
-  constructor(private eventService: EventService, private dialog: MatDialog) {
+  constructor(private eventService: EventService, private dialog: MatDialog, private snackbar: SnackBarService) {
     this.userEventsList = this.userEventsList.slice();
     this.userJoinedEventsList = this.userEventsList.slice();
   }
@@ -103,6 +106,7 @@ export class DashboardEventsComponent implements OnInit {
     this.eventToDelete = this.userEventsList.find(
       (event) => event.eventId === id
     );
+    this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
     console.log(this.eventToDelete);
   }
 
@@ -142,6 +146,7 @@ export class DashboardEventsComponent implements OnInit {
     this.eventService.apiEventRemoveFromEventEventIdUserIdDelete$Response({eventId: eventId,  userId: this.userLogueado}).subscribe((res:any)=>{
     console.log(res)
     this.userJoinedEventsList = this.userJoinedEventsList.filter((evento: any) => evento.eventId !== eventId)
+    this.snackbar.mensaje("Te diste de baja del evento 😭", 3000)
     })
   }
 

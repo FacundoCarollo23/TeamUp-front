@@ -20,6 +20,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 @Component({
   selector: 'app-new-event',
@@ -78,7 +79,7 @@ export class NewEventComponent implements OnInit, OnChanges {
   date: any = 'DD/MM/YYYY';
   hour: any = 'hh:mm';
 
-  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router, private citiesService: CitiesService) {
+  constructor(private fb: FormBuilder, private eventService: EventService, private router: Router, private citiesService: CitiesService, public snackbar: SnackBarService) {
     // Form
     this.formularioEvento = this.fb.group({
       nombreEvento: ['', [Validators.required, Validators.maxLength(50)]], // OK CHEQUEADO
@@ -173,6 +174,7 @@ export class NewEventComponent implements OnInit, OnChanges {
           // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
           console.log('Evento guardado exitosamente', respuesta);
           this.router.navigate(['TeamUp/dashboardEvents']);
+          this.snackbar.mensaje("Tu evento se ha generado correctamente 🙌", 3000)
         },
         (error: any) => {
           console.error('Error al guardar el evento', error);

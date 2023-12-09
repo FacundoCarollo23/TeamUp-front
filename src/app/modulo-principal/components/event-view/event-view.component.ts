@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs';
 import { EventUserDto, EventsCommentDto } from 'src/app/api/models';
 import { EventService, EventsCommentService } from 'src/app/api/services';
 import { ClimaService } from 'src/app/services/clima.service';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
  
 @Component({
   selector: 'app-event-view',
@@ -51,6 +52,7 @@ export class EventViewComponent implements OnInit {
     private eventCommentService: EventsCommentService,
     private climaService: ClimaService,
     private fb : FormBuilder,
+    public snackbar: SnackBarService
     ) {
         this.idUrl = this.route.snapshot.params['id'];
         this.obtenerComentariosEventos(this.idUrl);
@@ -176,6 +178,7 @@ export class EventViewComponent implements OnInit {
       res.body
       this.event[0].userCount++
       this.idMeBajoEvent = this.idUrl;
+      this.snackbar.mensaje("Te sumaste al evento correctamente 💪", 3000)
   
     })
 
@@ -200,6 +203,7 @@ export class EventViewComponent implements OnInit {
       console.log(res)
      this.event[0].userCount--
      this.idMeBajoEvent = undefined;
+     this.snackbar.mensaje("Te diste de baja del evento 😭", 3000)
     })
   }
 
