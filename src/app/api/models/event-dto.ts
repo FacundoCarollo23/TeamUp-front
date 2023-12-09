@@ -7,6 +7,7 @@ export interface EventDto {
   city?: null | string;
   countryId?: null | number;
   countryName?: null | string;
+  createTime?: null | string;
   dateTime?: null | string;
   difficultyLevelId?: number;
   difficultyName?: null | string;
