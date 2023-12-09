@@ -14,7 +14,7 @@
               <div class="form-group">
                 <!-- ----------------------------------------- Nombre del Evento OK CHEQUEADO------------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
-                  <label for="nombreEvento" class="text">Nombre Del Evento</label>
+                  <label for="nombreEvento" class="text">Nombre del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <input type="string" id="nombreEvento" name="nombreEvento" formControlName="nombreEvento"
                       placeholder="Ingresa el nombre del Evento" required class="rounded-input"
@@ -30,11 +30,10 @@
 
                 <!-- -----------------------------------------Descripción del Evento OK REVISADO ----------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
-                  <label for="descripcionEvento" class="text">Descripción Del Evento</label>
+                  <label for="descripcionEvento" class="text">Descripción del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <textarea id="descripcionEvento" name="descripcionEvento"
-                      formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required
-                      class="rounded-input" style="resize: vertical; width: 100%;">
+                      formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required class="rounded-input" style="resize: vertical; width: 100%; font-size: 16px;">
                     </textarea>
                   </div>
                   <div class="error-message"
@@ -45,12 +44,12 @@
                     La descripción del Evento debe tener como máximo 1000 caracteres</div>
                 </div>
 
-                <!-- ----------------------------------------- País del Evento OK REVISADO PAIS EVENTO----------------------------------------- -->
+                <!-- ----------País del Evento ----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
-                  <label for="paisEvento" class="text">País Del Evento</label>
+                  <label for="paisEvento" class="text">País del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%;">
-                      <mat-label>País del Evento</mat-label>
+                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el País del Evento</mat-label>
                       <mat-select formControlName="paisEvento">
                         <mat-option [value]="country.code" *ngFor="let country of countryCodes">{{ country.name
                           }}</mat-option>
@@ -62,13 +61,12 @@
                     El campo País es obligatorio</div>
                 </div>
 
-                <!-- -----------------------------------------Ciudad del Evento----------------------------------------- -->
+                <!-- ----------- Ciudad del Evento----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
-                  <label for="ciudadEvento" class="text">Ciudad Del Evento</label>
+                  <label for="ciudadEvento" class="text">Ciudad del Evento</label>
                   <div style="display: flex; align-items: center;">
-                    <!-- <input type="string" id="ciudadEvento" name="ciudadEvento" formControlName="ciudadEvento" placeholder="Ingresa la ciudad del Evento" required class="rounded-input" style="height: 45px;"> -->
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label>Ciudad del Evento</mat-label>
+                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná la Ciudad del Evento</mat-label>
                       <mat-select formControlName="ciudadEvento">
                         <mat-option [value]="city.name" *ngFor="let city of cities">{{ city.name }}</mat-option>
                       </mat-select>
@@ -79,12 +77,12 @@
                     El campo Ciudad es obligatorio</div>
                 </div>
 
-                <!-- -----------------------------------------Nivel de Dificultad del Evento YA ESTA OK REVISADO----------------------------------------- -->
+                <!-- -----Nivel de Dificultad del Evento ----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
-                  <label for="dificultadEvento" class="text">Dificultad Del Evento</label>
+                  <label for="dificultadEvento" class="text">Dificultad del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label>Nivel de Dificultad del Evento</mat-label>
+                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el Nivel de Dificultad del Evento</mat-label>
                       <mat-select formControlName="dificultadEvento">
                         <mat-option value=1>Principiante</mat-option>
                         <mat-option value=2>Intermedio</mat-option>
@@ -98,12 +96,12 @@
                     El campo Nivel de Dificultad es obligatorio</div>
                 </div>
 
-                <!-- -----------------------------------------Fecha y Hora del Evento----------------------------------------- -->
+                <!-- -------Fecha y Hora del Evento----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
                   <label class="text">Fecha y hora del evento</label>
                   <div>
-                    <ejs-datetimepicker placeholder="Seleccione Fecha y Hora del Evento" format="yyy-MM-dd HH:mm"
-                      formControlName="fechaHoraEvento"></ejs-datetimepicker>
+                    <ejs-datetimepicker placeholder="Seleccioná Fecha y Hora del Evento" format="yyy-MM-dd HH:mm"
+                      formControlName="fechaHoraEvento" ></ejs-datetimepicker>
                     <div class="error-message"
                       *ngIf="this.formularioEvento.get('fechaHoraEvento')?.value == '' && formularioEvento.get('fechaHoraEvento')?.touched">
                       El campo fecha / hora es obligatorio</div>
@@ -113,12 +111,12 @@
                   </div>
                 </div>
 
-                <!-- -----------------------------------------Tipo de Actividad del Evento YA ESTA OK REVISADO----------------------------------------- -->
+                <!-- ------------Tipo de Actividad del Evento ----------------------------------------- -->
                 <div class="mb-3" [@fadeInOut]>
-                  <label for="actividadEvento" class="text">Tipo actividad Del Evento</label>
+                  <label for="actividadEvento" class="text">Tipo actividad del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label>Actividad del Evento</mat-label>
+                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;" >Seleccioná la Actividad del Evento</mat-label>
                       <mat-select formControlName="actividadEvento">
                         <mat-option value="1">Futbol</mat-option>
                         <mat-option value="2">Running</mat-option>

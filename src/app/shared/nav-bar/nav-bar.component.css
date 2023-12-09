@@ -21,8 +21,6 @@
     padding: 20px;
 }
 
-
-
 .custom-button {
     background-color: #FF990F; 
     font-weight: bold;
@@ -54,14 +52,14 @@
     background-color: #111111;
 }
 
-
-
-
-  ::ng-deep .mat-mdc-menu-panel   {
+::ng-deep .mat-mdc-menu-panel   {
     width: 100%;
     margin-top: 15px;
     box-shadow: none !important;
     border-radius: none !important;
     background-color: #111111 !important;
-   
-  }
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 16px;
+}
