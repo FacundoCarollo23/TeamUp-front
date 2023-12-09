@@ -24,6 +24,7 @@
                     {{event[0].eventName}}</h2>
                 <p class="card-text" style="color: #FF990F;">Nivel: {{ event[0].difficultyName }}</p>
                 <p class="card-text">Asistentes: {{ event[0].userCount }} </p>
+                <p class="card-text">Organizador: {{ event[0].alias }} </p>
                 <p class="card-text" style="padding: 20px 0px;">{{ event[0].eventDescription }}</p>
                 <hr>
 
@@ -62,7 +63,7 @@
                         </mat-card-content>
                             <form [formGroup]="newComment">
                                 <mat-form-field *ngIf="logueado == true" style="padding-left: 18px ;width: 97%;">
-                                    <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
+                                    <mat-label style="font-size: 16px;">Añadí tu comentario</mat-label>
                                     <input matInput formControlName="newComment">
                                     <mat-icon matSuffix style="cursor: pointer;" (click)="enviarComentario()">send</mat-icon>
                                 </mat-form-field>

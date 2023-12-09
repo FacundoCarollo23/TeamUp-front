@@ -15,10 +15,6 @@ body, h1, h2, h3, h4, h5, h6, p, input, button {
     margin-top: 10px;
 }
 
-::ng-deep  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix{
-    padding-top: 8px !important;
-}
-
 h2{
     margin-bottom: 0px !important;
 }
@@ -27,12 +23,11 @@ h2{
     background-color: #bfbfbf !important;
 }
 
-
 /* Colores para los íconos */
 .calendar-icon, .rate_review {
-    color: #e78906; /* Naranja para el ícono de calendario */
+    color: #FF990F; /* Naranja para el ícono de calendario */
 }
 
 .location-icon {
-    color: #C92929; /* Rojo para el ícono de ubicación */
+    color: #FF990F; /* Rojo para el ícono de ubicación */
 }

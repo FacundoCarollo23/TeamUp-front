@@ -6,17 +6,17 @@
         <app-title [title]="'Eventos creados por mí'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'"
             [fontWeightTitle]="'400'"></app-title>
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover" matSort (matSortChange)="sortData($event)">
                 <thead>
                     <tr>
                         <th scope="col">Evento</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col" mat-sort-header="fecha">Fecha</th>
                         <th scope="col">Ubicación</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let event of userEventsList | paginate: { itemsPerPage: 5, currentPage: page }">
+                    <tr *ngFor="let event of userEventsList ; track event | paginate: { itemsPerPage: 5, currentPage: page }">
                         <th scope="row">{{ event.eventName }}</th>
                         <td>{{ event.dateTime }}</td>
                         <td>{{ event.city + " - " + event.countryName }}</td>
@@ -35,6 +35,9 @@
                     </tr>
                 </tbody>
             </table>
+
+
+            
             <div class="col-12 d-flex justify-content-center">
                 <pagination-controls (pageChange)="page = $event" [autoHide]=true [responsive]=true previousLabel=""
                     nextLabel=""></pagination-controls>
@@ -66,23 +69,22 @@
         </div>
     </div>
 
-    <!--  ------------------------------------------- Sección "Mis Proximos eventos"  ------------------------------------------- -->
+    <!--  -------- Sección "Mis Proximos eventos"  ------------------------------------------- -->
     <div class="row" style="margin-top: 5%; background-color: #D9D9D9; padding: 4em; border-radius: 10px;">
         <app-title [title]="'Mis próximos eventos'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'"
             [fontWeightTitle]="'400'"></app-title>
         <div class="table-responsive">
-            <table class="table table-hover" style="vertical-align: middle;">
+            <table class="table table-hover" style="vertical-align: middle;" matSort (matSortChange)="sortDataNextEvents($event)">
                 <thead>
                     <tr>
                         <th scope="col">Evento</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col" mat-sort-header="fecha">Fecha</th>
                         <th scope="col">Ubicación</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
-                        *ngFor="let event of userJoinedEventsList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: userEventsList.length}">
+                    <tr *ngFor="let event of userJoinedEventsList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: userEventsList.length}">
                         <th scope="row">{{ event.eventName }}</th>
                         <td>{{ event.dateTime }}</td>
                         <td>{{ event.city + " - " + event.countryName }}</td>
