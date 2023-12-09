@@ -5,12 +5,14 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { esLocale } from 'ngx-bootstrap/locale';
 import { UserDto } from 'src/app/api/models';
 import { UserService } from 'src/app/api/services';
+import { SnackBarService } from 'src/app/services/snack-bar.service';
 
 const fechaNacimientoValidator = (
   control: FormControl
@@ -39,7 +41,9 @@ export class RegistroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _localeService: BsLocaleService,
-    private userService: UserService
+    private userService: UserService,
+    private snackbar: SnackBarService,
+    private router: Router
   ) {
     this.formRegistro = this.fb.group({
       nombre: new FormControl(''),
@@ -90,6 +94,8 @@ export class RegistroComponent implements OnInit {
         .apiUserCreatePost$Response({ body: nuevoUsuario })
         .subscribe((res: any) => {
           console.log(res.body);
+          this.router.navigate(["/login"])
+          this.snackbar.mensaje("Su usuario se ha generado correctamente", 3000)
         });
     }
 

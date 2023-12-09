@@ -1,0 +1,30 @@
+.custom-snackbar {
+    display: flex;
+    align-items: center;
+ 
+    z-index: 1000;
+}
+ /*
+::ng-deep  .mat-mdc-snack-bar-container {
+    &.custom-snackbar {
+     
+        border: 1px solid #0044DD;
+      --mdc-snackbar-container-color: #fff;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+    
+    }
+  }
+    */
+  /*
+  ::ng-deep .mat-snack-bar-container{
+    border: 2px solid #0044DD;
+    border-radius: 20px;
+  }
+  */
+
+  
+span{
+    color: #FF990F;
+}
+    

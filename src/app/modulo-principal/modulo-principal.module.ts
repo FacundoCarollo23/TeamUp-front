@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { UpdateEventComponent } from './components/update-event/update-event.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NoPageComponent } from './components/no-page/no-page.component';
+import { SnackbarHtmlComponent } from "../shared/snackbar-html/snackbar-html.component";
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { NoPageComponent } from './components/no-page/no-page.component';
     DashboardEventsComponent,
     EventViewComponent,
     UpdateEventComponent,
-    NoPageComponent   
+    NoPageComponent,
+    SnackbarHtmlComponent   
   ],
 
     imports: [

@@ -13,6 +13,9 @@ import { ModuloPrincipalModule } from './modulo-principal/modulo-principal.modul
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { SnackbarHtmlComponent } from './shared/snackbar-html/snackbar-html.component';
+import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
           return appConfigService.loadAppConfig()
         };
       }
+    },
+    SnackbarComponent,
+    SnackbarHtmlComponent,
+    {
+      provide: MatSnackBarRef,
+      useValue: {}
+    },
+    {
+      provide: MAT_SNACK_BAR_DATA,
+      useValue: {}
     }
+    
   ],
   bootstrap: [AppComponent],
 })
