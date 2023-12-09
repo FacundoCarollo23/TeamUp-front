@@ -106,9 +106,9 @@
                 <app-card-events [event]="event"></app-card-events>
             </div>
 
-            <div class="d-flex justify-content-center align-items-center flex-column">
+            <div class="d-flex justify-content-center align-items-center flex-column" *ngIf="eventsListFiltered.length === 0">
                 <mat-icon class="material-symbols-outlined">sentiment_very_dissatisfied</mat-icon>
-                <p style="color: #FF990F; font-size: 30px; margin-top: 10px;" *ngIf="eventsListFiltered.length === 0">Perdón, pero no encontramos el Evento</p>
+                <p style="color: #FF990F; font-size: 30px; margin-top: 10px;" >Perdón, pero no encontramos el Evento</p>
             </div>
 
             <div class="col-12 d-flex justify-content-center">
