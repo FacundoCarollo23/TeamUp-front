@@ -5,6 +5,7 @@ import {Sort, MatSortModule} from '@angular/material/sort';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import * as moment from 'moment';
+import { PaginationControlsComponent } from 'ngx-pagination';
 
 @Component({
   selector: 'app-dashboard-events',
@@ -17,6 +18,9 @@ export class DashboardEventsComponent implements OnInit {
   pageUserJoinedEvents: number = 1;
   userJoinedEventsList: any[] = [];
   userLogueado: any = 0;
+  @ViewChild('paginationControls1', { static: true }) paginationControls1!: PaginationControlsComponent;
+  totalItems: number = 0;
+
 
   //ordenamiento Eventos creados por mí  
   sortData(sort: Sort) {
@@ -126,13 +130,20 @@ export class DashboardEventsComponent implements OnInit {
   }
 
   confirmDelete() {
-    console.log(this.eventToDelete);
-
     this.eventService
       .apiEventDeleteIdDelete$Response({ id: this.eventToDelete.eventId })
       .subscribe((a) => {
         this.getEvents();
         this.eventsAcceptedByUsers();
+
+               // Actualiza la variable totalItems después de la eliminación
+      this.totalItems--;
+
+      // Si la página actual es mayor que el nuevo número total de elementos,
+      // vuelve a la última página.
+      if (this.pageUserEvents > Math.ceil(this.totalItems / 5)) {
+        this.pageUserEvents = Math.ceil(this.totalItems / 5);
+      }
       });
       this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
   }

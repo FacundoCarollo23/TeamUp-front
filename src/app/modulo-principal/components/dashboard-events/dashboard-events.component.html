@@ -42,7 +42,7 @@
             </table>
 
             <div class="col-12 d-flex justify-content-center">
-                <pagination-controls id="1" (pageChange)="pageUserEvents = $event" [autoHide]=true [responsive]=true previousLabel=""
+                <pagination-controls #paginationControls1 page  id="1" (pageChange)="pageUserEvents = $event" [autoHide]=true [responsive]=true previousLabel=""
                     nextLabel=""></pagination-controls>
             </div>
         </div>
