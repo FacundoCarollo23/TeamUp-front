@@ -101,7 +101,7 @@
                   <label class="text">Fecha y hora del evento</label>
                   <div>
                     <ejs-datetimepicker placeholder="Seleccioná Fecha y Hora del Evento" format="yyy-MM-dd HH:mm"
-                      formControlName="fechaHoraEvento" ></ejs-datetimepicker>
+                      formControlName="fechaHoraEvento" [min]="this.fechaActual"></ejs-datetimepicker>
                     <div class="error-message"
                       *ngIf="this.formularioEvento.get('fechaHoraEvento')?.value == '' && formularioEvento.get('fechaHoraEvento')?.touched">
                       El campo fecha / hora es obligatorio</div>

@@ -90,6 +90,7 @@ export class NewEventComponent implements OnInit, OnChanges {
       dificultadEvento: ['', [Validators.required]], // Ya esta OK revisado
       actividadEvento: ['', [Validators.required]], // Ya esta OK revisado
     });
+    // Fecha actual
   }
 
   ngOnChanges(): void {}
@@ -104,6 +105,7 @@ export class NewEventComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    
     this.formularioEvento
       .get('paisEvento')
       ?.valueChanges.subscribe((data: any) => {
@@ -188,4 +190,7 @@ export class NewEventComponent implements OnInit, OnChanges {
     const fechaActual = moment().format('YYYY-MM-DD');
     return fechaSeleccionada !== fechaActual ? null : { esHoy: true };
   }
+
+  fechaActual = new Date()
+
 }
