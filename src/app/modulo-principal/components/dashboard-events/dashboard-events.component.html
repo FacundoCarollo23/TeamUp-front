@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let event of userEventsList ; track event | paginate: { itemsPerPage: 5, currentPage: page }">
+                    <tr *ngFor="let event of userEventsList | paginate: { id: '1', itemsPerPage: 5, currentPage: pageUserEvents }">
                         <th scope="row">{{ event.eventName }}</th>
                         <td>{{ event.dateTime }}</td>
                         <td>{{ event.city + " - " + event.countryName }}</td>
@@ -41,10 +41,8 @@
                 </tbody>
             </table>
 
-
-            
             <div class="col-12 d-flex justify-content-center">
-                <pagination-controls (pageChange)="page = $event" [autoHide]=true [responsive]=true previousLabel=""
+                <pagination-controls id="1" (pageChange)="pageUserEvents = $event" [autoHide]=true [responsive]=true previousLabel=""
                     nextLabel=""></pagination-controls>
             </div>
         </div>
@@ -89,7 +87,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let event of userJoinedEventsList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: userEventsList.length}">
+                    <tr *ngFor="let event of userJoinedEventsList | paginate: { itemsPerPage: 5, currentPage: pageUserJoinedEvents}">
                         <th scope="row">{{ event.eventName }}</th>
                         <td>{{ event.dateTime }}</td>
                         <td>{{ event.city + " - " + event.countryName }}</td>
@@ -111,7 +109,7 @@
             </table>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <pagination-controls (pageChange)="page = $event" [autoHide]=true [responsive]=true previousLabel=""
+            <pagination-controls (pageChange)="pageUserJoinedEvents = $event" [autoHide]=true [responsive]=true previousLabel=""
                 nextLabel=""></pagination-controls>
         </div>
     </div>

@@ -13,7 +13,8 @@ import * as moment from 'moment';
 })
 export class DashboardEventsComponent implements OnInit {
   userEventsList: any[] = [];
-  public page!: number;
+  pageUserEvents: number = 1;
+  pageUserJoinedEvents: number = 1;
   userJoinedEventsList: any[] = [];
   userLogueado: any = 0;
 
@@ -67,7 +68,6 @@ export class DashboardEventsComponent implements OnInit {
       localStorage.getItem('usuarioLogueado') as any
     );
     this.userLogueado = this.userLogueado.value.userId as number;
-    console.log(this.userLogueado);
 
     // Endpoint GET Eventos del Usuario LOGUEADO
     this.eventService
@@ -81,6 +81,9 @@ export class DashboardEventsComponent implements OnInit {
         // Asigna el objeto parseado a la propiedad event
         console.log(responseBody);
         this.userEventsList = responseBody.value;
+
+        // Ordena la lista por fecha
+        this.userEventsList = this.sortByDateTime(this.userEventsList)
       });
 
     // Endpoint GET Eventos a los que se sumo el usuario LOGUEADO
@@ -95,7 +98,19 @@ export class DashboardEventsComponent implements OnInit {
         // Asigna el objeto parseado a la propiedad event
         console.log(responseBody);
         this.userJoinedEventsList = responseBody.value;
+
+         // Ordena la lista por fecha
+      this.userJoinedEventsList = this.sortByDateTime(this.userJoinedEventsList);
       });
+  }
+
+  sortByDateTime(eventsList: any[]): any[] {
+    return eventsList.sort((a, b) => {
+      const dateA = new Date(moment(a.dateTime, 'DD/MM/YYYY HH:mm').toDate());
+      const dateB = new Date(moment(b.dateTime, 'DD/MM/YYYY HH:mm').toDate());
+  
+      return dateA.getTime() - dateB.getTime();
+    });
   }
 
   eventToDelete: any; // Variable para rastrear el evento que se eliminará
@@ -119,7 +134,6 @@ export class DashboardEventsComponent implements OnInit {
         this.getEvents();
       });
       this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
-
   }
 
   getEvents() {
