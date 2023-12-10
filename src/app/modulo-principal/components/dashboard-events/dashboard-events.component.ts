@@ -105,8 +105,7 @@ export class DashboardEventsComponent implements OnInit {
     // Encuentra el evento correspondiente al ID
     this.eventToDelete = this.userEventsList.find(
       (event) => event.eventId === id
-    );
-    this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
+      );
     console.log(this.eventToDelete);
   }
 
@@ -118,6 +117,8 @@ export class DashboardEventsComponent implements OnInit {
       .subscribe((a) => {
         this.getEvents();
       });
+      this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
+
   }
 
   getEvents() {
