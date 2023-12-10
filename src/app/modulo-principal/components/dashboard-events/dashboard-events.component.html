@@ -1,7 +1,7 @@
 <div class="container-fluid" style="padding: 0;">
     <app-nav-bar></app-nav-bar>
 
-    <!-- ------------------------------------------- Sección "Eventos Creados por mi" -------------------------------------------  -->
+    <!-- --------------- Sección "Eventos Creados por mi" -------------------------------------------  -->
     <div class="row" style="margin-top: 5%; background-color: #D9D9D9; padding: 4em; border-radius: 10px;">
         <app-title [title]="'Eventos creados por mí'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'32px'"
             [fontWeightTitle]="'400'"></app-title>
@@ -35,7 +35,7 @@
                     </tr>
                     <tr *ngIf="userEventsList.length == 0">
                         <th colspan="4">
-                            <p style="color: #ff990f; text-align: center; font-size: 24px; padding: 12px; margin: 0;">Aún no creaste ningún evento, ¿qué estás esperando? 😟</p>
+                            <p style="color: #ff990f; text-align: center; font-size: 20px; padding: 12px; margin: 0;">Aún no creaste ningún evento, ¿qué estás esperando? 😟</p>
                         </th>
                     </tr>
                 </tbody>
@@ -104,7 +104,7 @@
                     </tr>
                     <tr *ngIf="userJoinedEventsList.length == 0">
                         <th colspan="4">
-                            <p style="color: #ff990f; text-align: center; font-size: 24px; padding: 12px; margin: 0;">Aún no te sumaste a ningún evento 😟</p>
+                            <p style="color: #ff990f; text-align: center; font-size: 20px; padding: 12px; margin: 0;">Aún no te sumaste a ningún evento 😟</p>
                         </th>
                     </tr>
                 </tbody>
