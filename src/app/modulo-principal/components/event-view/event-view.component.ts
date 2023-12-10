@@ -7,6 +7,8 @@ import { EventUserDto, EventsCommentDto } from 'src/app/api/models';
 import { EventService, EventsCommentService } from 'src/app/api/services';
 import { ClimaService } from 'src/app/services/clima.service';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { Location } from '@angular/common';
+
  
 @Component({
   selector: 'app-event-view',
@@ -52,6 +54,7 @@ export class EventViewComponent implements OnInit {
     private eventCommentService: EventsCommentService,
     private climaService: ClimaService,
     private fb : FormBuilder,
+    private location: Location,
     public snackbar: SnackBarService
     ) {
         this.idUrl = this.route.snapshot.params['id'];
@@ -207,6 +210,9 @@ export class EventViewComponent implements OnInit {
     })
   }
 
-
+  volverAtras() {
+    this.location.back();
+  }
+  
 
 }
