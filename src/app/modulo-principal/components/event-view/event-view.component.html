@@ -74,9 +74,11 @@
                 <!-- ---------------------------------------- BOTONES ----------------------------------------- -->
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> IR A MIS EVENTOS 
-                    </button>
-                    <button class="btn-cta" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button>
+                    <!-- <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> IR A MIS EVENTOS 
+                    </button> -->
+                    <button class="btn-cta" (click)="volverAtras()"> VOLVER ATRÁS </button>
+
+                    <!-- <button class="btn-cta" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button> ESTE ERA EL QUE ESTABA ANTES DEL VOLVER ATRAS GENERICO-->
                     <!-- <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp']"> VOLVER ATRÁS </button> -->
                     <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && !idMeBajoEvent" style="margin-left: 20px;" (click)="MeSumoEvento()"> ME SUMO </button>
                    <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && idMeBajoEvent" style="margin-left: 20px;" (click)="MebajoEvent()"> ME BAJO </button>
