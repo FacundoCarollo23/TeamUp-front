@@ -29,11 +29,12 @@ export class DashboardEventsComponent implements OnInit {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'dateTime':
-          return compare(moment(a.dateTime).format("DD/MM/YYYY hh:mm"), moment(b.dateTime).format("DD/MM/YYYY hh:mm"), isAsc);
+          return compare(a.dateTime, b.dateTime, isAsc);
         default:
           return 0;
       }
     });
+    console.log(this.userEventsList);
   }
 
   //ordenamiento Mis próximos eventos
@@ -48,7 +49,7 @@ export class DashboardEventsComponent implements OnInit {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'dateTime':
-          return compare(moment(a.dateTime).format("DD/MM/YYYY hh:mm"), moment(b.dateTime).format("DD/MM/YYYY hh:mm"), isAsc);
+          return compare(a.dateTime, b.dateTime, isAsc);
         default:
           return 0;
       }
@@ -153,7 +154,10 @@ export class DashboardEventsComponent implements OnInit {
 
 }
 
-function compare(a: number | string | Date, b: number | string | Date, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+function compare(a: string, b: string, isAsc: boolean) {
+  const dateA = new Date(moment(a, 'DD/MM/YYYY HH:mm').toDate());
+  const dateB = new Date(moment(b, 'DD/MM/YYYY HH:mm').toDate());
+
+  return (dateA < dateB ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
