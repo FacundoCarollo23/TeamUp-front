@@ -43,3 +43,15 @@ li{
     text-align: center;
     margin-bottom: 5px;
 }
+
+::ng-deep .mdc-notched-outline__leading {
+    border-color: #FF990F !important;
+}
+
+::ng-deep .mdc-notched-outline__notch {
+    border-color: #FF990F !important;
+}
+
+::ng-deep .mdc-notched-outline__trailing {
+    border-color: #FF990F !important;
+}
