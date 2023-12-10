@@ -132,6 +132,7 @@ export class DashboardEventsComponent implements OnInit {
       .apiEventDeleteIdDelete$Response({ id: this.eventToDelete.eventId })
       .subscribe((a) => {
         this.getEvents();
+        this.eventsAcceptedByUsers();
       });
       this.snackbar.mensaje("Tu evento se ha eliminado 😭", 3000)
   }
@@ -150,6 +151,24 @@ export class DashboardEventsComponent implements OnInit {
         console.log(responseBody);
         this.userEventsList = responseBody.value;
       });
+  }
+
+  eventsAcceptedByUsers(){
+    this.eventService
+    .apiEventListAcceptedByUserUserIdGet$Response({
+      userId: this.userLogueado,
+    })
+    .subscribe((res: any) => {
+      // Parsea el cuerpo de la respuesta JSON
+      const responseBody = JSON.parse(res.body);
+
+      // Asigna el objeto parseado a la propiedad event
+      console.log(responseBody);
+      this.userJoinedEventsList = responseBody.value;
+
+       // Ordena la lista por fecha
+    this.userJoinedEventsList = this.sortByDateTime(this.userJoinedEventsList);
+    });
   }
 
 
