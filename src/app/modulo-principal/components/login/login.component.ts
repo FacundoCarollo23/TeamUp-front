@@ -17,7 +17,13 @@ userLoguin: LoginDto [] = []
 constructor(private fb : FormBuilder, private userService: UserService, public route: Router ){
   localStorage.removeItem("usuarioLogueado") 
 this.formLogin = this.fb.group({
-  email: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')], ),
+  email: new FormControl('', [
+    Validators.required,
+    Validators.pattern(
+      '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'
+    ),
+    Validators.minLength(3)
+  ]),
   password: new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(15), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,15}$/)])
 })
 

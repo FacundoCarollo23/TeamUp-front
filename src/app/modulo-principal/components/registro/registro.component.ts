@@ -56,8 +56,9 @@ export class RegistroComponent implements OnInit {
       email: new FormControl('', [
         Validators.required,
         Validators.pattern(
-          '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'
+          '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'
         ),
+        Validators.minLength(3)
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -94,8 +95,16 @@ export class RegistroComponent implements OnInit {
         .apiUserCreatePost$Response({ body: nuevoUsuario })
         .subscribe((res: any) => {
           console.log(res.body);
-          this.router.navigate(["/login"])
-          this.snackbar.mensaje("Tu usuario se ha generado correctamente 🙌", 3000)
+
+          if(res.body.status == true){
+            console.log(res.status);
+            this.router.navigate(["/login"])
+            this.snackbar.mensaje("Tu usuario se ha generado correctamente 🙌", 3000)
+          }else{
+            console.log(res.body.msg);
+            
+            this.snackbar.mensaje(res.body.msg + ' 😟', 3000)
+          }
         });
     }
 

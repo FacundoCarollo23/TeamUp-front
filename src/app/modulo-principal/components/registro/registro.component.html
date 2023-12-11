@@ -86,7 +86,7 @@
               *ngIf="this.formRegistro.get('email')?.hasError('required') && this.formRegistro.get('email')?.touched">
               El email es requerido</div>
             <div class="error-message"
-              *ngIf="this.formRegistro.get('email')?.hasError('email') && this.formRegistro.get('email')?.touched && this.formRegistro.get('email')?.hasError('pattern')">
+              *ngIf="this.formRegistro.get('email')?.hasError('pattern') && this.formRegistro.get('email')?.touched && this.formRegistro.get('email')?.hasError('pattern')">
               Ingrese un email válido</div>
             <div class="error-message"
               *ngIf="this.formRegistro.get('email')?.hasError('minlength') && this.formRegistro.get('email')?.touched">

@@ -13,25 +13,15 @@
               <input type="email" id="email" name="email" formControlName="email"
                 placeholder="Ingresa tu correo electrónico" required class="rounded-input" style="height: 45px" />
             </div>
-            <div class="error-message" *ngIf="
-                  formLogin.get('email')?.hasError('required') &&
-                  formLogin.get('email')?.touched
-                ">
-              El email es requerido
-            </div>
-            <div class="error-message" *ngIf="
-                  formLogin.get('email')?.hasError('email') &&
-                  formLogin.get('email')?.touched &&
-                  formLogin.get('email')?.hasError('pattern')
-                ">
-              Ingrese un email válido
-            </div>
-            <div class="error-message" *ngIf="
-                  formLogin.get('email')?.hasError('minlength') &&
-                  formLogin.get('email')?.touched
-                ">
-              El email debe tener al menos 3 caracteres
-            </div>
+            <div class="error-message"
+              *ngIf="this.formLogin.get('email')?.hasError('required') && this.formLogin.get('email')?.touched">
+              El email es requerido</div>
+            <div class="error-message"
+              *ngIf="this.formLogin.get('email')?.hasError('pattern') && this.formLogin.get('email')?.touched && this.formLogin.get('email')?.hasError('pattern')">
+              Ingrese un email válido</div>
+            <div class="error-message"
+              *ngIf="this.formLogin.get('email')?.hasError('minlength') && this.formLogin.get('email')?.touched">
+              El email debe tener al menos 3 caracteres</div>
           </div>
 
           <div class="form-group">
