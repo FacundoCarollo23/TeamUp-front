@@ -58,10 +58,13 @@ h4{
 }
 
 .e-datetime-wrapper .e-input-group-icon.e-date-icon, .e-datetime-wrapper .e-input-group-icon.e-time-icon {
-    font-size: 16px;
+    font-size: 16px !important;
     background-color: rgb(255, 255, 255);
-    color: #FF990F;
+    color: #FF990F !important;
     background-color: rgb(255, 255, 255) !important;
+    border-radius: 5px !important;
+    width: 28px !important;
+    font-weight: bold !important;
   }
   
   .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input {

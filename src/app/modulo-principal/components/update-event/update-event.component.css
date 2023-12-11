@@ -113,7 +113,7 @@
   background-color: rgb(255, 255, 255);
   color: #504F4F;
   border-radius: 5px;
-  padding: 0px 1px;
+  /* padding: 0px 1px; */
   width: 40px;
   font-weight: bold;
 }
@@ -149,4 +149,11 @@ textarea::placeholder{
 #ej2-datetimepicker_0_input::placeholder{
   font-size: 16px;
   color: #757575; 
+}
+
+::ng-deep .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input, .e-input-group textarea.e-input, .e-input-group.e-control-wrapper textarea.e-input{
+  font-size: 16px !important;
+  color: #111111 !important;
+  padding: 0 16px !important;
+  border-radius: 5px !important;
 }

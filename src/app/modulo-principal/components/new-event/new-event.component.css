@@ -122,17 +122,19 @@
 .e-input-group.e-control-wrapper input.e-input {
   font-size: 16px;
   font-weight: 400;
-  padding: 15px;
+  /* padding: 15px; */
   font-family: 'Open Sans', sans-serif;
-  height: 20px;
+  height: 56px !important;
   background-color: rgb(255, 255, 255) !important;
   border-radius: 5px;
   margin-right: 10px;
   margin-bottom: 0px !important;
+  padding-left: 16px !important;
 }
 
-.e-datetime-wrapper .e-input-group-icon.e-date-icon, .e-datetime-wrapper .e-input-group-icon.e-time-icon{
-  margin: 0px 4px 0px 0px;
+::ng-deep .e-datetime-wrapper .e-input-group-icon.e-date-icon, .e-datetime-wrapper .e-input-group-icon.e-time-icon{
+  margin-left: 5px !important;
+  height: 56px !important;
 }
 
 input::placeholder{
@@ -149,3 +151,4 @@ textarea::placeholder{
   font-size: 16px;
   color: #757575; 
 }
+
