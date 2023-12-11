@@ -12,7 +12,7 @@
                   [fontWeightTitle]="'400'"></app-title>
               </div>
               <div class="form-group">
-                <!-- ----------------------------------------- Nombre del Evento OK CHEQUEADO------------------------------------------- -->
+                <!-- ------------- Nombre del Evento OK CHEQUEADO------------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
                   <label for="nombreEvento" class="text">Nombre del Evento</label>
                   <div style="display: flex; align-items: center;">
@@ -22,18 +22,21 @@
                   </div>
                   <div class="error-message"
                     *ngIf="formularioEvento.get('nombreEvento')?.invalid && formularioEvento.get('nombreEvento')?.touched">
-                    El campo Nombre es obligatorio</div>
+                    El campo Nombre es obligatorio
+                  </div>
                   <div class="error-message"
                     *ngIf="this.formularioEvento.get('nombreEvento')?.hasError('maxlength') && this.formularioEvento.get('nombreEvento')?.touched">
-                    El nombre del evento debe tener máximo 50 caracteres</div>
+                    El nombre del evento debe tener máximo 50 caracteres
+                  </div>
                 </div>
-
-                <!-- -----------------------------------------Descripción del Evento OK REVISADO ----------------------------------------- -->
+              
+                <!-- -------------------Descripción del Evento OK REVISADO ----------------------------------------- -->
                 <div class="mb-4" [@fadeInOut]>
                   <label for="descripcionEvento" class="text">Descripción del Evento</label>
                   <div style="display: flex; align-items: center;">
-                    <textarea id="descripcionEvento" name="descripcionEvento"
-                      formControlName="descripcionEvento" placeholder="Ingresa una descripción para el Evento" required class="rounded-input" style="resize: vertical; width: 100%; font-size: 16px;">
+                    <textarea id="descripcionEvento" name="descripcionEvento" formControlName="descripcionEvento"
+                      placeholder="Ingresa una descripción para el Evento" required class="rounded-input"
+                      style="resize: vertical; width: 100%; font-size: 16px;">
                     </textarea>
                   </div>
                   <div class="error-message"
@@ -49,7 +52,9 @@
                   <label for="paisEvento" class="text">País del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%;">
-                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el País del Evento</mat-label>
+                      <mat-label
+                        style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el
+                        País del Evento</mat-label>
                       <mat-select formControlName="paisEvento">
                         <mat-option [value]="country.code" *ngFor="let country of countryCodes">{{ country.name
                           }}</mat-option>
@@ -66,7 +71,9 @@
                   <label for="ciudadEvento" class="text">Ciudad del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná la Ciudad del Evento</mat-label>
+                      <mat-label
+                        style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná la
+                        Ciudad del Evento</mat-label>
                       <mat-select formControlName="ciudadEvento">
                         <mat-option [value]="city.name" *ngFor="let city of cities">{{ city.name }}</mat-option>
                       </mat-select>
@@ -82,7 +89,9 @@
                   <label for="dificultadEvento" class="text">Dificultad del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el Nivel de Dificultad del Evento</mat-label>
+                      <mat-label
+                        style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná el
+                        Nivel de Dificultad del Evento</mat-label>
                       <mat-select formControlName="dificultadEvento">
                         <mat-option value=1>Principiante</mat-option>
                         <mat-option value=2>Intermedio</mat-option>
@@ -116,7 +125,9 @@
                   <label for="actividadEvento" class="text">Tipo actividad del Evento</label>
                   <div style="display: flex; align-items: center;">
                     <mat-form-field appearance="fill" style="width: 100%">
-                      <mat-label style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;" >Seleccioná la Actividad del Evento</mat-label>
+                      <mat-label
+                        style="color:#757575; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">Seleccioná la
+                        Actividad del Evento</mat-label>
                       <mat-select formControlName="actividadEvento">
                         <mat-option value="1">Futbol</mat-option>
                         <mat-option value="2">Running</mat-option>
