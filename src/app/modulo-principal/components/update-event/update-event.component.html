@@ -55,7 +55,7 @@
                                             style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
                                             'País del Evento: ' + event[0]?.countryName }}</mat-label>
                                         <mat-select formControlName="paisEvento">
-                                            <mat-option *ngFor="let country of countryCodes">{{
+                                            <mat-option *ngFor="let country of countryCodes" [value]="country">{{
                                                 country.name
                                                 }}</mat-option>
                                         </mat-select>
