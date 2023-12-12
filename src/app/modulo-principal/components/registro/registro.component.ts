@@ -95,15 +95,16 @@ export class RegistroComponent implements OnInit {
         .apiUserCreatePost$Response({ body: nuevoUsuario })
         .subscribe((res: any) => {
           console.log(res.body);
+          let json = JSON.parse(res.body) as any;
 
-          if(res.body.status == true){
+          if(json.status == true){
             console.log(res.status);
             this.router.navigate(["/login"])
-            this.snackbar.mensaje("Tu usuario se ha generado correctamente 🙌", 3000)
+            this.snackbar.mensaje( "Tu Usuario se ha generado correctamente! 🙌" , 3000)
           }else{
             console.log(res.body.msg);
-            
-            this.snackbar.mensaje(res.body.msg + ' 😟', 3000)
+            console.log(res.status)
+            this.snackbar.mensaje(json.msg + ' 😟', 3000)
           }
         });
     }
