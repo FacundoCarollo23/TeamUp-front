@@ -54,8 +54,8 @@ export class UpdateEventComponent implements OnInit {
 
   countryCodes: any[] = [
     { id: 1, code: 'AR', name: 'Argentina' },
-    { id: 2, code: 'UY', name: 'Uruguay' },
-    { id: 3, code: 'CL', name: 'Chile' },
+    { id: 2, code: 'UY', name: 'Uruguay * Proximamente *' },
+    { id: 3, code: 'CL', name: 'Chile * Proximamente *'},
   ];
 
   //Variable fecha y hora
@@ -79,7 +79,8 @@ export class UpdateEventComponent implements OnInit {
   originalCiudad: any;
   originalDificultad: any;
   originalActividad: any;
-
+  dificultad : any= { dificultadId: null , descripcion: null}
+  actividad : any = { actividadId: null , descripcion: null}
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
@@ -104,12 +105,16 @@ export class UpdateEventComponent implements OnInit {
         '',
         [Validators.required, this.fechaNoEsHoy.bind(this)],
       ],
-      dificultadEvento: ['', [Validators.required]],
-      actividadEvento: ['', [Validators.required]],
+      dificultadEvento: ['valorNoEnLista', [Validators.required]],
+      actividadEvento: ['valorNoEnLista', [Validators.required]],
     });
+
+   
+ 
   }
 
   ngOnInit(): void {
+
     this.eventService
       .apiEventGetByIdIdGet$Response({ id: this.idUrl })
       .subscribe((res: any) => {
@@ -122,7 +127,8 @@ export class UpdateEventComponent implements OnInit {
         console.log(this.event);
         this.idUserEvent = this.event[0].userId;
         console.log(this.idUserEvent);
-
+        this.dificultad = { dificultadId : this.event[0].difficultyLevelId, descripcion:  this.event[0].difficultyName}
+        this.actividad= { actividadId: this.event[0].activityId , descripcion: this.event[0].activityName }
         //Seteo los valores en el Form
         this.formUpdateEvent.controls['nombreEvento'].setValue(
           this.event[0].eventName
@@ -175,27 +181,92 @@ export class UpdateEventComponent implements OnInit {
         this.formUpdateEvent.get('actividadEvento')?.updateValueAndValidity();
 
         // Asigna el valor de la etiqueta ACTIVIDAD
-        this.formUpdateEvent
-          .get('actividadEvento')
-          ?.setValue(this.event[0].activityName);
+        this.formUpdateEvent.get('actividadEvento')?.setValue(this.event[0].activityName);
         this.formUpdateEvent.get('actividadEvento')?.updateValueAndValidity();
-      });
 
-    this.formUpdateEvent
-      .get('paisEvento')
-      ?.valueChanges.subscribe((data: any) => {
+
+       
+      
+          switch(this.formUpdateEvent.get('dificultadEvento')?.value){
+          
+            case "1" : {
+              this.dificultad.dificultadId = 1
+              break;
+            } 
+            
+            case  "3" : {
+              this.dificultad.dificultadId = 3
+              break;
+            }
+            case "2" : {
+              this.dificultad.dificultadId = 2
+              break;
+            }
+            case "4" : {
+              this.dificultad.dificultadId = 4
+              break;
+            }
+          }
+
+
+    
+          switch(this.formUpdateEvent.get('actividadEvento')?.value){
+          
+            case "1" : {
+              this.actividad.actividadId = 1
+              break;
+            } 
+            
+            case  "2" : {
+              this.actividad.actividadId = 2
+              break;
+            }
+            case "3" : {
+              this.actividad.actividadId  = 3
+              break;
+            }
+            case "4" : {
+              this.actividad.actividadId = 4
+              break;
+            }
+            case "5" : {
+              this.actividad.actividadId  = 5
+              break;
+            }
+            case "6" : {
+              this.actividad.actividadId  = 6
+              break;
+            }
+            case "7" : {
+              this.actividad.actividadId  = 7
+              break;
+            }
+            case "8" : {
+              this.actividad.actividadId  = 8
+              break;
+            }
+          }
+          
+        })
+      
+
+      this.formUpdateEvent.get('paisEvento')?.valueChanges.subscribe((data: any) => {
         console.log(data);
         this.getCiudades(data);
         this.setCountryId(data);
       });
 
-    this.formUpdateEvent
-      .get('fechaHoraEvento')
-      ?.valueChanges.subscribe((selectedCountry: any) => {
+      this.formUpdateEvent.get('fechaHoraEvento')?.valueChanges.subscribe((selectedCountry: any) => {
         console.log(selectedCountry);
         this.getCiudades(selectedCountry);
         this.setCountryId(selectedCountry);
       });
+
+
+
+
+
+      
   }
 
   setCountryId(selectedCountry: any): void {
@@ -230,46 +301,108 @@ export class UpdateEventComponent implements OnInit {
   }
 
   OnSubmit() {
-    let userLogueado = JSON.parse(
-      localStorage.getItem('usuarioLogueado') as any
-    );
+    let userLogueado =  localStorage.getItem('usuarioLogueado' ) as any
+     let json = JSON.parse(userLogueado) as any
 
-    let dificultad: any = JSON.parse(
-      this.formUpdateEvent.controls['dificultadEvento'].value as any
-    ) as Number;
-    let actividad: any = JSON.parse(
-      this.formUpdateEvent.controls['actividadEvento'].value as any
-    ) as Number;
+    let dificultad: any = this.formUpdateEvent.controls['dificultadEvento'].value 
+
+    let actividad: any = this.formUpdateEvent.controls['actividadEvento'].value
+ 
+      switch(dificultad){
+      
+        case "1" : {
+          this.dificultad.dificultadId = 1
+          break;
+        } 
+        
+        case  "3" : {
+          this.dificultad.dificultadId = 3
+          break;
+        }
+        case "2" : {
+          this.dificultad.dificultadId = 2
+          break;
+        }
+        case "4" : {
+          this.dificultad.dificultadId = 4
+          break;
+        }
+      }
+      switch(this.formUpdateEvent.get('actividadEvento')?.value){
+          
+        case "1" : {
+          this.actividad.actividadId = 1
+          break;
+        } 
+        
+        case  "2" : {
+          this.actividad.actividadId = 2
+          break;
+        }
+        case "3" : {
+          this.actividad.actividadId  = 3
+          break;
+        }
+        case "4" : {
+          this.actividad.actividadId = 4
+          break;
+        }
+        case "5" : {
+          this.actividad.actividadId  = 5
+          break;
+        }
+        case "6" : {
+          this.actividad.actividadId  = 6
+          break;
+        }
+        case "7" : {
+          this.actividad.actividadId  = 7
+          break;
+        }
+        case "8" : {
+          this.actividad.actividadId  = 8
+          break;
+        }
+      }
+  
+
+  
+   
+
 
     let evento: EventUserDto = {
       eventId: this.idUrl,
-      userId: userLogueado.value.userId as number,
-      activityId: actividad,
+      userId: json.value.userId as number,
+      activityId: this.actividad.actividadId ,
       city: this.formUpdateEvent.controls['ciudadEvento'].value,
-      difficultyLevelId: dificultad,
-      countryId: this.getCountryId(),
+      difficultyLevelId: this.dificultad.dificultadId,
+      countryId: 1,
       eventName: this.formUpdateEvent.controls['nombreEvento'].value,
       eventDescription:
         this.formUpdateEvent.controls['descripcionEvento'].value,
       dateTime: this.getDateTime(),
     };
 
-    if (this.formUpdateEvent.valid) {
-      this.eventService.apiEventEditPut$Response({ body: evento }).subscribe(
-        (respuesta: any) => {
-          // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
-          console.log('Evento modificado exitosamente', respuesta);
-          this.router.navigate(['TeamUp/dashboardEvents']);
-          this.snackbar.mensaje(
-            'Tu evento se ha modificado correctamente 🙌',
-            3000
-          );
-        },
-        (error: any) => {
-          console.error('Error al modificar el evento', error);
-        }
-      );
-    }
+   console.log(evento)
+   /*
+   if (this.formUpdateEvent.valid) {
+    this.eventService.apiEventEditPut$Response({ body: evento }).subscribe(
+      (respuesta: any) => {
+        // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
+        console.log('Evento modificado exitosamente', respuesta);
+        this.router.navigate(['TeamUp/dashboardEvents']);
+        this.snackbar.mensaje(
+          'Tu evento se ha modificado correctamente 🙌',
+          3000
+        );
+      },
+      (error: any) => {
+        console.error('Error al modificar el evento', error);
+      }
+    );
+  }
+  */
+
   }
 
   fechaNoEsHoy(control: any) {
