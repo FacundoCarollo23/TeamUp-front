@@ -1,7 +1,41 @@
-footer{
+footer {
     display: flex;
     flex-direction: column;
     background-color: #504F4F;
     height: 90px;
     margin-top: 25px;
+ }
+ 
+ .instagram-container {
+    display: flex;
+    align-items: center;
+ }
+ 
+ .instagram-link {
+    display: flex;
+    color: #ff990f;
+    text-decoration: none;
+    align-items: center;
+    margin-left: 10px;
+ }
+ 
+ .instagram-link i {
+    margin-right: 5px;
+ }  
+ 
+ .fa-instagram{
+    font-size: 16px;
+    align-items: center;
+    display: flex;
+}
+
+.text-instagram{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic
+}
+.text-instagram:hover{
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
 }
