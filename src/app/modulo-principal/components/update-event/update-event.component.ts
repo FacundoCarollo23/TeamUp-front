@@ -78,9 +78,11 @@ export class UpdateEventComponent implements OnInit {
   originalPais: any;
   originalCiudad: any;
   originalDificultad: any;
+  evento?: EventUserDto 
   originalActividad: any;
   dificultad : any= { dificultadId: null , descripcion: null}
   actividad : any = { actividadId: null , descripcion: null}
+  fechaConPrase: any
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
@@ -102,7 +104,7 @@ export class UpdateEventComponent implements OnInit {
       paisEvento: ['', [Validators.required]],
       ciudadEvento: ['', [Validators.required]],
       fechaHoraEvento: [
-        '',
+        'valorNoEnFecha',
         [Validators.required, this.fechaNoEsHoy.bind(this)],
       ],
       dificultadEvento: ['valorNoEnLista', [Validators.required]],
@@ -258,6 +260,7 @@ export class UpdateEventComponent implements OnInit {
 
       this.formUpdateEvent.get('fechaHoraEvento')?.valueChanges.subscribe((selectedCountry: any) => {
         console.log(selectedCountry);
+        this.fechaConPrase = selectedCountry
         this.getCiudades(selectedCountry);
         this.setCountryId(selectedCountry);
       });
@@ -364,12 +367,31 @@ export class UpdateEventComponent implements OnInit {
           break;
         }
       }
-  
+     
+      const fechaConPrase = this.fechaConPrase; // Suponiendo que ya tienes esta variable definida
 
-  
-   
+if (fechaConPrase) {
+  const isFormatCorrect = moment(fechaConPrase, 'DD/MM/YYYY HH:mm', true).isValid();
 
+  if (!isFormatCorrect) {
+    // Si no está en el formato correcto, intenta parsearlo con moment
+    const parsedDateTime = moment(fechaConPrase);
 
+    if (parsedDateTime.isValid()) {
+      // Si se pudo parsear con el formato ISO_8601, asigna el valor parseado
+      this.fechaConPrase = parsedDateTime.format('DD/MM/YYYY HH:mm');
+    } else {
+      // Si no se puede parsear, mantén el valor original
+      console.log('No se pudo parsear la fecha:', fechaConPrase);
+    }
+  } else {
+    const formattedDateTime = moment(fechaConPrase).format('DD/MM/YYYY HH:mm');
+    this.fechaConPrase = formattedDateTime;
+  }
+} else {
+  console.log('fechaConPrase is null or undefined');
+}
+    
     let evento: EventUserDto = {
       eventId: this.idUrl,
       userId: json.value.userId as number,
@@ -380,11 +402,12 @@ export class UpdateEventComponent implements OnInit {
       eventName: this.formUpdateEvent.controls['nombreEvento'].value,
       eventDescription:
         this.formUpdateEvent.controls['descripcionEvento'].value,
-      dateTime: this.getDateTime(),
-    };
-
+      dateTime:  this.fechaConPrase
+    }
+   
    console.log(evento)
-   /*
+  
+  
    if (this.formUpdateEvent.valid) {
     this.eventService.apiEventEditPut$Response({ body: evento }).subscribe(
       (respuesta: any) => {
@@ -401,7 +424,7 @@ export class UpdateEventComponent implements OnInit {
       }
     );
   }
-  */
+  
 
   }
 
