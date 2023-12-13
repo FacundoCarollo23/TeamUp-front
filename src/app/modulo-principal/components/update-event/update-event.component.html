@@ -75,7 +75,9 @@
                                             style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
                                             'Ciudad del Evento: ' + event[0]?.city }}</mat-label>
                                         <mat-select formControlName="ciudadEvento">
-                                            <mat-option [value]="this.formUpdateEvent.controls['ciudadEvento'].value" *ngFor="let city of cities">{{ city.name
+                                            <mat-option  [value]="city" *ngFor="let city of cities">{{ city.name
+                                            }}</mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('ciudadEvento')?.value === 'valorNoEnLista'"  [value]="this.formUpdateEvent.controls['ciudadEvento'].value">{{ this.formUpdateEvent.controls['ciudadEvento'].value
                                                 }}</mat-option>
                                         </mat-select>
                                     </mat-form-field>

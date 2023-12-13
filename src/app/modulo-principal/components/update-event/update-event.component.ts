@@ -102,7 +102,7 @@ export class UpdateEventComponent implements OnInit {
         [Validators.required, Validators.maxLength(1000)],
       ],
       paisEvento: ['', [Validators.required]],
-      ciudadEvento: ['', [Validators.required]],
+      ciudadEvento: ['valorNoEnLista', [Validators.required]],
       fechaHoraEvento: [
         'valorNoEnFecha',
         [Validators.required, this.fechaNoEsHoy.bind(this)],
@@ -396,7 +396,7 @@ if (fechaConPrase) {
       eventId: this.idUrl,
       userId: json.value.userId as number,
       activityId: this.actividad.actividadId ,
-      city: this.formUpdateEvent.controls['ciudadEvento'].value,
+      city: this.formUpdateEvent.get('ciudadEvento')?.value.name,
       difficultyLevelId: this.dificultad.dificultadId,
       countryId: 1,
       eventName: this.formUpdateEvent.controls['nombreEvento'].value,
