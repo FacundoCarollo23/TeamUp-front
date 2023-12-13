@@ -70,8 +70,8 @@ export class NewEventComponent implements OnInit, OnChanges {
   cities: any[] = [];
   countryCodes: any[] = [
     { id: 1, code: 'AR', name: 'Argentina' },
-    { id: 2, code: 'UY', name: 'Uruguay' },
-    { id: 3, code: 'CL', name: 'Chile' },
+    { id: 2, code: 'UY', name: 'Uruguay *Proximamente*' },
+    { id: 3, code: 'CL', name: 'Chile *Proximamente*' },
   ];
 
   //Variable fecha y hora
@@ -115,9 +115,7 @@ export class NewEventComponent implements OnInit, OnChanges {
         // this.getCountryId()
       });
 
-    this.formularioEvento
-      .get('fechaHoraEvento')
-      ?.valueChanges.subscribe((data: any) => {
+    this.formularioEvento.get('fechaHoraEvento')?.valueChanges.subscribe((data: any) => {
         console.log(data);
         this.setDateTime(data);
         // this.getDateTime()
