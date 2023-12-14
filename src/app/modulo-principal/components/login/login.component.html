@@ -1,3 +1,4 @@
+<!-- login.component.html -->
 <div class="container-fluid" style="padding: 0;">
   <app-nav-bar></app-nav-bar>
   <div class="background-image">
@@ -27,8 +28,11 @@
           <div class="form-group">
             <label for="password" class="text">Password</label>
             <div style="display: flex; align-items: center">
-              <input type="password" id="password" name="password" formControlName="password"
+              <input type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" formControlName="password"
                 placeholder="Ingresa tu contraseña" required class="rounded-input" style="height: 45px" />
+              <span class="toggle-password-btn" (click)="togglePasswordVisibility()">
+                {{ showPassword ? 'Ocultar' : 'Mostrar' }}
+              </span>
             </div>
             <div class="error-message" *ngIf="
                   this.formLogin.get('password')?.touched &&

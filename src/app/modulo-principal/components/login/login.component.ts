@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/api/services';
 export class LoginComponent implements OnInit {
 formLogin!: FormGroup
 userLoguin: LoginDto [] = []
-
+showPassword = false;
 
 constructor(private fb : FormBuilder, private userService: UserService, public route: Router ){
   localStorage.removeItem("usuarioLogueado") 
@@ -29,7 +30,10 @@ this.formLogin = this.fb.group({
 
 }
   ngOnInit(): void {
-    
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 
   OnSubmit(){
