@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Route, Router } from '@angular/router';
 import { LoginDto, UserDto } from 'src/app/api/models';
 import { UserService } from 'src/app/api/services';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',

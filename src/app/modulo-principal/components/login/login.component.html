@@ -27,12 +27,13 @@
 
           <div class="form-group">
             <label for="password" class="text">Password</label>
-            <div style="display: flex; align-items: center">
+            <div class="password-input-container">
               <input type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" formControlName="password"
-                placeholder="Ingresa tu contraseña" required class="rounded-input" style="height: 45px" />
-              <span class="toggle-password-btn" (click)="togglePasswordVisibility()">
-                {{ showPassword ? 'Ocultar' : 'Mostrar' }}
-              </span>
+                placeholder=" " required class="rounded-input" style="height: 45px" />
+                <span class="placeholder-text">Ingresa tu contraseña</span>
+              <mat-icon class="toggle-password-btn" (click)="togglePasswordVisibility()">
+                {{ showPassword ? 'visibility_off' : 'visibility' }}
+              </mat-icon>
             </div>
             <div class="error-message" *ngIf="
                   this.formLogin.get('password')?.touched &&
