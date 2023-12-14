@@ -126,4 +126,26 @@ login.component.css
   .password-input-container input:not(:placeholder-shown) + .placeholder-text {
     color: transparent; /* Oculta el texto del placeholder cuando se ingresa texto */
   }
+  .email-input-container {
+    position: relative;
+  }
+  
+  .email-input-container input {
+    width: 100%; /* Puedes ajustar según sea necesario */
+  }
+  
+  .email-input-container .placeholder-text {
+    position: absolute;
+    left: 12px; /* Ajusta según sea necesario */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #8a8a8a; /* Color del texto del placeholder */
+    transition: color 0.3s ease-out;
+  }
+  
+  .email-input-container input:focus + .placeholder-text,
+  .email-input-container input:not(:placeholder-shown) + .placeholder-text {
+    color: transparent; /* Oculta el texto del placeholder cuando se ingresa texto */
+  }
   

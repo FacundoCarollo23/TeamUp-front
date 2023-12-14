@@ -10,9 +10,10 @@
           <div class="form-group">
             <label for="email" class="text">Email</label>
             <br />
-            <div style="display: flex; align-items: center">
+            <div class="email-input-container">
               <input type="email" id="email" name="email" formControlName="email"
-                placeholder="Ingresa tu correo electrónico" required class="rounded-input" style="height: 45px" />
+                placeholder=" " required class="rounded-input" style="height: 45px" />
+              <span class="placeholder-text">Ingresa tu correo electrónico</span>
             </div>
             <div class="error-message"
               *ngIf="this.formLogin.get('email')?.hasError('required') && this.formLogin.get('email')?.touched">
