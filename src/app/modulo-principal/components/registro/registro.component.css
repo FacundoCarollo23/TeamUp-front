@@ -106,7 +106,6 @@
   color: transparent;
 }
 
-/* Agrega esta regla de estilo para el icono de ojo */
 .toggle-password-btn {
   position: absolute;
   right: 10px;
@@ -116,7 +115,6 @@
   color: #ff990f;
 }
 
-/* Agrega esta regla para animar el color del icono */
 .toggle-password-btn:hover {
   color: #ff990f;
   font-size: 25px;

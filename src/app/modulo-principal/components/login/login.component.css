@@ -24,7 +24,7 @@ login.component.css
 }
 
 .rounded-input {
-  width: 100%; /* Cambiado para ocupar el ancho disponible */
+  width: 100%; 
   height: 30px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -88,19 +88,19 @@ login.component.css
     text-align: center;
   }
   .toggle-password-btn {
-    background-color: transparent;
-    border: none;
-    color: #FF990F;
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    font-size: 20px;
-    margin-left: 5px;
-    padding: 5px;
+    color: #ff990f;
   }
   
   .toggle-password-btn:hover {
     color: #ff990f;
-    /* font-size: 25px; */
+    font-size: 25px;
   }
+  
 
   .email-input-container {
     position: relative;
@@ -122,19 +122,19 @@ login.component.css
   
   .email-input-container input:focus + .placeholder-text,
   .email-input-container input:not(:placeholder-shown) + .placeholder-text {
-    color: transparent; /* Oculta el texto del placeholder cuando se ingresa texto */
+    color: transparent; 
   }
   .password-input-container {
     position: relative;
   }
   
   .password-input-container input {
-    width: calc(100% - 30px); /* Ajusta según sea necesario */
+    width: calc(100% - 30px);
   }
   
   .password-input-container mat-icon {
     position: absolute;
-    right: 8px; /* Ajusta según sea necesario */
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -142,16 +142,38 @@ login.component.css
   
   .password-input-container .placeholder-text {
     position: absolute;
-    left: 12px; /* Ajusta según sea necesario */
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #8a8a8a; /* Color del texto del placeholder */
+    color: #8a8a8a;
     transition: color 0.3s ease-out;
   }
   
   .password-input-container input:focus + .placeholder-text,
   .password-input-container input:not(:placeholder-shown) + .placeholder-text {
-    color: transparent; /* Oculta el texto del placeholder cuando se ingresa texto */
+    color: transparent;
   }
- 
+  .input-container {
+    position: relative;
+  }
+  
+  .input-container input {
+    width: calc(100% - 30px);
+  }
+  
+  .input-container .placeholder-text {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #8a8a8a;
+    transition: color 0.3s ease-out;
+  }
+  
+  .input-container input:focus + .placeholder-text,
+  .input-container input:not(:placeholder-shown) + .placeholder-text {
+    color: transparent;
+  }
+  
