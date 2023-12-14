@@ -13,6 +13,7 @@ import { esLocale } from 'ngx-bootstrap/locale';
 import { UserDto } from 'src/app/api/models';
 import { UserService } from 'src/app/api/services';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
+import { MatIconModule } from '@angular/material/icon';
 
 const fechaNacimientoValidator = (
   control: FormControl
@@ -37,6 +38,7 @@ export class RegistroComponent implements OnInit {
   [x: string]: any;
   datapickerConfig!: Partial<BsDatepickerConfig>;
   formRegistro!: FormGroup;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -75,6 +77,10 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   OnSubmit() {
     let fechaNacimiento = moment(
