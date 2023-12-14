@@ -377,22 +377,22 @@ export class UpdateEventComponent implements OnInit {
 
     console.log(evento);
 
-    // if (this.formUpdateEvent.valid) {
-    //   this.eventService.apiEventEditPut$Response({ body: evento }).subscribe(
-    //     (respuesta: any) => {
-    //       // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
-    //       console.log('Evento modificado exitosamente', respuesta);
-    //       this.router.navigate(['TeamUp/dashboardEvents']);
-    //       this.snackbar.mensaje(
-    //         'Tu evento se ha modificado correctamente 🙌',
-    //         3000
-    //       );
-    //     },
-    //     (error: any) => {
-    //       console.error('Error al modificar el evento', error);
-    //     }
-    //   );
-    // }
+    if (this.formUpdateEvent.valid) {
+      this.eventService.apiEventEditPut$Response({ body: evento }).subscribe(
+        (respuesta: any) => {
+          // Manejar la respuesta del servidor, por ejemplo, redirigir a otra página
+          console.log('Evento modificado exitosamente', respuesta);
+          this.router.navigate(['TeamUp/dashboardEvents']);
+          this.snackbar.mensaje(
+            'Tu evento se ha modificado correctamente 🙌',
+            3000
+          );
+        },
+        (error: any) => {
+          console.error('Error al modificar el evento', error);
+        }
+      );
+    }
   }
 
   fechaNoEsHoy(control: any) {
