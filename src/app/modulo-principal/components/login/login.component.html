@@ -8,7 +8,7 @@
           <app-title [title]="'Ingresá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'"
             [fontWeightTitle]="'400'" style="text-align: center"></app-title>
           <div class="form-group">
-            <label for="email" class="text">Email</label>
+            <label for="email" class="text">Correo Electrónico</label>
             <br />
             <div class="email-input-container">
               <input type="email" id="email" name="email" formControlName="email"
@@ -27,10 +27,10 @@
           </div>
 
           <div class="form-group">
-            <label for="password" class="text">Password</label>
+            <label for="password" class="text">Contraseña</label>
             <div class="input-container">
               <input type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" formControlName="password"
-                placeholder=" " required class="rounded-input" style="height: 45px" />
+                placeholder=" " required class="rounded-input" style="height: 45px; width: 100%;" />
               <span class="placeholder-text">Ingresa tu contraseña</span>
               <mat-icon class="toggle-password-btn" (click)="togglePasswordVisibility()">
                 {{ showPassword ? 'visibility_off' : 'visibility' }}

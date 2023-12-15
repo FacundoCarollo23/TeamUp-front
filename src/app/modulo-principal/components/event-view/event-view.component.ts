@@ -59,7 +59,6 @@ export class EventViewComponent implements OnInit {
     ) {
         this.idUrl = this.route.snapshot.params['id'];
         this.obtenerComentariosEventos(this.idUrl);
-     
       
         this.newComment=this.fb.group({
         newComment : new FormControl(''),
@@ -84,11 +83,6 @@ export class EventViewComponent implements OnInit {
             console.log(this.idMeBajoEvent)
             this.idEvent = +this.idUrl
         })
-       
-
-
-
-
       }
 
 
@@ -100,32 +94,26 @@ export class EventViewComponent implements OnInit {
     this.eventService
       .apiEventGetByIdIdGet$Response({ id: this.idUrl })
       .subscribe((res: any) => {
-        res                                                                              //IMPRIMIR EN CONSOLA
-
         // Parsea el cuerpo de la respuesta JSON
         const responseBody = JSON.parse(res.body);
-        
+        if (responseBody.status == false) {
+          this.router.navigate(['/events'])
+        } 
         // Asigna el objeto parseado a la propiedad event
         this.event = responseBody.value;
-                                                                      //IMPRIMIR EN CONSOLA
 
         // Verifica si this.event tiene la estructura esperada y contiene al menos un elemento
         if (this.event && this.event.length > 0) {
-          console.log('this.event[0].userId:', this.event[0].userId);                                   //IMPRIMIR EN CONSOLA
+          console.log('this.event[0].userId:', this.event[0].userId);                                 
         }
-        
-        this.idUserEvent = this.event[0].userId;                                                                //IMPRIMIR EN CONSOLA
+        this.idUserEvent = this.event[0].userId;                
         this.getClima(this.event[0].city, 'AR');
         });
-
-        
 }
 
-
-  
   // ------------------------------------------------- A P I   C L I M A ---------------------------------------------------
   getClima(data: any, code: string): void {
-    this.climaService.getWeather(data, code).subscribe((res: any) => {                                                                               //IMPRIMIR EN CONSOLA
+    this.climaService.getWeather(data, code).subscribe((res: any) => {                                                                              
       this.temperature = Math.round(res.main.temp);
       this.iconTemperature = res.weather[0].icon;
       
@@ -139,8 +127,8 @@ export class EventViewComponent implements OnInit {
       //Llamada para recuperar los comentarios
       this.eventCommentService
         .apiEventsCommentListGet$Response({ eventId: commentId })
-        .subscribe((res: any) => {                                                                       //IMPRIMIR EN CONSOLA
-          const responseBody = JSON.parse(res.body)                                                                //IMPRIMIR EN CONSOLA
+        .subscribe((res: any) => {                                                          
+          const responseBody = JSON.parse(res.body)                                                          
           this.comments = responseBody.value;
         });
       }
@@ -160,12 +148,12 @@ export class EventViewComponent implements OnInit {
       userIdName: userIdName.userName, 
       comment: this.newComment.controls['newComment'].value,
       dateTime: moment(fechaComentario).format('DD/MM/YYYY hh:mm'),
-    };                                                                       //IMPRIMIR EN CONSOLA
+    };                                                                       
 
     this.eventCommentService
       .apiEventsCommentCreatePost$Response({ body: comentarioNuevo})
-      .subscribe((res: any) => {                                                                //IMPRIMIR EN CONSOLA--
-        let json = JSON.parse(res.body) as any                                                                         //IMPRIMIR EN CONSOLA
+      .subscribe((res: any) => {                                                                
+        let json = JSON.parse(res.body) as any                                                                         
         this.comments.push(json.value)
         this.limpiar()
       });
@@ -204,9 +192,9 @@ export class EventViewComponent implements OnInit {
   MebajoEvent(){
     this.eventService.apiEventRemoveFromEventEventIdUserIdDelete$Response({eventId: this.idUrl, userId: this.idUsuarioLogueado}).subscribe((res:any)=>{
       console.log(res)
-     this.event[0].userCount--
-     this.idMeBajoEvent = undefined;
-     this.snackbar.mensaje("Te diste de baja del evento 😭", 3000)
+      this.event[0].userCount--
+      this.idMeBajoEvent = undefined;
+      this.snackbar.mensaje("Te diste de baja del evento 😭", 3000)
     })
   }
 
