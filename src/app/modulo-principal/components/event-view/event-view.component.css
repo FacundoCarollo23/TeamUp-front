@@ -1,0 +1,33 @@
+body, h1, h2, h3, h4, h5, h6, p, input, button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+::ng-deep p {
+    margin: 0px 0px 0px !important;
+}
+
+/* ::ng-deep .mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before{
+    background-color: #757575 !important;
+} */
+
+::ng-deep  .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper{
+    background-color: #FFFFFF !important;
+    margin-top: 10px;
+}
+
+h2{
+    margin-bottom: 0px !important;
+}
+
+::ng-deep .card-header{
+    background-color: #bfbfbf !important;
+}
+
+/* Colores para los íconos */
+.calendar-icon, .rate_review {
+    color: #FF990F; /* Naranja para el ícono de calendario */
+}
+
+.location-icon {
+    color: #FF990F; /* Rojo para el ícono de ubicación */
+}

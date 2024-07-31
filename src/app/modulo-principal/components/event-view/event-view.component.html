@@ -1,0 +1,94 @@
+<div class="container-fluid" style="padding: 0;">
+    <app-nav-bar></app-nav-bar>
+    <app-hero></app-hero>
+
+    <!-- ----------------------------------- card del evento ----------------------------------- -->
+    <div class="container mt-5">
+        <div class="card col-xxl-6 col-xl-6 col-lg-6 col-md-9 col-sm-10 mx-auto">
+            <div class="card-header" style="padding: 20px;">
+                <div class="d-flex gap-2 align-items-center">
+                    <mat-icon class="calendar-icon">event</mat-icon>
+                    <p>{{event[0].dateTime}} - </p>
+
+                    <img [src]="'https://openweathermap.org/img/wn/' + iconTemperature + '.png'" alt="" srcset=""
+                        style="height: 40px; width: 40px;">
+                    <p>{{temperature}}°C</p>
+                </div>
+                <div class="d-flex gap-2 align-items-center mt-2">
+                    <mat-icon class="location-icon">location_on</mat-icon>
+                    <p>{{event[0].city}}, {{event[0].countryName}}</p>
+                </div>
+            </div>
+            <div class="card-body" style="padding: 28px;">
+                <h2 style="color: #FF990F; font-weight: bold; margin-bottom: 8px; font-size: 24px;">
+                    {{event[0].eventName}}</h2>
+                <p class="card-text" style="color: #FF990F;">Nivel: {{ event[0].difficultyName }}</p>
+                <p class="card-text">Asistentes: {{ event[0].userCount }} </p>
+                <p class="card-text">Organizador: {{ event[0].alias }} </p>
+                <p class="card-text" style="padding: 20px 0px;">{{ event[0].eventDescription }}</p>
+                <hr>
+
+                <!-- ----------------------------------- seccion comentarios ----------------------------------- -->
+                <mat-card *ngIf="comments && comments.length > 0; else noComments" 
+                    style="background-color: #111111; padding: 30px 20px; margin: 30px 0px;">
+                    <mat-card-content *ngFor="let comment of comments" style="padding-bottom: 8px; position: relative;">
+                        <div style="color: #FF990F" class="d-flex align-items-center mb-2" >
+                            <mat-icon style="margin-right: 10px;">account_circle</mat-icon>
+                            <p style="color: #FF990F; font-weight: bold; margin-bottom: 0;">{{comment.userAlias}}</p>
+                            <div style="margin-left: auto;">
+                                <p style="color: #FF990F; font-weight: lighter; font-size: 10px; margin-bottom: 0;">{{comment.dateTime}}</p>
+                            </div>                        
+                        </div>
+                        <p style="color:#FF990F">{{comment.comment}}</p>
+                        <hr style="color:#FF990F" *ngIf="comments.length > 1">
+                    </mat-card-content>
+                    <form [formGroup]="newComment">
+                        <mat-form-field *ngIf="logueado == true" style="padding-left: 18px ;width: 97%;">
+                            <mat-label style="font-size: 14px;">Añadí tu comentario</mat-label>
+                            <input matInput formControlName="newComment">
+                            <mat-icon matSuffix style="cursor: pointer;" (click)="enviarComentario()">send</mat-icon>
+                        </mat-form-field>
+                    </form>
+                </mat-card>
+
+                <!-- ----------------------------------- SIN COMENTARIOS ----------------------------------- -->
+
+                <ng-template #noComments>
+                    <mat-card style="background-color: #111111; padding: 0px 20px; margin: 50px 0px;">
+                        <mat-card-content
+                            style="color: #FF990F; font-weight: bold; padding-top: 20px; padding-bottom: 40px;">
+                            <mat-icon class="rate_review">rate_review</mat-icon>
+                            <p *ngIf="logueado == false">No hay comentarios todavía...</p>
+                            <p *ngIf="logueado == true">No hay comentarios todavía... ¡Hacé el primero!</p>
+                        </mat-card-content>
+                            <form [formGroup]="newComment">
+                                <mat-form-field *ngIf="logueado == true" style="padding-left: 18px ;width: 97%;">
+                                    <mat-label style="font-size: 16px;">Añadí tu comentario</mat-label>
+                                    <input matInput formControlName="newComment">
+                                    <mat-icon matSuffix style="cursor: pointer;" (click)="enviarComentario()">send</mat-icon>
+                                </mat-form-field>
+                            </form>
+                    </mat-card>
+                </ng-template>
+
+                <!-- ---------------------------------------- BOTONES ----------------------------------------- -->
+
+                <div class="d-flex justify-content-end">
+                    <!-- <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp/dashboardEvents']"> IR A MIS EVENTOS 
+                    </button> -->
+                    <button class="btn-cta" (click)="volverAtras()"> VOLVER ATRÁS </button>
+
+                    <!-- <button class="btn-cta" *ngIf="logueado == false" [routerLink]="['']"> VOLVER ATRÁS </button> ESTE ERA EL QUE ESTABA ANTES DEL VOLVER ATRAS GENERICO-->
+                    <!-- <button class="btn-cta" *ngIf="logueado == true" [routerLink]="['/TeamUp']"> VOLVER ATRÁS </button> -->
+                    <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && !idMeBajoEvent" style="margin-left: 20px;" (click)="MeSumoEvento()"> ME SUMO </button>
+                   <button class="btn-cta" *ngIf="logueado == true && idUserEvent != idUsuarioLogueado && idMeBajoEvent" style="margin-left: 20px;" (click)="MebajoEvent()"> ME BAJO </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!---->
+    <!-- ----------------------------------------------- Footer ---------------------------------------------- -->
+    <div class="row">
+        <app-footer></app-footer>
+    </div>
+</div>

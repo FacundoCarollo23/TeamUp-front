@@ -1,0 +1,30 @@
+.table>:not(caption)>*>* {
+    background-color: #D9D9D9 !important;
+    border-bottom-color: #FF990F;
+}
+
+a {
+    cursor: pointer;
+}
+
+::ng-deep .ngx-pagination a, .ngx-pagination button {
+    color: #111111 !important;
+}
+
+::ng-deep .ngx-pagination .current {
+    background: #FF990F !important;
+    font-size: 16px;
+    color: #111111 !important;
+}
+
+.table th:last-child,
+.table td:last-child {
+    min-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+::ng-deep .ngx-pagination a, .ngx-pagination[_ngcontent-ng-c3436375996] button[_ngcontent-ng-c3436375996]{
+    color: #111111 !important;
+}

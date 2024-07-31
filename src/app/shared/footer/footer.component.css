@@ -1,0 +1,44 @@
+footer {
+   display: flex;
+   flex-direction: column;
+   background-color: #504F4F;
+   height: 100%;
+   margin-top: 25px;
+}
+/* 
+.instagram-container {
+   display: flex;
+   align-items: center;
+} */
+
+.instagram-link {
+   display: flex;
+   color: #D9D9D9;
+   text-decoration: none;
+   align-items: center;
+   /* margin-left: 10px; */
+}
+
+.instagram-link i {
+   margin-right: 5px;
+}
+
+.fa-instagram {
+   font-size: 14px;
+   align-items: center;
+   display: flex;
+}
+
+.text-instagram {
+   font-size: 12px;
+   font-family: 'Open Sans', sans-serif;
+}
+
+.text-instagram:hover {
+   font-size: 14px;
+   font-family: 'Open Sans', sans-serif;
+}
+
+::ng-deep #parrafo{
+   margin-left: 25px !important;
+}

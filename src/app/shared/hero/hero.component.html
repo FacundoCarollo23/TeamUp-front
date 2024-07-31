@@ -1,0 +1,9 @@
+
+<div class="container-fluid hero" style="height: 100vh;">
+    <div class="hero-content">
+        <app-title [title]="'TEAM UP'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'" [@fadeInOut]></app-title>
+        <p style="color:#FF990F; font-size: 24px;" [@fadeInOut]>Unite a otras personas y llevá tu entrenamiento al siguiente nivel</p>
+        <button type="button" class="btn-cta bounce-top" [routerLink]="['/register']" *ngIf="logueado == false" style="margin-top: 5px;">REGISTRATE</button>
+        <button type="button" class="btn-cta bounce-top" [routerLink]="['/TeamUp/newevent']" *ngIf="logueado == true" style="margin-top: 5px">CREAR EVENTO</button>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+.custom-snackbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    z-index: 1000;
+}
+ 
+::ng-deep  .mat-mdc-snack-bar-container {
+    &.custom-snackbar {
+      
+      --mdc-snackbar-container-color: #FF990F;
+      /* --mat-mdc-snack-bar-button-color: green; */
+      --mdc-snackbar-supporting-text-color: #111111;
+      --mdc-snackbar-supporting-text-align: center;
+
+      
+    }
+  }
+    */
+  /*
+  ::ng-deep .mat-snack-bar-container{
+    border: 2px solid #0044DD;
+    border-radius: 20px;
+  }
+  */
+
+
+span{
+    color: red;
+}
+    

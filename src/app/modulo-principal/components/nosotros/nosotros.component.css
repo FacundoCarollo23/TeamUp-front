@@ -1,0 +1,36 @@
+.card{
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.card img{
+  width: 100%;
+  transition: all .5s;
+}
+
+.card:hover img{
+  transform: scale(1.09);
+}
+
+.card .card-body{
+  background: rgba(0, 0, 0, .7);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  height: 100%;
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card-body h5{
+  text-align: center;
+  border-bottom: 1px solid #ff990f;
+  padding: 0px 10px 20px 10px;
+  margin-top: 50%;
+}
+
+.card:hover .card-body{
+  top: 0;
+}

@@ -1,0 +1,65 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
+.custom-navbar {
+    background-color: #111111;
+}
+
+.logo-image {
+    width: auto;
+    height: 55px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.custom-button-text.custom-button-text-inicio,
+.custom-button-text.custom-button-text-eventos,
+.custom-button-text.custom-button-text-nosotros {
+    color: #FF990F;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+}
+
+.custom-button {
+    background-color: #FF990F; 
+    font-weight: bold;
+}
+
+::ng-depp mat-menu-content {
+    background-color: 'red' !important;
+}
+
+.custom-menu {
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #111111 !important;
+    color: #FF990F !important;
+  }
+
+.btn-m{
+    color: #FF990F !important;
+  }
+
+  ::ng-deep .mat-mdc-menu-content {
+    margin-top: 200px;
+    background-color: #111111;
+    width: 250px;
+  }
+
+:ng-depp mat-menu{
+    background-color: #111111;
+}
+
+::ng-deep .mat-mdc-menu-panel   {
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: none !important;
+    border-radius: none !important;
+    background-color: #111111 !important;
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 16px;
+}

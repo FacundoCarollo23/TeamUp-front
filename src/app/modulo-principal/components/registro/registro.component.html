@@ -1,0 +1,127 @@
+<div class="container-fluid" style="padding: 0;">
+  <app-nav-bar></app-nav-bar>
+  <div class="row">
+    <div class="background-image">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <div class="registro-form">
+          <form [formGroup]="formRegistro" style="height: 100%; margin-top: 50px;">
+            <app-title [title]="'Creá a tu Cuenta'" [colorTitle]="'#FF990F'" [fontSizeTitle]="'48px'"
+              [fontWeightTitle]="'400'" style="text-align: center;"></app-title>
+
+            <!-- ------------------------------------------------------- NOMBRE ------------------------------------------------------- -->
+            <div class="form-group">
+              <label for="nombre" class="text">Nombre</label>
+              <div class="input-container">
+                <input type="text" id="nombre" name="nombre" placeholder=" " formControlName="nombre"
+                  required class="rounded-input" style="height: 45px;">
+                <span class="placeholder-text">Ingresa tu nombre</span>
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('nombre')?.hasError('required') && formRegistro.get('nombre')?.touched">
+                El nombre es requerido
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------------ APELLIDO ------------------------------------------------------ -->
+            <div class="form-group">
+              <label for="apellido" class="text">Apellido</label>
+              <div class="input-container">
+                <input type="text" id="apellido" name="apellido" placeholder=" " formControlName="apellido"
+                  required class="rounded-input" style="height: 45px; ">
+                <span class="placeholder-text">Ingresa tu apellido</span>
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('apellido')?.hasError('required') && formRegistro.get('apellido')?.touched">
+                El apellido es requerido
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------------ ALIAS ------------------------------------------------------ -->
+            <div class="form-group">
+              <label for="alias" class="text">Alias</label>
+              <div class="input-container">
+                <input type="text" id="alias" name="alias" placeholder=" " formControlName="alias" required
+                  class="rounded-input" style="height: 45px; ">
+                <span class="placeholder-text">Ingresa tu alias</span>
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('alias')?.hasError('required') && formRegistro.get('alias')?.touched">
+                El alias es requerido
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------ FECHA DE NACIMIENTO ------------------------------------------------ -->
+            <div class="form-group">
+              <label for="fechaNacimiento" class="text">Fecha de Nacimiento</label>
+              <div>
+                <input [formControlName]="'fechaNacimiento'" placeholder="DD/MM/YYYY" class="rounded-input"
+                  bsDatepicker style="height: 45px;" locale='es' required [daysDisabled]="[6,0]"
+                  [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-orange' }">
+              </div>
+              <div
+                class="error-message"
+                *ngIf="formRegistro.get('fechaNacimiento')?.hasError('required') && formRegistro.get('fechaNacimiento')?.touched">
+                La fecha de nacimiento es requerida
+              </div>
+              <div *ngIf="formRegistro.get('fechaNacimiento')?.errors?.['fechaInvalida'] && formRegistro.get('fechaNacimiento')?.dirty"
+                class="error-message">
+                La fecha de nacimiento es invalida.
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------------ MAIL ------------------------------------------------------ -->
+            <div class="form-group">
+              <label for="email" class="text">Correo Electrónico</label>
+              <div class="input-container">
+                <input type="email" id="email" name="email" placeholder=" " formControlName="email" required
+                  class="rounded-input" style="height: 45px;">
+                <span class="placeholder-text">Ingresa tu correo electrónico</span>
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('email')?.hasError('required') && formRegistro.get('email')?.touched">
+                El email es requerido
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('email')?.hasError('pattern') && formRegistro.get('email')?.touched && formRegistro.get('email')?.hasError('pattern')">
+                Ingrese un email válido
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('email')?.hasError('minlength') && formRegistro.get('email')?.touched">
+                El email debe tener al menos 3 caracteres
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------------ CONTRASEÑA ------------------------------------------------------ -->
+            <div class="form-group">
+              <label for="password" class="text">Contraseña</label>
+              <div class="input-container">
+                <input type="{{ showPassword ? 'text' : 'password' }}" id="password" name="password" formControlName="password" placeholder=" "
+                  required class="rounded-input" style="height: 45px;">
+                  <span class="placeholder-text">Ingresa tu contraseña</span>
+                  <mat-icon class="toggle-password-btn" (click)="togglePasswordVisibility()">
+                    {{ showPassword ? 'visibility_off' : 'visibility' }}
+                  </mat-icon>
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('password')?.hasError('required') && formRegistro.get('password')?.touched">
+                La contraseña es requerida
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('password')?.hasError('minlength') || formRegistro.get('password')?.hasError('maxlength') && formRegistro.get('password')?.touched">
+                La contraseña debe tener entre 8 y 15 caracteres
+              </div>
+              <div class="error-message"
+                *ngIf="formRegistro.get('password')?.hasError('pattern') && formRegistro.get('password')?.touched">
+                La contraseña debe contener al menos una minúscula, una mayúscula, un número y un símbolo
+              </div>
+              <br>
+              <button class="btn" type="submit" (click)="OnSubmit()">REGISTRATE</button>
+              <button class="btn" style="background-color: #757575;" [routerLink]="['']">VOLVER ATRAS</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

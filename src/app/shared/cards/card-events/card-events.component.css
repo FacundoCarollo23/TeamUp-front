@@ -1,0 +1,19 @@
+.material-icons, .mat-icon{
+    font-size: 16px !important;
+    height: 16px;
+    width: 16px;
+}
+
+.mat-card-content, .mat-mdc-card-content{
+    max-width: 210px; /* Define el ancho máximo del contenedor */
+    display: -webkit-box; /* Establece el modo de visualización como caja flexible (necesario para navegadores webkit) */
+    -webkit-box-orient: vertical; /* Establece la orientación vertical de la caja flexible */
+    -webkit-line-clamp: 2; /* Define el número de líneas a mostrar */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos (...) al final del texto desbordado */
+    overflow: hidden; /* Oculta el contenido que desborda */
+}
+
+.mat-card--subtitle, .mat-mdc-card-subtitle {
+    min-height: 44px !important;
+    font-family: 'Open Sans', sans-serif;
+}

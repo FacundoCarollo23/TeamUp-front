@@ -1,0 +1,174 @@
+<div class="container-fluid" style="padding: 0;">
+    <app-nav-bar></app-nav-bar>
+
+    <div class="background-image">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: 50px;">
+                <div class="col-md-8">
+                    <div class="newEvent-form">
+                        <form [formGroup]="formUpdateEvent" style="font-size: 16px;">
+                            <div class="mt-5">
+                                <app-title [title]="'Modificá tu evento'" [colorTitle]="'#FF990F'"
+                                    [fontSizeTitle]="'48px'" [fontWeightTitle]="'400'"></app-title>
+                            </div>
+                            <!-- Nombre del Evento -->
+                            <div class="form-group">
+                                <div class="mb-4" [@fadeInOut]>
+                                    <label for="nombreEvento" class="text">Nombre Del Evento</label>
+                                    <div style="display: flex; align-items: center;">
+                                        <input type="string" id="nombreEvento" name="nombreEvento"
+                                            formControlName="nombreEvento" required class="rounded-input"
+                                            style="height: 45px; width: 100%; ">
+                                    </div>
+                                    <div class="error-message"
+                                        *ngIf="formUpdateEvent.get('nombreEvento')?.invalid && formUpdateEvent.get('nombreEvento')?.touched">
+                                        El campo Nombre es obligatorio</div>
+                                    <div class="error-message"
+                                        *ngIf="this.formUpdateEvent.get('nombreEvento')?.hasError('maxlength') && this.formUpdateEvent.get('nombreEvento')?.touched">
+                                        El nombre del evento debe tener máximo 50 caracteres</div>
+                                </div>
+
+                            <!-- ---------Descripción del Evento OK REVISADO - -->
+                            <div class="mb-4" [@fadeInOut]>
+                                <label for="descripcionEvento" class="text">Descripción del Evento</label>
+                                <div style="display: flex; align-items: center;">
+                                    <textarea id="descripcionEvento" name="descripcionEvento"
+                                        formControlName="descripcionEvento"
+                                        placeholder="Ingresa una descripción para el Evento" required
+                                        class="rounded-input"
+                                        style="resize: vertical; width: 100%; font-size: 16px;"> </textarea>
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="formUpdateEvent.get('descripcionEvento')?.invalid && formUpdateEvent.get('descripcionEvento')?.touched">
+                                    El campo Descripcion es obligatorio</div>
+                                <div class="error-message"
+                                    *ngIf="this.formUpdateEvent.get('descripcionEvento')?.hasError('maxlength') && this.formUpdateEvent.get('descripcionEvento')?.touched">
+                                    La descripción del Evento debe tener como máximo 1000 caracteres</div>
+                            </div>
+
+                            <!-- ----------País del Evento ----------------------------------------- -->
+                            <div class="mb-3" [@fadeInOut]>
+                                <label for="paisEvento" class="text">País del Evento</label>
+                                <div style="display: flex; align-items: center;">
+                                    <mat-form-field appearance="fill" style="width: 100%;">
+                                        <mat-label
+                                            style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
+                                            'País del Evento: ' + event[0]?.countryName }}</mat-label>
+                                        <mat-select formControlName="paisEvento">
+                                            <mat-option *ngFor="let country of countryCodes" [value]="this.formUpdateEvent.controls['paisEvento'].value">{{
+                                                country.name
+                                                }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="formUpdateEvent.get('paisEvento')?.invalid && formUpdateEvent.get('paisEvento')?.touched">
+                                    El campo País es obligatorio</div>
+                            </div>
+
+                            <!-- ----------- Ciudad del Evento----------------------------------------- -->
+                            <div class="mb-3" [@fadeInOut]>
+                                <label for="ciudadEvento" class="text">Ciudad del Evento</label>
+                                <div style="display: flex; align-items: center;">
+                                    <mat-form-field appearance="fill" style="width: 100%">
+                                        <mat-label
+                                            style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
+                                            'Ciudad del Evento: ' + event[0]?.city }}</mat-label>
+                                        <mat-select formControlName="ciudadEvento">
+                                            <mat-option [value]="city.name" *ngFor="let city of cities">{{ city.name }}</mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('ciudadEvento')?.value === 'valorNoEnLista'"  [value]="this.formUpdateEvent.controls['ciudadEvento'].value">{{ this.formUpdateEvent.controls['ciudadEvento'].value
+                                                }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="formUpdateEvent.get('ciudadEvento')?.invalid && formUpdateEvent.get('ciudadEvento')?.touched">
+                                    El campo Ciudad es obligatorio</div>
+                            </div>
+
+                            <!-- -----Nivel de Dificultad del Evento ----------------------------------------- -->
+                            <div class="mb-3" [@fadeInOut]>
+                                <label for="dificultadEvento" class="text">Dificultad del Evento</label>
+                                <div style="display: flex; align-items: center;">
+                                    <mat-form-field appearance="fill" style="width: 100%">
+                                        <mat-label
+                                            style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
+                                            'Dificultad del Evento: ' + event[0]?.difficultyName }}</mat-label>
+                                        <mat-select formControlName="dificultadEvento" >
+                                            <mat-option value=1>Principiante</mat-option>
+                                            <mat-option value=2>Intermedio</mat-option>
+                                            <mat-option value=3>Avanzado</mat-option>
+                                            <mat-option value=4>Experto</mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('dificultadEvento')?.value !== 'valorNoEnLista'"  *ngIf="formUpdateEvent.get('dificultadEvento')?.value !== 'valorNoEnLista'"
+                                                    [value]="this.dificultad.dificultadId">
+                                                    {{this.dificultad.descripcion}}
+                                            </mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('dificultadEvento')?.value !== 'valorNoEnLista'"  *ngIf="formUpdateEvent.get('dificultadEvento')?.value !== 'valorNoEnLista'"
+                                            [value]="this.dificultad.descripcion">
+                                            {{this.dificultad.descripcion}}
+                                    </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="formUpdateEvent.get('dificultadEvento')?.invalid && formUpdateEvent.get('dificultadEvento')?.touched">
+                                    El campo Nivel de Dificultad es obligatorio</div>
+                            </div>
+                            <!-- -------Fecha y Hora del Evento----------------------------------------- -->
+                            <div class="mb-3" [@fadeInOut]>
+                                <label class="text">Fecha y hora del evento</label>
+                                <div>
+                                    <ejs-datetimepicker placeholder="Seleccioná Fecha y Hora del Evento"
+                                        format="yyy-MM-dd HH:mm" formControlName="fechaHoraEvento"
+                                        [min]="this.fechaActual" [readonly]="true"></ejs-datetimepicker>
+                                    <div class="error-message"
+                                        *ngIf="this.formUpdateEvent.get('fechaHoraEvento')?.value == '' && formUpdateEvent.get('fechaHoraEvento')?.touched">
+                                        El campo fecha / hora es obligatorio</div>
+                                    <div class="error-message"
+                                        *ngIf="this.formUpdateEvent.get('fechaHoraEvento')?.hasError('esHoy') && formUpdateEvent.get('fechaHoraEvento')?.touched ">
+                                        La fecha no puede ser la del día de Hoy</div>
+                                </div>
+                            </div>
+                            <!-- ------------Tipo de Actividad del Evento -------------- -->
+                            <div class="mb-3" [@fadeInOut]>
+                                <label for="actividadEvento" class="text">Actividad del Evento</label>
+                                <div style="display: flex; align-items: center;">
+                                    <mat-form-field appearance="fill" style="width: 100%">
+                                        <mat-label
+                                            style="color:#111111; font-family: 'Open Sans', sans-serif; letter-spacing: 0px;">{{
+                                            'Actividad del Evento: ' + event[0]?.activityName }}</mat-label>
+                                        <mat-select formControlName="actividadEvento">
+                                            <mat-option value="1">Futbol</mat-option>
+                                            <mat-option value="2">Running</mat-option>
+                                            <mat-option value="3">Crossfit</mat-option>
+                                            <mat-option value="4">Maraton</mat-option>
+                                            <mat-option value="5">Yoga</mat-option>
+                                            <mat-option value="6">Skate</mat-option>
+                                            <mat-option value="7">Roller</mat-option>
+                                            <mat-option value="8">Funcional</mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('actividadEvento')?.value !== 'valorNoEnLista'"  *ngIf="formUpdateEvent.get('actividadEvento')?.value !== 'valorNoEnLista'"
+                                                    [value]="actividad.actividadId">
+                                                    {{this.actividad.descripcion}}
+                                            </mat-option>
+                                            <mat-option [hidden]="formUpdateEvent.get('actividadEvento')?.value !== 'valorNoEnLista'"  *ngIf="formUpdateEvent.get('actividadEvento')?.value !== 'valorNoEnLista'"
+                                                    [value]="actividad.descripcion">
+                                                    {{ this.actividad.descripcion}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="error-message"
+                                    *ngIf="formUpdateEvent.get('actividadEvento')?.invalid && formUpdateEvent.get('actividadEvento')?.touched">
+                                    El campo Tipo de Actividad es obligatorio</div>
+                            </div>
+                            <br>
+                            <!-- -------BOTONES----------------------------------------- -->
+                            <button class="btn-createEvent" (click)="OnSubmit()" @fade>MODIFICAR EVENTO</button>
+                            <button class="btn-secondary" [routerLink]="['/TeamUp/dashboardEvents']" @fade2>VOLVER
+                                ATRAS</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
